@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
+
 namespace Service
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
@@ -21,7 +22,7 @@ namespace Service
 
         // TODO: Add your service operations 
         //[OperationContract]
-        //Fonksiyonu tanımla
+        
     }
 
 
