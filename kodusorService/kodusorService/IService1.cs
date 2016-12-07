@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kodusorService.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -21,7 +22,7 @@ namespace kodusorService
 
         // TODO: Add your service operations here
         [OperationContract]
-        string sefa();
+        bool KayitOl(Kullanicilar kullanici);
     }
 
 

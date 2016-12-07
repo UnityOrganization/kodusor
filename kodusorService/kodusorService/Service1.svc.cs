@@ -31,18 +31,29 @@ namespace kodusorService
             return composite;
         }
 
-        public string sefa()
+        public bool KayitOl(Kullanicilar kullanici)
         {
-            kodusorEntities e = new kodusorEntities();
-            Kullanicilar k = new Kullanicilar();
-            k.Adi = "szs";
-            k.DogumTarihi = DateTime.Now;
-            k.Parola = "123";
-            k.Mail = "as@as.com";
-            k.Soyadi = "sd";
-            e.Kullanicilar.Add(k);
-            e.SaveChanges();
-            return "kayır ";
+            try
+            {
+                kodusorEntities db = new kodusorEntities();
+
+                var kul = (from k in db.Kullanicilar
+                           where k.Mail == kullanici.Mail
+                           select k).SingleOrDefault();
+
+                if (kul == null)
+                {
+                    db.Kullanicilar.Add(kullanici);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
