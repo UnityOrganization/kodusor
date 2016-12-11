@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<form>
+    <input id="kAdi" type="text" name="kullaniciAd" value="" />
+    <input id="kSoyadi" type="text" name="kullaniciSoyad" value="" />
+    <input id="mail" type="text" name="mail" value="" />
+    <input id="parola" type="text" name="parola" value="" />
+
+
+
+</form>
+<button id="KayitOl">Kayıt Ol</button>
+
+<script>
+    console.log("Çalıştı ");
+    $("#KayitOl").click(function () {
+        var kullanici = {
+            Adi: $("#kAdi").val(),
+            Soyadi: $("#kSoyadi").val(),
+            Mail: $("#mail").val(),
+            Parola: $("#parola").val()
+        };
+
+        $.post("/Home/kayit", kullanici, function (sonuc) {
+            if (sonuc == "+")
+                alert(sonuc + "Sonucç Başarılı");
+            else
+                alert("başarısız");
+        });
+
+    });
+
+</script>
