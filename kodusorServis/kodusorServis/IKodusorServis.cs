@@ -23,7 +23,13 @@ namespace kodusorServis
         string KayitOl(Kullanicilar kullanici);
 
         [OperationContract]
-        List<SoruListesi> SolulariListele();
+        List<SoruListesi> SorulariListele();
+
+        [OperationContract]
+        int GirisYap(string mail, string parola);
+
+
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();

@@ -44,6 +44,32 @@ namespace kodusorServis
             }
         }
 
+        public List<SoruListesi> SorulariListele()
+        {
+            List<SoruListesi> sorular = new List<SoruListesi>();
+            SoruListesi soru;
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
+
+                foreach (var item in soruListesi)
+                {
+                    soru = new SoruListesi()
+                    {
+                        SoruID = item.SoruID,
+                        Baslik = item.Baslik,
+                        Icerik = item.Icerik,
+                        Tarih = Convert.ToDateTime(item.Tarih),
+                        KullaniciID = item.KullaniciID,
+                        OnayCevapID = Convert.ToInt32(item.OnayCevapID),
+                        BegeniSayisi = Convert.ToInt32(item.BegeniSayisi)
+                    };
+                    sorular.Add(soru);
+                }
+            }
+            return sorular;
+        }
+
         public List<kullaniciListesi> KullanicilariListele()
         {
 
@@ -68,30 +94,18 @@ namespace kodusorServis
             return kul;
         }
 
-        public List<SoruListesi> SolulariListele()
+        public int GirisYap(string mail, string parola)
         {
-            List<SoruListesi> sorular = new List<SoruListesi>();
-            SoruListesi soru;
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
-
-                foreach (var item in soruListesi)
-                {
-                    soru = new SoruListesi()
-                    {
-                        SoruID = item.SoruID,
-                        Baslik = item.Baslik,
-                        Icerik = item.Icerik,
-                        Tarih = Convert.ToDateTime(item.Tarih),
-                        KullaniciID = item.KullaniciID,
-                        OnayCevapID = Convert.ToInt32(item.OnayCevapID),
-                        BegeniSayisi = Convert.ToInt32(item.BegeniSayisi)
-                    };
-                    sorular.Add(soru);
-                }
+                var kul = (from k in db.Kullanicilar
+                           where k.Mail == mail && k.Parola == parola
+                           select k).SingleOrDefault();
+                if (kul != null)
+                    return kul.KullaniciID;
+                else
+                    return 0;
             }
-            return sorular;
         }
     }
 }
