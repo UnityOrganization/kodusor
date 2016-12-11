@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace kodusorServis
+namespace kodusorServis.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class FavoriSorular
+    public partial class FavoriCevaplar
     {
         public int ID { get; set; }
         public int KullaniciID { get; set; }
-        public int SoruID { get; set; }
+        public int CevapID { get; set; }
     
+        public virtual Cevaplar Cevaplar { get; set; }
         public virtual Kullanicilar Kullanicilar { get; set; }
-        public virtual Sorular Sorular { get; set; }
     }
 }

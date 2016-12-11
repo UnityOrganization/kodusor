@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace kodusorServis
+namespace kodusorServis.Models
 {
     using System;
     using System.Data.Entity;
