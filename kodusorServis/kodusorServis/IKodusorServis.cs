@@ -23,11 +23,78 @@ namespace kodusorServis
         string KayitOl(Kullanicilar kullanici);
 
         [OperationContract]
+        List<SoruListesi> SolulariListele();
+
+        [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
     }
 
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class SoruListesi
+    {
+        private int soruID;
+        private string baslik;
+        private string icerik;
+        private DateTime tarih;
+        private int begeniSayisi;
+        private int onayCevapID;
+        private int kullaniciID;
+
+
+        [DataMember]
+        public int SoruID
+        {
+            get { return soruID; }
+            set { soruID = value; }
+        }
+        
+        [DataMember]
+        public string Baslik
+        {
+            get { return baslik; }
+            set { baslik = value; }
+        }
+        
+        [DataMember]
+        public string Icerik
+        {
+            get { return icerik; }
+            set { icerik = value; }
+        }
+        
+        [DataMember]
+        public DateTime Tarih
+        {
+            get { return tarih; }
+            set { tarih = value; }
+        }
+        
+        [DataMember]
+        public int BegeniSayisi
+        {
+            get { return begeniSayisi; }
+            set { begeniSayisi = value; }
+        }
+        
+        [DataMember]
+        public int OnayCevapID
+        {
+            get { return onayCevapID; }
+            set { onayCevapID = value; }
+        }
+        
+        [DataMember]
+        public int KullaniciID
+        {
+            get { return kullaniciID; }
+            set { kullaniciID = value; }
+        }
+    }
+
+
+
     [DataContract]
     public class kullaniciListesi
     {

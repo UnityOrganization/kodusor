@@ -67,6 +67,31 @@ namespace kodusorServis
             }
             return kul;
         }
-        
+
+        public List<SoruListesi> SolulariListele()
+        {
+            List<SoruListesi> sorular = new List<SoruListesi>();
+            SoruListesi soru;
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
+
+                foreach (var item in soruListesi)
+                {
+                    soru = new SoruListesi()
+                    {
+                        SoruID = item.SoruID,
+                        Baslik = item.Baslik,
+                        Icerik = item.Icerik,
+                        Tarih = Convert.ToDateTime(item.Tarih),
+                        KullaniciID = item.KullaniciID,
+                        OnayCevapID = Convert.ToInt32(item.OnayCevapID),
+                        BegeniSayisi = Convert.ToInt32(item.BegeniSayisi)
+                    };
+                    sorular.Add(soru);
+                }
+            }
+            return sorular;
+        }
     }
 }
