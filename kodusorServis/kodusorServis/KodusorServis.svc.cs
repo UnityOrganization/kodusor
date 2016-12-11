@@ -11,7 +11,7 @@ namespace kodusorServis
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+    public class Service1 : IKodusorServis
     {
         public string GetData(int value)
         {
@@ -32,15 +32,15 @@ namespace kodusorServis
                     {
                         db.Kullanicilar.Add(kullanici);
                         db.SaveChanges();
-                        return "Kayıt başarılı";
+                        return "+";
                     }
                     else
-                        return "Kayıt başarısız";
+                        return "-";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return "başarısız - " + ex.Message;
+                return "--";
             }
         }
 
@@ -67,25 +67,6 @@ namespace kodusorServis
             }
             return kul;
         }
-
-        public List<Kullanicilar> listele()
-        {
-            List<Kullanicilar> kul = new List<Kullanicilar>();
-            Kullanicilar k;
-            using (kodusorDBEntities db = new kodusorDBEntities())
-            {
-                foreach (var item in db.Kullanicilar)
-                {
-                    k = new Kullanicilar();
-                    k.Adi = item.Adi;
-                    k.Soyadi = item.Soyadi;
-                    k.Mail = item.Mail;
-                    k.Parola = item.Parola;
-                    kul.Add(k);
-                }
-            }
-            
-            return kul;
-        }
+        
     }
 }

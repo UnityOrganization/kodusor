@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/kodusorServis" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/kodusorServis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfkullaniciListesi">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="kullaniciListesi" nillable="true" type="tns:kullaniciListesi" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfkullaniciListesi" nillable="true" type="tns:ArrayOfkullaniciListesi" />
+  <xs:complexType name="kullaniciListesi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DogumTarihi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hakkimda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parola" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilFoto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Soyadi" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="kullaniciListesi" nillable="true" type="tns:kullaniciListesi" />
+</xs:schema>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/kodusorServis.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/kodusorServis.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Kullanicilar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:ArrayOfCevaplar" />
+      <xs:element minOccurs="0" name="DogumTarihi" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FavoriCevaplar" nillable="true" type="tns:ArrayOfFavoriCevaplar" />
+      <xs:element minOccurs="0" name="FavoriSorular" nillable="true" type="tns:ArrayOfFavoriSorular" />
+      <xs:element minOccurs="0" name="Hakkimda" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IletisimBilgileri" nillable="true" type="tns:IletisimBilgileri" />
+      <xs:element minOccurs="0" name="IletisimBilgileriID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parola" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilFoto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sorular" nillable="true" type="tns:ArrayOfSorular" />
+      <xs:element minOccurs="0" name="Soyadi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Yorum" nillable="true" type="tns:ArrayOfYorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+  <xs:complexType name="ArrayOfCevaplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cevaplar" nillable="true" type="tns:Cevaplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCevaplar" nillable="true" type="tns:ArrayOfCevaplar" />
+  <xs:complexType name="Cevaplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BegeniSayisi" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cevap" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CevapID" type="xs:int" />
+      <xs:element minOccurs="0" name="FavoriCevaplar" nillable="true" type="tns:ArrayOfFavoriCevaplar" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+      <xs:element minOccurs="0" name="SoruID" type="xs:int" />
+      <xs:element minOccurs="0" name="Sorular" nillable="true" type="tns:Sorular" />
+      <xs:element minOccurs="0" name="Tarih" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Yorum" nillable="true" type="tns:ArrayOfYorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cevaplar" nillable="true" type="tns:Cevaplar" />
+  <xs:complexType name="ArrayOfFavoriCevaplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FavoriCevaplar" nillable="true" type="tns:FavoriCevaplar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFavoriCevaplar" nillable="true" type="tns:ArrayOfFavoriCevaplar" />
+  <xs:complexType name="FavoriCevaplar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CevapID" type="xs:int" />
+      <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:Cevaplar" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FavoriCevaplar" nillable="true" type="tns:FavoriCevaplar" />
+  <xs:complexType name="Sorular">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Baslik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BegeniSayisi" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:ArrayOfCevaplar" />
+      <xs:element minOccurs="0" name="FavoriSorular" nillable="true" type="tns:ArrayOfFavoriSorular" />
+      <xs:element minOccurs="0" name="Icerik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+      <xs:element minOccurs="0" name="OnayCevapID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SoruEtiket" nillable="true" type="tns:ArrayOfSoruEtiket" />
+      <xs:element minOccurs="0" name="SoruID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tarih" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sorular" nillable="true" type="tns:Sorular" />
+  <xs:complexType name="ArrayOfFavoriSorular">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FavoriSorular" nillable="true" type="tns:FavoriSorular" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFavoriSorular" nillable="true" type="tns:ArrayOfFavoriSorular" />
+  <xs:complexType name="FavoriSorular">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+      <xs:element minOccurs="0" name="SoruID" type="xs:int" />
+      <xs:element minOccurs="0" name="Sorular" nillable="true" type="tns:Sorular" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FavoriSorular" nillable="true" type="tns:FavoriSorular" />
+  <xs:complexType name="ArrayOfSoruEtiket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SoruEtiket" nillable="true" type="tns:SoruEtiket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSoruEtiket" nillable="true" type="tns:ArrayOfSoruEtiket" />
+  <xs:complexType name="SoruEtiket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EtiketID" type="xs:int" />
+      <xs:element minOccurs="0" name="Etiketler" nillable="true" type="tns:Etiketler" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SoruID" type="xs:int" />
+      <xs:element minOccurs="0" name="Sorular" nillable="true" type="tns:Sorular" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoruEtiket" nillable="true" type="tns:SoruEtiket" />
+  <xs:complexType name="Etiketler">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EtiketAdi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EtiketID" type="xs:int" />
+      <xs:element minOccurs="0" name="SoruEtiket" nillable="true" type="tns:ArrayOfSoruEtiket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Etiketler" nillable="true" type="tns:Etiketler" />
+  <xs:complexType name="ArrayOfYorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Yorum" nillable="true" type="tns:Yorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfYorum" nillable="true" type="tns:ArrayOfYorum" />
+  <xs:complexType name="Yorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CevapID" type="xs:int" />
+      <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:Cevaplar" />
+      <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+      <xs:element minOccurs="0" name="Tarih" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Yorum1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YorumID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Yorum" nillable="true" type="tns:Yorum" />
+  <xs:complexType name="IletisimBilgileri">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CepTel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Github" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IletisimBilgileriID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:ArrayOfKullanicilar" />
+      <xs:element minOccurs="0" name="Linkedin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Twitter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Website" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IletisimBilgileri" nillable="true" type="tns:IletisimBilgileri" />
+  <xs:complexType name="ArrayOfKullanicilar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKullanicilar" nillable="true" type="tns:ArrayOfKullanicilar" />
+  <xs:complexType name="ArrayOfSorular">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sorular" nillable="true" type="tns:Sorular" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSorular" nillable="true" type="tns:ArrayOfSorular" />
+</xs:schema>

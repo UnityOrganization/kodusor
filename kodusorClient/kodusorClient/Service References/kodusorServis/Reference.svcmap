@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd3e8c3f-1bfc-43bb-8729-bf3f9f32d32e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://servis.kodusor.com/kodusorServis.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="KodusorServis.xsd" MetadataType="Schema" ID="7778f1c5-3e55-4054-9da0-7105860e5749" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd2" />
+    <MetadataFile FileName="KodusorServis1.xsd" MetadataType="Schema" ID="8ba05b23-567f-4dfd-9693-9e43db45402a" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd0" />
+    <MetadataFile FileName="KodusorServis2.xsd" MetadataType="Schema" ID="0f0265a1-7193-4855-9d63-f058333d5684" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd3" />
+    <MetadataFile FileName="KodusorServis.disco" MetadataType="Disco" ID="e63c0179-6f84-4806-9e9a-44ef67a60ecf" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="e9320d23-00ae-4005-8cec-e6efc9507c43" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?wsdl" />
+    <MetadataFile FileName="KodusorServis3.xsd" MetadataType="Schema" ID="4b1e8cf5-163b-4871-bd82-a15fd38e783f" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -7,6 +7,47 @@
 <h2>Index</h2>
 <button class="btn btn-primary">asdasd</button>
 
+
+
+
+<!--KAYIT OL-->
+<form>
+    <input id="kAdi" type="text" name="kullaniciAd" value="" />
+    <input id="kSoyadi" type="text" name="kullaniciSoyad" value="" />
+    <input id="mail" type="text" name="mail" value="" />
+    <input id="parola" type="text" name="parola" value="" />
+    <input id="parolaT" type="text" name="parolaT" value="" />
+</form>
+<button id="KayitOl">Kayıt Ol</button>
+<script>
+    $(function () {
+        console.log("Çalıştı ");
+        $("#KayitOl").click(function () {
+            console.log("tıklandı");
+            if ($("#parola").val() == $("#parolaT").val()) {
+                var kullanici = {
+                    Adi: $("#kAdi").val(),
+                    Soyadi: $("#kSoyadi").val(),
+                    Mail: $("#mail").val(),
+                    Parola: $("#parola").val()
+                };
+                console.log(kullanici);
+                $.post("../Home/kayit", kullanici, function (sonuc) {
+                    if (sonuc == "+")
+                        alert("Kayıt başarılı");
+                    else if (sonuc == "-")
+                        alert("Mail adresi zaten kayıtlı");
+                    else
+                        alert("Veritabanı bağlantı hatası");
+                });
+            }
+            else {
+                alert("Parolalar uyuşmuyor");
+            }
+        });
+    });
+</script>
+<!--KAYIT OL-->
 <script>
     $(function () {
         $("button").click(function () {

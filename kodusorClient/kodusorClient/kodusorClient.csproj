@@ -96,10 +96,10 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.CompositeType.datasource">
+    <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.kullaniciListesi.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\kodusorServis\Service1.disco" />
+    <None Include="Service References\kodusorServis\KodusorServis.disco" />
     <None Include="Service References\kodusorServis\configuration91.svcinfo" />
     <None Include="Service References\kodusorServis\configuration.svcinfo" />
     <None Include="Service References\kodusorServis\Reference.svcmap">
@@ -127,20 +127,20 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\KayitOl.cshtml" />
-    <None Include="Service References\kodusorServis\Service1.wsdl" />
-    <None Include="Service References\kodusorServis\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\kodusorServis\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\kodusorServis\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\kodusorServis\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Home\Login.cshtml" />
+    <None Include="Service References\kodusorServis\KodusorServis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\kodusorServis\KodusorServis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\kodusorServis\KodusorServis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\kodusorServis\KodusorServis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\kodusorServis\Service1.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

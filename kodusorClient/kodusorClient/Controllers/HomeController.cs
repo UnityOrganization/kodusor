@@ -9,7 +9,7 @@ namespace kodusorClient.Controllers
 {
     public class HomeController : Controller
     {
-        kodusorServis.Service1Client s;
+        KodusorServisClient servis;
 
         // GET: Home
         public ActionResult Index()
@@ -17,33 +17,13 @@ namespace kodusorClient.Controllers
             return View();
         }
 
-        public ActionResult KayitOl()
+        public JsonResult kayit(Kullanicilar k)
         {
-            return View();
+            servis = new KodusorServisClient();
+            servis.Open();
+            string sonuc = servis.KayitOl(k);
+            servis.Close();
+            return Json(sonuc);
         }
-        public JsonResult kayit(Kullanicilar kul)
-        {
-            //;
-            //bool durum = s.KayitOl(kullanici);
-            //s.Close();
-            //if (durum)
-            //    return Json("+");
-            //else
-            //    return Json("-");
-            s = new kodusorServis.Service1Client();
-            var sonuc = s.KayitOl(kul);
-            if (sonuc == true)
-                return Json("+");
-            else return Json("-");
-            s.Close();
-
-        }
-        public ActionResult Login()
-        {
-            return View();
-        }
-        
-
-
     }
 }

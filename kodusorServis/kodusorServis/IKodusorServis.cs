@@ -11,7 +11,7 @@ namespace kodusorServis
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IService1
+    public interface IKodusorServis
     {
 
         [OperationContract]
@@ -24,9 +24,6 @@ namespace kodusorServis
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
-
-        [OperationContract]
-        List<Kullanicilar> listele();
     }
 
 
@@ -45,106 +42,50 @@ namespace kodusorServis
         [DataMember]
         public int KullaniciID
         {
-            get
-            {
-                return kullaniciID;
-            }
-
-            set
-            {
-                kullaniciID = value;
-            }
+            get { return kullaniciID; }
+            set { kullaniciID = value; }
         }
         [DataMember]
         public string Adi
         {
-            get
-            {
-                return adi;
-            }
-
-            set
-            {
-                adi = value;
-            }
+            get { return adi; }
+            set { adi = value; }
         }
         [DataMember]
         public string Soyadi
         {
-            get
-            {
-                return soyadi;
-            }
-
-            set
-            {
-                soyadi = value;
-            }
+            get { return soyadi; }
+            set { soyadi = value; }
         }
         [DataMember]
         public string DogumTarihi
         {
-            get
-            {
-                return dogumTarihi;
-            }
-
-            set
-            {
-                dogumTarihi = value;
-            }
+            get { return dogumTarihi; }
+            set { dogumTarihi = value; }
         }
         [DataMember]
         public string Mail
         {
-            get
-            {
-                return mail;
-            }
-
-            set
-            {
-                mail = value;
-            }
+            get { return mail; }
+            set { mail = value; }
         }
         [DataMember]
         public string Parola
         {
-            get
-            {
-                return parola;
-            }
-
-            set
-            {
-                parola = value;
-            }
+            get { return parola; }
+            set { parola = value; }
         }
         [DataMember]
         public string ProfilFoto
         {
-            get
-            {
-                return profilFoto;
-            }
-
-            set
-            {
-                profilFoto = value;
-            }
+            get { return profilFoto; }
+            set { profilFoto = value; }
         }
         [DataMember]
         public string Hakkimda
         {
-            get
-            {
-                return hakkimda;
-            }
-
-            set
-            {
-                hakkimda = value;
-            }
+            get { return hakkimda; }
+            set { hakkimda = value; }
         }
     }
 }
