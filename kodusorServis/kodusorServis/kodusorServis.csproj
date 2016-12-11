@@ -121,6 +121,7 @@
       <DependentUpon>KodusorServis.svc</DependentUpon>
     </Compile>
     <Compile Include="IKodusorServis.cs" />
+    <Compile Include="NesneDuzenle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SoruEtiket.cs">
       <DependentUpon>kodusorModel.tt</DependentUpon>

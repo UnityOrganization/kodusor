@@ -44,50 +44,20 @@ namespace kodusorServis
             }
         }
 
-        public List<SoruListesi> SorulariListele()
+        public List<SoruListesi> SorulariListele(int id)
         {
             List<SoruListesi> sorular = new List<SoruListesi>();
-            List<EtiketListesi> etiketler;
-            SoruListesi soru;
-            EtiketListesi etiket;
-            kullaniciListesi kullanici;
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
-
+                IEnumerable<object> soruListesi = null;
+                if (id == 0)
+                    soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
+                else
+                    soruListesi = db.Sorular.Where(s => s.KullaniciID == id).OrderByDescending(s => s.Tarih);
+                
                 foreach (var item in soruListesi)
-                {
-                    etiketler = new List<EtiketListesi>();
-                    foreach (var e in item.SoruEtiket)
-                    {
-                        etiket = new EtiketListesi()
-                        {
-                            EtiketID = e.EtiketID,
-                            EtiketAdi = (db.Etiketler.Find(e.EtiketID)).EtiketAdi
-                        };
-                        etiketler.Add(etiket);
-                    }
-
-                    var k = db.Kullanicilar.Find(item.KullaniciID);
-                    kullanici = new kullaniciListesi()
-                    {
-                        Adi = k.Adi,
-                        KullaniciID = k.KullaniciID
-                    };
-
-                    soru = new SoruListesi()
-                    {
-                        SoruID = item.SoruID,
-                        Baslik = item.Baslik,
-                        Icerik = item.Icerik,
-                        Tarih = Convert.ToDateTime(item.Tarih),
-                        Kullanici = kullanici,
-                        OnayCevapID = Convert.ToInt32(item.OnayCevapID),
-                        BegeniSayisi = Convert.ToInt32(item.BegeniSayisi),
-                        Etiketler = etiketler,
-                        CevapSayisi = item.Cevaplar.Count
-                    };
-                    sorular.Add(soru);
+                {                    
+                    sorular.Add(NesneDuzenle.SoruOlustur((Sorular)item));
                 }
             }
             return sorular;
@@ -105,7 +75,7 @@ namespace kodusorServis
                 {
                     Adi = item.Adi,
                     Soyadi = item.Soyadi,
-                    DogumTarihi = item.DogumTarihi.ToString(),
+                    DogumTarihi = Convert.ToDateTime(item.DogumTarihi),
                     Mail = item.Mail,
                     Parola = item.Parola,
                     ProfilFoto = item.ProfilFoto,

@@ -23,11 +23,11 @@ namespace kodusorServis
         string KayitOl(Kullanicilar kullanici);
 
         [OperationContract]
-        List<SoruListesi> SorulariListele();
+        List<SoruListesi> SorulariListele(int id);
 
         [OperationContract]
         int GirisYap(string mail, string parola);
-
+        
 
 
 
@@ -115,15 +115,13 @@ namespace kodusorServis
         }
     }
 
-
-
     [DataContract]
     public class kullaniciListesi
     {
         private int kullaniciID = 0;
         private string adi = "";
         private string soyadi = "";
-        private string dogumTarihi = "";
+        private DateTime dogumTarihi = DateTime.Now;
         private string mail = "";
         private string parola = "";
         private string profilFoto = "";
@@ -147,7 +145,7 @@ namespace kodusorServis
             set { soyadi = value; }
         }
         [DataMember]
-        public string DogumTarihi
+        public DateTime DogumTarihi
         {
             get { return dogumTarihi; }
             set { dogumTarihi = value; }
@@ -198,4 +196,6 @@ namespace kodusorServis
             set { etiketAdi = value; }
         }
     }
+
+
 }
