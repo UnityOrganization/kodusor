@@ -14,16 +14,28 @@ namespace kodusorClient.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            servis = new KodusorServisClient();
+            List<SoruListesi> sorular = servis.SorulariListele().ToList();
+            servis.Close();
+            return View(sorular);
         }
 
         public JsonResult kayit(Kullanicilar k)
         {
             servis = new KodusorServisClient();
-            servis.Open();
             string sonuc = servis.KayitOl(k);
             servis.Close();
             return Json(sonuc);
+        }
+
+        public ActionResult Soru(int? id)
+        {
+            return View(id);
+        }
+
+        public ActionResult Etiket(int? id)
+        {
+            return View(id);
         }
     }
 }

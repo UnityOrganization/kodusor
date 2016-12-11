@@ -1364,6 +1364,179 @@ namespace kodusorClient.kodusorServis {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SoruListesi", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis")]
+    [System.SerializableAttribute()]
+    public partial class SoruListesi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BaslikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BegeniSayisiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CevapSayisiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private kodusorClient.kodusorServis.EtiketListesi[] EtiketlerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IcerikField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private kodusorClient.kodusorServis.kullaniciListesi KullaniciField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OnayCevapIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SoruIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TarihField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Baslik {
+            get {
+                return this.BaslikField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BaslikField, value) != true)) {
+                    this.BaslikField = value;
+                    this.RaisePropertyChanged("Baslik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BegeniSayisi {
+            get {
+                return this.BegeniSayisiField;
+            }
+            set {
+                if ((this.BegeniSayisiField.Equals(value) != true)) {
+                    this.BegeniSayisiField = value;
+                    this.RaisePropertyChanged("BegeniSayisi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CevapSayisi {
+            get {
+                return this.CevapSayisiField;
+            }
+            set {
+                if ((this.CevapSayisiField.Equals(value) != true)) {
+                    this.CevapSayisiField = value;
+                    this.RaisePropertyChanged("CevapSayisi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public kodusorClient.kodusorServis.EtiketListesi[] Etiketler {
+            get {
+                return this.EtiketlerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EtiketlerField, value) != true)) {
+                    this.EtiketlerField = value;
+                    this.RaisePropertyChanged("Etiketler");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Icerik {
+            get {
+                return this.IcerikField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IcerikField, value) != true)) {
+                    this.IcerikField = value;
+                    this.RaisePropertyChanged("Icerik");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public kodusorClient.kodusorServis.kullaniciListesi Kullanici {
+            get {
+                return this.KullaniciField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KullaniciField, value) != true)) {
+                    this.KullaniciField = value;
+                    this.RaisePropertyChanged("Kullanici");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OnayCevapID {
+            get {
+                return this.OnayCevapIDField;
+            }
+            set {
+                if ((this.OnayCevapIDField.Equals(value) != true)) {
+                    this.OnayCevapIDField = value;
+                    this.RaisePropertyChanged("OnayCevapID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SoruID {
+            get {
+                return this.SoruIDField;
+            }
+            set {
+                if ((this.SoruIDField.Equals(value) != true)) {
+                    this.SoruIDField = value;
+                    this.RaisePropertyChanged("SoruID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Tarih {
+            get {
+                return this.TarihField;
+            }
+            set {
+                if ((this.TarihField.Equals(value) != true)) {
+                    this.TarihField = value;
+                    this.RaisePropertyChanged("Tarih");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="kullaniciListesi", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis")]
     [System.SerializableAttribute()]
     public partial class kullaniciListesi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1519,6 +1692,67 @@ namespace kodusorClient.kodusorServis {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EtiketListesi", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis")]
+    [System.SerializableAttribute()]
+    public partial class EtiketListesi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EtiketAdiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EtiketIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EtiketAdi {
+            get {
+                return this.EtiketAdiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EtiketAdiField, value) != true)) {
+                    this.EtiketAdiField = value;
+                    this.RaisePropertyChanged("EtiketAdi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EtiketID {
+            get {
+                return this.EtiketIDField;
+            }
+            set {
+                if ((this.EtiketIDField.Equals(value) != true)) {
+                    this.EtiketIDField = value;
+                    this.RaisePropertyChanged("EtiketID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="kodusorServis.IKodusorServis")]
     public interface IKodusorServis {
@@ -1534,6 +1768,18 @@ namespace kodusorClient.kodusorServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KayitOl", ReplyAction="http://tempuri.org/IKodusorServis/KayitOlResponse")]
         System.Threading.Tasks.Task<string> KayitOlAsync(kodusorClient.kodusorServis.Kullanicilar kullanici);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SorulariListele", ReplyAction="http://tempuri.org/IKodusorServis/SorulariListeleResponse")]
+        kodusorClient.kodusorServis.SoruListesi[] SorulariListele();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SorulariListele", ReplyAction="http://tempuri.org/IKodusorServis/SorulariListeleResponse")]
+        System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi[]> SorulariListeleAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/GirisYap", ReplyAction="http://tempuri.org/IKodusorServis/GirisYapResponse")]
+        int GirisYap(string mail, string parola);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/GirisYap", ReplyAction="http://tempuri.org/IKodusorServis/GirisYapResponse")]
+        System.Threading.Tasks.Task<int> GirisYapAsync(string mail, string parola);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullanicilariListele", ReplyAction="http://tempuri.org/IKodusorServis/KullanicilariListeleResponse")]
         kodusorClient.kodusorServis.kullaniciListesi[] KullanicilariListele();
@@ -1583,6 +1829,22 @@ namespace kodusorClient.kodusorServis {
         
         public System.Threading.Tasks.Task<string> KayitOlAsync(kodusorClient.kodusorServis.Kullanicilar kullanici) {
             return base.Channel.KayitOlAsync(kullanici);
+        }
+        
+        public kodusorClient.kodusorServis.SoruListesi[] SorulariListele() {
+            return base.Channel.SorulariListele();
+        }
+        
+        public System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi[]> SorulariListeleAsync() {
+            return base.Channel.SorulariListeleAsync();
+        }
+        
+        public int GirisYap(string mail, string parola) {
+            return base.Channel.GirisYap(mail, parola);
+        }
+        
+        public System.Threading.Tasks.Task<int> GirisYapAsync(string mail, string parola) {
+            return base.Channel.GirisYapAsync(mail, parola);
         }
         
         public kodusorClient.kodusorServis.kullaniciListesi[] KullanicilariListele() {

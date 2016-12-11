@@ -46,7 +46,9 @@ namespace kodusorServis
         private DateTime tarih;
         private int begeniSayisi;
         private int onayCevapID;
-        private int kullaniciID;
+        private kullaniciListesi kullanici;
+        private List<EtiketListesi> etiketler;
+        private int cevapSayisi;
 
 
         [DataMember]
@@ -92,10 +94,24 @@ namespace kodusorServis
         }
         
         [DataMember]
-        public int KullaniciID
+        public kullaniciListesi Kullanici
         {
-            get { return kullaniciID; }
-            set { kullaniciID = value; }
+            get { return kullanici; }
+            set { kullanici = value; }
+        }
+
+        [DataMember]
+        public List<EtiketListesi> Etiketler
+        {
+            get { return etiketler; }
+            set { etiketler = value; }
+        }
+
+        [DataMember]
+        public int CevapSayisi
+        {
+            get { return cevapSayisi; }
+            set { cevapSayisi = value; }
         }
     }
 
@@ -159,6 +175,27 @@ namespace kodusorServis
         {
             get { return hakkimda; }
             set { hakkimda = value; }
+        }
+    }
+
+    [DataContract]
+    public class EtiketListesi
+    {
+        private int etiketID;
+        private string etiketAdi;
+
+        [DataMember]
+        public int EtiketID
+        {
+            get { return etiketID; }
+            set { etiketID = value; }
+        }
+
+        [DataMember]
+        public string EtiketAdi
+        {
+            get { return etiketAdi; }
+            set { etiketAdi = value; }
         }
     }
 }

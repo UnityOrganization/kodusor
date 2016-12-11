@@ -30,6 +30,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SorulariListele">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SorulariListeleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SorulariListeleResult" nillable="true" type="q2:ArrayOfSoruListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GirisYap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="parola" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GirisYapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GirisYapResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="KullanicilariListele">
     <xs:complexType>
       <xs:sequence />
@@ -38,7 +65,7 @@
   <xs:element name="KullanicilariListeleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q2:ArrayOfkullaniciListesi" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q3:ArrayOfkullaniciListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -1,7 +1,22 @@
-﻿
+﻿@model IEnumerable<kodusorClient.kodusorServis.SoruListesi>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-
+    @foreach (var item in Model)
+    {
+        @Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID })
+        @Html.DisplayFor(modelItem => (item.Tarih))
+        @Html.DisplayFor(modelItem => item.BegeniSayisi)
+        @Html.DisplayFor(modelItem => item.CevapSayisi)
+        @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "ui primary button", @style = "margin-bottom: 5px;" })*@
+        @Html.ActionLink(item.Kullanici.Adi, "Index", "Profil", new { id = item.Kullanici.KullaniciID })
+        <br />
+        foreach (var etiket in item.Etiketler)
+        {
+            @Html.ActionLink(etiket.EtiketAdi, "Etiket", new { id = etiket.EtiketID }) <p>---</p>
+        }
+        <br />
+        <br />
+    }

@@ -20,6 +20,18 @@
   <wsdl:message name="IKodusorServis_KayitOl_OutputMessage">
     <wsdl:part name="parameters" element="tns:KayitOlResponse" />
   </wsdl:message>
+  <wsdl:message name="IKodusorServis_SorulariListele_InputMessage">
+    <wsdl:part name="parameters" element="tns:SorulariListele" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SorulariListele_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SorulariListeleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_GirisYap_InputMessage">
+    <wsdl:part name="parameters" element="tns:GirisYap" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_GirisYap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GirisYapResponse" />
+  </wsdl:message>
   <wsdl:message name="IKodusorServis_KullanicilariListele_InputMessage">
     <wsdl:part name="parameters" element="tns:KullanicilariListele" />
   </wsdl:message>
@@ -34,6 +46,14 @@
     <wsdl:operation name="KayitOl">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KayitOl" message="tns:IKodusorServis_KayitOl_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KayitOlResponse" message="tns:IKodusorServis_KayitOl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SorulariListele">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SorulariListele" message="tns:IKodusorServis_SorulariListele_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SorulariListeleResponse" message="tns:IKodusorServis_SorulariListele_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GirisYap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/GirisYap" message="tns:IKodusorServis_GirisYap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/GirisYapResponse" message="tns:IKodusorServis_GirisYap_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="KullanicilariListele">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullanicilariListele" message="tns:IKodusorServis_KullanicilariListele_InputMessage" />
@@ -53,6 +73,24 @@
     </wsdl:operation>
     <wsdl:operation name="KayitOl">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/KayitOl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SorulariListele">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SorulariListele" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GirisYap">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/GirisYap" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
