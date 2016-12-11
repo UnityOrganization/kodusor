@@ -4,15 +4,146 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />    
+    <link href="~/Content/materialize.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/materialize.min.js"></script>
 </head>
 <body>
-
-    <div class="container body-content">
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                <li><a href="#modalGiris">Giriş Yap</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                <li><a href="#modalGiris" >Giriş Yap</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar Bitiş -->
+    <!-- Kayıt Ol Modal -->
+    <div id="modalKayıt" class="modal">
+        <div class="modal-content">
+            <h5>Kayıt Ol</h5>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col m6 s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="kAdi" type="text" class="validate" value="" />
+                            <label for="icon_prefix">Adınız</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="kSoyadi" type="text" class="validate" value="" />
+                            <label for="icon_prefix">Soyadınız</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="mail" type="text" class="validate" value="" />
+                            <label for="icon_prefix">E-posta</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="parola" type="password" class="validate" value="" />
+                            <label for="icon_prefix">Parola</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="parolaT" type="password" class="validate" value="" />
+                            <label for="icon_prefix">Parola Doğrula</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="center-align">
+                    <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <!-- Kayıt Ol Modal Bitiş -->
+    <!-- Giriş Yap Modal -->
+    <div id="modalGiris" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+    <!-- Giriş Yap Modal Bitiş -->
+    <div class="container">
         @RenderBody()
     </div>
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Bitiş -->
+    <script>
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+            $('.modal').modal();
+        });
+    </script>
+    <script>
+    $(function () {
+        console.log("Çalıştı ");
+        $("#KayitOl").click(function () {
+            console.log("tıklandı");
+            if ($("#parola").val() == $("#parolaT").val()) {
+                var kullanici = {
+                    Adi: $("#kAdi").val(),
+                    Soyadi: $("#kSoyadi").val(),
+                    Mail: $("#mail").val(),
+                    Parola: $("#parola").val()
+                };
+                console.log(kullanici);
+                $.post("../Home/kayit", kullanici, function (sonuc) {
+                    if (sonuc == "+")
+                        alert("Kayıt başarılı");
+                    else if (sonuc == "-")
+                        alert("Mail adresi zaten kayıtlı");
+                    else
+                        alert("Veritabanı bağlantı hatası");
+                });
+            }
+            else {
+                alert("Parolalar uyuşmuyor");
+            }
+        });
+    });
+    </script>
 </body>
 </html>
