@@ -13,7 +13,7 @@
 <body>
     <!-- Navbar -->
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper blue-grey lighten-1">
             <a href="#!" class="brand-logo">Logo</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -55,7 +55,7 @@
                             <label for="icon_prefix">Parola</label>
                         </div>
                         <div class="input-field col m6 s12">
-                            <i class="material-icons prefix">email</i>
+                            <i class="material-icons prefix">lock</i>
                             <input id="parolaT" type="password" class="validate" value="" />
                             <label for="icon_prefix">Parola Doğrula</label>
                         </div>
@@ -81,11 +81,16 @@
         </div>
     </div>
     <!-- Giriş Yap Modal Bitiş -->
-    <div class="container">
-        @RenderBody()
+    <div class="container" style="width:1060px">
+        <div class="row">
+            <div class="col m8 s12">@RenderBody()</div>
+            <div class="col m4 s12">
+                <img class="materialboxed" width="100%" src="http://lorempixel.com/600/600/nature/6">
+            </div>
+        </div>
     </div>
     <!-- Footer -->
-    <footer class="page-footer">
+    <footer class="page-footer blue-grey lighten-1">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">

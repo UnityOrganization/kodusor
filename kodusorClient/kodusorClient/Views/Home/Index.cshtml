@@ -3,20 +3,38 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-
+<ul class="collection">
     @foreach (var item in Model)
     {
-        @Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID })
-        @Html.DisplayFor(modelItem => (item.Tarih))
-        @Html.DisplayFor(modelItem => item.BegeniSayisi)
-        @Html.DisplayFor(modelItem => item.CevapSayisi)
-        @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "ui primary button", @style = "margin-bottom: 5px;" })*@
-        @Html.ActionLink(item.Kullanici.Adi, "Index", "Profil", new { id = item.Kullanici.KullaniciID })
-        <br />
-        foreach (var etiket in item.Etiketler)
-        {
-            @Html.ActionLink(etiket.EtiketAdi, "Etiket", new { id = etiket.EtiketID }) <p>---</p>
-        }
-        <br />
-        <br />
+        <li class="collection-item row">
+            
+                <div class="col m1 s1" >
+                    <i class="material-icons prefix">thumb_up</i><br />
+                    @Html.DisplayFor(modelItem => item.BegeniSayisi)
+                </div>
+                <div class="col m1 s1">
+                    <i class="material-icons prefix">chat_bubble</i><br />
+                    @Html.DisplayFor(modelItem => item.CevapSayisi)
+                </div>
+                <div class="col m7 s10">
+                    <b>@Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID }, new { @class = "soruBaslik" })</b><br />
+                    
+                    <span class="tarih">@Html.DisplayFor(modelItem => (item.Tarih))</span>
+                    <span>-</span>
+                    
+                    @Html.ActionLink(item.Kullanici.Adi, "Index", "Profil", new { id = item.Kullanici.KullaniciID }, new { @class = "soranKul"})
+                </div>
+                <div class="col m3 s12 offset-s2">
+                    @foreach (var etiket in item.Etiketler)
+                    {
+                        @Html.ActionLink(etiket.EtiketAdi, "Etiket", new { id = etiket.EtiketID }, new { @class = "etiket"})<span>&nbsp;</span>
+                    }
+                </div>
+            
+        </li>
+
+
+            @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "ui primary button", @style = "margin-bottom: 5px;" })*@
+
     }
+</ul>
