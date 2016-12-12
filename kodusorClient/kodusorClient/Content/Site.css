@@ -1,4 +1,6 @@
 ﻿.etiket {padding:5px; background-color:#90a4ae; color:#ffffff; border-radius:3px;}
+.etiket:hover {background-color:#424242; transition-duration:0.5s;}
 .soruBaslik {color:#455a64}
+.soruBaslik:hover {color:#263238; transition-duration:0.3s;}
 .tarih{font:bold 10px verdana}
 .soranKul{font:bold 10px verdana; color:#b0bec5}

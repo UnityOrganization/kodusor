@@ -3,6 +3,19 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
+<br />
+<nav>
+    <div class="nav-wrapper blue-grey lighten-1">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Soru Ara" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+</nav>
+
 <ul class="collection">
     @foreach (var item in Model)
     {

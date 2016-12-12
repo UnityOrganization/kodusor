@@ -12,20 +12,23 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <div class="nav-wrapper blue-grey lighten-1">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                <li><a href="#modalGiris">Giriş Yap</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                <li><a href="#modalGiris" >Giriş Yap</a></li>
-            </ul>
-        </div>
-    </nav>
+        <nav>
+            <div class="nav-wrapper blue-grey lighten-1">
+                <div class="container" style="width:1060px">
+                    <a href="#!" class="brand-logo">kodusor.com</a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
     <!-- Navbar Bitiş -->
     <!-- Kayıt Ol Modal -->
     <div id="modalKayıt" class="modal">
@@ -73,11 +76,27 @@
     <!-- Giriş Yap Modal -->
     <div id="modalGiris" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <h5>Giriş Yap</h5>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="mail" type="text" class="validate" value="" />
+                            <label for="icon_prefix">E-posta</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="parola" type="password" class="validate" value="" />
+                            <label for="icon_prefix">Parola</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="center-align">
+                    <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
+                </div>
+
+            </div>
         </div>
     </div>
     <!-- Giriş Yap Modal Bitiş -->
