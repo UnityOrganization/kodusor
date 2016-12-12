@@ -117,5 +117,21 @@ namespace kodusorServis
             }
             return cevaplar;
         }
+
+        public List<SoruListesi> FavoriSorular(int kullaniciID)
+        {
+            List<SoruListesi> sorular = new List<SoruListesi>();
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var kul = (from k in db.Kullanicilar
+                           where k.KullaniciID == kullaniciID
+                           select k).SingleOrDefault();
+                foreach (var item in kul.FavoriSorular)
+                {
+                    sorular.Add(NesneDuzenle.SoruOlustur(item.Sorular));
+                }
+            }
+            return sorular;
+        }
     }
 }

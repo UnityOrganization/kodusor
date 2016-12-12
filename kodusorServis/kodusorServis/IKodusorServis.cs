@@ -31,6 +31,9 @@ namespace kodusorServis
         [OperationContract]
         List<CevapListesi> KullaniciCevapları(int kullaniciID);
 
+        [OperationContract]
+        List<SoruListesi> FavoriSorular(int kullaniciID);
+
 
 
         [OperationContract]
