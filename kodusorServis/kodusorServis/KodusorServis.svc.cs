@@ -133,5 +133,54 @@ namespace kodusorServis
             }
             return sorular;
         }
+
+        public List<CevapListesi> FavoriCevaplar(int kullaniciID)
+        {
+            List<CevapListesi> cevaplar = new List<CevapListesi>();
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var kul = (from k in db.Kullanicilar
+                           where k.KullaniciID == kullaniciID
+                           select k).SingleOrDefault();
+                foreach (var item in kul.FavoriCevaplar)
+                {
+                    cevaplar.Add(NesneDuzenle.CevapOlustur(item.Cevaplar));
+                }
+            }
+            return cevaplar;
+        }
+
+        public List<EtiketListesi> KullanicininEtiketleri(int kullaniciID)
+        {
+            List<EtiketListesi> etiketler = new List<EtiketListesi>();
+            bool kontrol = true;
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var kul = (from k in db.Kullanicilar
+                           where k.KullaniciID == kullaniciID
+                           select k).SingleOrDefault();
+
+                foreach (var s in kul.Sorular)
+                {
+                    foreach (var e in s.SoruEtiket)
+                    {
+                        EtiketListesi etiket = NesneDuzenle.EtiketOlustur(e);
+                        foreach (var item in etiketler)
+                        {
+                            if (item.EtiketID == etiket.EtiketID)
+                            {
+                                kontrol = false;
+                                break;
+                            }
+                            else
+                                kontrol = true;
+                        }
+                        if(kontrol)
+                            etiketler.Add(etiket);
+                    }
+                }
+            }
+            return etiketler;
+        }
     }
 }
