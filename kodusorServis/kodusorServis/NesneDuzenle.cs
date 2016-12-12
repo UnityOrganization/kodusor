@@ -13,6 +13,8 @@ namespace kodusorServis
         private static SoruListesi Soru { get; set; }
         private static kullaniciListesi Kullanici { get; set; }
         private static List<EtiketListesi> etiketler;
+        private static CevapListesi Cevap { get; set; }
+        private static List<SoruListesi> sorular;
 
 
         public static EtiketListesi EtiketOlustur(SoruEtiket etiket)
@@ -59,9 +61,28 @@ namespace kodusorServis
                 BegeniSayisi = Convert.ToInt32(soru.BegeniSayisi),
                 Etiketler = etiketler,
                 CevapSayisi = soru.Cevaplar.Count
-
             };
             return Soru;
         }
+
+        public static CevapListesi CevapOlustur (Cevaplar cevap)
+        {
+            var soru = (from s in db.Sorular
+                        where s.SoruID == cevap.SoruID
+                        select s).SingleOrDefault();
+
+            Cevap = new CevapListesi()
+            {
+                CevapID = cevap.CevapID,
+                KullaniciID = cevap.KullaniciID,
+                SoruID = cevap.SoruID,
+                Cevap = cevap.Cevap,
+                BegeniSayisi = Convert.ToInt32(cevap.BegeniSayisi),
+                Tarih = Convert.ToDateTime(cevap.Tarih),
+                Sorular = SoruOlustur(soru)
+            };
+            return Cevap;
+        }
+
     }
 }
