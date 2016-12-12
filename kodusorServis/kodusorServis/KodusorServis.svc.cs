@@ -100,5 +100,22 @@ namespace kodusorServis
                     return 0;
             }
         }
+
+        public List<CevapListesi> KullaniciCevapları(int kullaniciID)
+        {
+            List<CevapListesi> cevaplar = new List<CevapListesi>();
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var kul = (from k in db.Kullanicilar
+                           where k.KullaniciID == kullaniciID
+                           select k).SingleOrDefault();
+
+                foreach (var item in kul.Cevaplar)
+                {
+                    cevaplar.Add(NesneDuzenle.CevapOlustur(item));
+                }
+            }
+            return cevaplar;
+        }
     }
 }

@@ -27,7 +27,9 @@ namespace kodusorServis
 
         [OperationContract]
         int GirisYap(string mail, string parola);
-        
+
+        [OperationContract]
+        List<CevapListesi> KullaniciCevapları(int kullaniciID);
 
 
 
@@ -197,5 +199,64 @@ namespace kodusorServis
         }
     }
 
+    [DataContract]
+    public class CevapListesi
+    {
+        private int cevapID;
+        [DataMember]
+        public int CevapID
+        {
+            get { return cevapID; }
+            set { cevapID = value; }
+        }
 
+        private int soruID;
+        [DataMember]
+        public int SoruID
+        {
+            get { return soruID; }
+            set { soruID = value; }
+        }
+
+        private int kullaniciID;
+        [DataMember]
+        public int KullaniciID
+        {
+            get { return kullaniciID; }
+            set { kullaniciID = value; }
+        }
+
+        private string cevap;
+        [DataMember]
+        public string Cevap
+        {
+            get { return cevap; }
+            set { cevap = value; }
+        }
+
+        private DateTime tarih;
+        [DataMember]
+        public DateTime Tarih
+        {
+            get { return tarih; }
+            set { tarih = value; }
+        }
+
+        private int begeniSayisi;
+        [DataMember]
+        public int BegeniSayisi
+        {
+            get { return begeniSayisi; }
+            set { begeniSayisi = value; }
+        }
+
+        private SoruListesi sorular;
+        [DataMember]
+        public SoruListesi Sorular
+        {
+            get { return sorular; }
+            set { sorular = value; }
+        }
+
+    }
 }
