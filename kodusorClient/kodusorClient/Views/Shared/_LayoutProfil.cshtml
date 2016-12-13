@@ -19,7 +19,7 @@
     <!-- Navbar -->
     <nav>
         <div class="nav-wrapper blue-grey lighten-1">
-            <div class="container" style="width:1060px">
+            <div class="container" style="width:944px">
                 <a href="#!" class="brand-logo">kodusor.com</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
@@ -35,10 +35,9 @@
         </div>
     </nav>
     <!-- Navbar Bitiş -->
-    <div class="container" style="width:1060px">
+    <div class="container" style="width:944px">
         <div class="row">
-            <div class="col m8 s12">@RenderBody()</div>
-            <div class="col m4 s12">Son Sorular</div>
+            <div class="col s12">@RenderBody()</div>
         </div>
     </div>
     <!-- Footer -->
@@ -58,5 +57,11 @@
         </div>
     </footer>
     <!-- Footer Bitiş -->
+    <script>
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+            $('.modal').modal();
+        });
+    </script>
 </body>
 </html>
