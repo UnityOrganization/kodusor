@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "SoruSor";
+    Layout = "~/Views/Shared/_LayoutProfil.cshtml";
+}
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">label_outline</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Başlık</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Soru içeriği</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">loyalty</i>
+                <div class="chips chips-placeholder"></div>
+            </div>
+            <button class="btn waves-effect blue-grey lighten-1" type="submit" name="action">
+                Gönder
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+    
+</div>
+
+
+<script>
+    $('.chips-placeholder').material_chip({
+        placeholder: 'Etiket Gir',
+        secondaryPlaceholder: '+Etiket Ekle',
+    });
+    $('#textarea1').val('New Text');
+    $('#textarea1').trigger('autoresize');
+</script>
+
+

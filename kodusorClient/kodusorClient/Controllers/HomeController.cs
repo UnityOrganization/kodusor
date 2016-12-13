@@ -33,9 +33,5 @@ namespace kodusorClient.Controllers
             return View(id);
         }
 
-        public ActionResult Etiket(int? id)
-        {
-            return View(id);
-        }
     }
 }

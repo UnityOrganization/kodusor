@@ -18,10 +18,12 @@
                     <a href="#!" class="brand-logo">kodusor.com</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
+                        <li><a href="#modalGiris">Soru Sor</a></li>
                         <li><a href="#modalKayıt">Kayıt Ol</a></li>
                         <li><a href="#modalGiris">Giriş Yap</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
+                        <li><a href="#modalGiris">Soru Sor</a></li>
                         <li><a href="#modalKayıt">Kayıt Ol</a></li>
                         <li><a href="#modalGiris">Giriş Yap</a></li>
                     </ul>
@@ -66,6 +68,7 @@
                 </form>
                 <div class="center-align">
                     <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
+                    <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
                 </div>
                 
             </div>
@@ -94,6 +97,7 @@
                 </form>
                 <div class="center-align">
                     <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
+                    <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
                 </div>
 
             </div>
@@ -104,7 +108,7 @@
         <div class="row">
             <div class="col m8 s12">@RenderBody()</div>
             <div class="col m4 s12">
-                <img class="materialboxed" width="100%" src="http://lorempixel.com/600/600/nature/6">
+                Son Sorular
             </div>
         </div>
     </div>
@@ -113,24 +117,14 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                    </ul>
+                    <h5 class="white-text">Hakkımızda</h5>
+                    <p class="grey-text text-lighten-4">Kodusor, yazılım dünyasında yaşanan problemlerin çözümü odaklı etkileşimli bir yardımlaşma platformudur.</p>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                © 2014 kodusor.com
             </div>
         </div>
     </footer>

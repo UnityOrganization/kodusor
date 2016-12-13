@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,7 +144,8 @@
     </None>
     <None Include="Service References\kodusorServis\Service1.wsdl" />
     <Content Include="Views\Home\Soru.cshtml" />
-    <Content Include="Views\Home\Etiket.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfil.cshtml" />
+    <Content Include="Views\Profil\SoruSor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
