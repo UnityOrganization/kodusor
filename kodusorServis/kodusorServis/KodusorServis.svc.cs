@@ -122,8 +122,10 @@ namespace kodusorServis
             return cevaplar;
         }
 
+
         public List<SoruListesi> FavoriSorular(int kullaniciID)
         {
+            ///KONTROL ET!!!!///
             List<SoruListesi> sorular = new List<SoruListesi>();
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
@@ -265,6 +267,80 @@ namespace kodusorServis
                     return NesneDuzenle.KullaniciOlustur(kul);
                 else
                     return null;
+            }
+        }
+
+        public bool SoruEkle(int kullaniciID, Sorular soru, List<Etiketler> etiketler)
+        {
+
+            ///KONTROL ET!!!!
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == kullaniciID
+                               select k).FirstOrDefault();
+
+                    foreach (var item in etiketler)
+                    {
+                        foreach (var e in db.Etiketler)
+                        {
+                            if (e.EtiketAdi != item.EtiketAdi.ToLower())
+                                db.Etiketler.Add(item);
+
+                            
+                        }
+                    }
+                    
+
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SoruSil(int kullaniciID, int soruID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == kullaniciID
+                               select k).FirstOrDefault();
+
+                    var soru = (from s in db.Sorular
+                                where s.SoruID == soruID
+                                select s).FirstOrDefault();
+
+                    kul.Sorular.Remove(soru);
+                    foreach (var item in db.Cevaplar)
+                    {
+                        if (item.SoruID == soruID)
+                            db.Cevaplar.Remove(item);
+                    }
+                    foreach (var item in db.SoruEtiket)
+                    {
+                        if (item.SoruID == soruID)
+                            db.SoruEtiket.Remove(item);
+                    }
+                    foreach (var item in db.FavoriSorular)
+                    {
+                        if (item.SoruID == soruID)
+                            db.FavoriSorular.Remove(item);
+                    }
+                    db.Sorular.Remove(soru);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

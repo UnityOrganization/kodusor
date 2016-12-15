@@ -49,6 +49,12 @@ namespace kodusorServis
         [OperationContract]
         kullaniciListesi KullaniciBilgileriniGetir(int kullaniciID);
 
+        [OperationContract]
+        bool SoruEkle(int kullaniciID, Sorular soru, List<Etiketler> etiketler);
+
+        [OperationContract]
+        bool SoruSil(int kullaniciID, int soruID);
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
