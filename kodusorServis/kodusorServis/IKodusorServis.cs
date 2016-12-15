@@ -55,6 +55,9 @@ namespace kodusorServis
         [OperationContract]
         bool SoruSil(int kullaniciID, int soruID);
 
+        [OperationContract]
+        bool CevapEkle(Cevaplar cevap);
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();

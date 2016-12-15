@@ -350,5 +350,26 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public bool CevapEkle(Cevaplar cevap)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    db.Cevaplar.Add(cevap);
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == cevap.KullaniciID
+                               select k).SingleOrDefault();
+                    kul.Cevaplar.Add(cevap);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
