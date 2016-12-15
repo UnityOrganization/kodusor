@@ -58,6 +58,9 @@ namespace kodusorServis
         [OperationContract]
         bool CevapEkle(Cevaplar cevap);
 
+        [OperationContract]
+        bool YorumEkle(Yorum yourum);
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();

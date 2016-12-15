@@ -371,5 +371,33 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public bool YorumEkle(Yorum yourum)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var cevap = (from c in db.Cevaplar
+                                 where c.CevapID == yourum.CevapID
+                                 select c).SingleOrDefault();
+
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == yourum.KullaniciID
+                               select k).SingleOrDefault();
+
+                    db.Yorum.Add(yourum);
+                    kul.Yorum.Add(yourum);
+                    cevap.Yorum.Add(yourum);
+
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
