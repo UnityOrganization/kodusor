@@ -99,5 +99,28 @@ namespace kodusorServis
             };
             return Iletisim;
         }
+
+        public static void EtiketEkle(List<Etiketler> etiketler)
+        {
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                bool durum;
+                foreach (var item in etiketler)
+                {
+                    durum = true;
+                    foreach (var e in db.Etiketler)
+                    {
+                        if (e.EtiketAdi == item.EtiketAdi)
+                        {
+                            durum = false;
+                            break;
+                        }
+                    }
+                    if (durum)
+                        db.Etiketler.Add(item);
+                }
+                db.SaveChanges();
+            }
+        }
     }
 }

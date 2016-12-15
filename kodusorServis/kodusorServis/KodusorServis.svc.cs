@@ -121,18 +121,17 @@ namespace kodusorServis
             }
             return cevaplar;
         }
-
-
+        
         public List<SoruListesi> FavoriSorular(int kullaniciID)
         {
-            ///KONTROL ET!!!!///
             List<SoruListesi> sorular = new List<SoruListesi>();
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var kul = (from k in db.Kullanicilar
-                           where k.KullaniciID == kullaniciID
-                           select k).SingleOrDefault();
-                foreach (var item in kul.FavoriSorular)
+                var favoriSorular = (from fs in db.FavoriSorular
+                                     where fs.KullaniciID == kullaniciID
+                                     select fs).ToList();
+
+                foreach (var item in favoriSorular)
                 {
                     sorular.Add(NesneDuzenle.SoruOlustur(item.Sorular));
                 }
@@ -272,28 +271,36 @@ namespace kodusorServis
 
         public bool SoruEkle(int kullaniciID, Sorular soru, List<Etiketler> etiketler)
         {
-
-            ///KONTROL ET!!!!
             try
             {
                 using (kodusorDBEntities db = new kodusorDBEntities())
                 {
                     var kul = (from k in db.Kullanicilar
-                               where k.KullaniciID == kullaniciID
+                               where k.KullaniciID == soru.KullaniciID
                                select k).FirstOrDefault();
-
+                    
+                    NesneDuzenle.EtiketEkle(etiketler);
+                    //soru.KullaniciID = kullaniciID;
+                    db.Sorular.Add(soru);
+                    kul.Sorular.Add(soru);
+                    db.SaveChanges();
+                    SoruEtiket se;
                     foreach (var item in etiketler)
                     {
                         foreach (var e in db.Etiketler)
                         {
-                            if (e.EtiketAdi != item.EtiketAdi.ToLower())
-                                db.Etiketler.Add(item);
-
-                            
+                            if (item.EtiketAdi == e.EtiketAdi)
+                            {
+                                se = new SoruEtiket()
+                                {
+                                    EtiketID = e.EtiketID,
+                                    SoruID = soru.SoruID
+                                };
+                                db.SoruEtiket.Add(se);
+                            }
                         }
                     }
-                    
-
+                    db.SaveChanges();
                 }
                 return true;
             }
