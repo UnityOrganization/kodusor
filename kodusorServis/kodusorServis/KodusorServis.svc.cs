@@ -399,5 +399,44 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public bool SoruyuFavoriyeEkle(FavoriSorular favoriSorular)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var favorisoru = (from fs in db.FavoriSorular
+                                      where fs.KullaniciID == favoriSorular.KullaniciID && fs.SoruID == favoriSorular.SoruID
+                                      select fs).SingleOrDefault();
+
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == favoriSorular.KullaniciID
+                               select k).SingleOrDefault();
+
+                    var soru = (from s in db.Sorular
+                                where s.SoruID == favoriSorular.SoruID
+                                select s).SingleOrDefault();
+
+                    if (favorisoru == null)
+                    {
+                        kul.FavoriSorular.Add(favoriSorular);
+                        soru.FavoriSorular.Add(favoriSorular);
+                    }
+                    else
+                    {
+                        kul.FavoriSorular.Remove(favorisoru);
+                        soru.FavoriSorular.Remove(favorisoru);
+                        db.FavoriSorular.Remove(favorisoru);
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

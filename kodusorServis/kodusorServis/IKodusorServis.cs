@@ -61,6 +61,9 @@ namespace kodusorServis
         [OperationContract]
         bool YorumEkle(Yorum yourum);
 
+        [OperationContract]
+        bool SoruyuFavoriyeEkle(FavoriSorular favoriSorular);
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
