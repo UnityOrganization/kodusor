@@ -15,6 +15,7 @@ namespace kodusorServis
         private static List<EtiketListesi> etiketler;
         private static CevapListesi Cevap { get; set; }
         private static List<SoruListesi> sorular;
+        private static IletisimBilgileriListesi Iletisim { get; set; }
 
 
         public static EtiketListesi EtiketOlustur(SoruEtiket etiket)
@@ -84,5 +85,18 @@ namespace kodusorServis
             return Cevap;
         }
 
+        public static IletisimBilgileriListesi IletisimBilgisiOlustur(IletisimBilgileri iletisimBilgileri)
+        {
+            Iletisim = new IletisimBilgileriListesi()
+            {
+                Ceptel = iletisimBilgileri.CepTel,
+                Github = iletisimBilgileri.Github,
+                IletisimBilgileriID = iletisimBilgileri.IletisimBilgileriID,
+                Linkedin = iletisimBilgileri.Linkedin,
+                Twitter = iletisimBilgileri.Twitter,
+                Website = iletisimBilgileri.Website
+            };
+            return Iletisim;
+        }
     }
 }

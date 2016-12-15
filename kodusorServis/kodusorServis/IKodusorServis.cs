@@ -40,6 +40,12 @@ namespace kodusorServis
         [OperationContract]
         List<EtiketListesi> KullanicininEtiketleri(int kullaniciID);
 
+        [OperationContract]
+        bool KullaniciBilgileriGuncelle(Kullanicilar kullanici, IletisimBilgileri iletisimBilgileri);
+
+
+
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
@@ -67,42 +73,42 @@ namespace kodusorServis
             get { return soruID; }
             set { soruID = value; }
         }
-        
+
         [DataMember]
         public string Baslik
         {
             get { return baslik; }
             set { baslik = value; }
         }
-        
+
         [DataMember]
         public string Icerik
         {
             get { return icerik; }
             set { icerik = value; }
         }
-        
+
         [DataMember]
         public DateTime Tarih
         {
             get { return tarih; }
             set { tarih = value; }
         }
-        
+
         [DataMember]
         public int BegeniSayisi
         {
             get { return begeniSayisi; }
             set { begeniSayisi = value; }
         }
-        
+
         [DataMember]
         public int OnayCevapID
         {
             get { return onayCevapID; }
             set { onayCevapID = value; }
         }
-        
+
         [DataMember]
         public kullaniciListesi Kullanici
         {
@@ -136,6 +142,21 @@ namespace kodusorServis
         private string parola = "";
         private string profilFoto = "";
         private string hakkimda = "";
+        private int iletisimBilgileriID = 0;
+        private IletisimBilgileriListesi iletisimBilgileri = null;
+        
+        [DataMember]
+        public IletisimBilgileriListesi IletisimBilgileri
+        {
+            get { return iletisimBilgileri; }
+            set { iletisimBilgileri = value; }
+        }
+        [DataMember]
+        public int IletisimBilgileriID
+        {
+            get { return iletisimBilgileriID; }
+            set { iletisimBilgileriID = value; }
+        }
         [DataMember]
         public int KullaniciID
         {
@@ -264,6 +285,59 @@ namespace kodusorServis
         {
             get { return sorular; }
             set { sorular = value; }
+        }
+
+    }
+
+    [DataContract]
+    public class IletisimBilgileriListesi
+    {
+        private int iletisimBilgileriID;
+        [DataMember]
+        public int IletisimBilgileriID
+        {
+            get { return iletisimBilgileriID; }
+            set { iletisimBilgileriID = value; }
+        }
+
+        private string website;
+        [DataMember]
+        public string Website
+        {
+            get { return website; }
+            set { website = value; }
+        }
+        
+        private string twitter;
+        [DataMember]
+        public string Twitter
+        {
+            get { return twitter; }
+            set { twitter = value; }
+        }
+        
+        private string github;
+        [DataMember]
+        public string Github
+        {
+            get { return github; }
+            set { github = value; }
+        }
+        
+        private string linkedin;
+        [DataMember]
+        public string Linkedin
+        {
+            get { return linkedin; }
+            set { linkedin = value; }
+        }
+        
+        private string ceptel;
+        [DataMember]
+        public string Ceptel
+        {
+            get { return ceptel; }
+            set { ceptel = value; }
         }
 
     }

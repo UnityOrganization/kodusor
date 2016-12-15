@@ -54,9 +54,9 @@ namespace kodusorServis
                     soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
                 else
                     soruListesi = db.Sorular.Where(s => s.KullaniciID == id).OrderByDescending(s => s.Tarih);
-                
+
                 foreach (var item in soruListesi)
-                {                    
+                {
                     sorular.Add(NesneDuzenle.SoruOlustur((Sorular)item));
                 }
             }
@@ -68,9 +68,11 @@ namespace kodusorServis
 
             kodusorDBEntities db = new kodusorDBEntities();
             List<kullaniciListesi> kul = new List<kullaniciListesi>();
+            IletisimBilgileriListesi ib;
             var zxc = db.Kullanicilar;
             foreach (var item in zxc)
             {
+                ib = NesneDuzenle.IletisimBilgisiOlustur(item.IletisimBilgileri);
                 kullaniciListesi k = new kullaniciListesi()
                 {
                     Adi = item.Adi,
@@ -80,6 +82,8 @@ namespace kodusorServis
                     Parola = item.Parola,
                     ProfilFoto = item.ProfilFoto,
                     Hakkimda = item.Hakkimda,
+                    IletisimBilgileriID = Convert.ToInt32(item.IletisimBilgileriID),
+                    IletisimBilgileri = ib
                 };
 
                 kul.Add(k);
@@ -175,12 +179,63 @@ namespace kodusorServis
                             else
                                 kontrol = true;
                         }
-                        if(kontrol)
+                        if (kontrol)
                             etiketler.Add(etiket);
                     }
                 }
             }
             return etiketler;
+        }
+
+        public bool KullaniciBilgileriGuncelle(Kullanicilar kullanici, IletisimBilgileri iletisimBilgileri)
+        {
+            //KONTROL EDİLECEK !!!
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == kullanici.KullaniciID
+                               select k).SingleOrDefault();
+
+                    var iletisimB = (from b in db.IletisimBilgileri
+                                     where b.IletisimBilgileriID == kul.IletisimBilgileriID
+                                     select b).SingleOrDefault();
+
+                    
+                    if (iletisimB == null)
+                    {
+                        db.IletisimBilgileri.Add(iletisimBilgileri);
+                        kul.IletisimBilgileri = iletisimBilgileri;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        iletisimB.CepTel = iletisimBilgileri.CepTel;
+                        iletisimB.Github = iletisimBilgileri.Github;
+                        iletisimB.Linkedin = iletisimBilgileri.Linkedin;
+                        iletisimB.Twitter = iletisimBilgileri.Twitter;
+                        iletisimB.Website = iletisimBilgileri.Website;
+                    }
+
+
+
+                    kul.Hakkimda = kullanici.Hakkimda;
+                    kul.Adi = kullanici.Adi;
+                    kul.DogumTarihi = kullanici.DogumTarihi;
+                    kul.Mail = kullanici.Mail;
+                    kul.ProfilFoto = kullanici.ProfilFoto;
+                    kul.Soyadi = kullanici.Soyadi;
+
+
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
