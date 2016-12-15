@@ -43,6 +43,8 @@ namespace kodusorServis
         [OperationContract]
         bool KullaniciBilgileriGuncelle(Kullanicilar kullanici, IletisimBilgileri iletisimBilgileri);
 
+        [OperationContract]
+        bool ParolaDegistir(int kullaniciID, string parola);
 
 
 

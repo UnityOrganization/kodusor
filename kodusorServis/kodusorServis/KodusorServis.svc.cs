@@ -201,13 +201,11 @@ namespace kodusorServis
                     var iletisimB = (from b in db.IletisimBilgileri
                                      where b.IletisimBilgileriID == kul.IletisimBilgileriID
                                      select b).SingleOrDefault();
-
                     
                     if (iletisimB == null)
                     {
                         db.IletisimBilgileri.Add(iletisimBilgileri);
                         kul.IletisimBilgileri = iletisimBilgileri;
-                        db.SaveChanges();
                     }
                     else
                     {
@@ -217,17 +215,34 @@ namespace kodusorServis
                         iletisimB.Twitter = iletisimBilgileri.Twitter;
                         iletisimB.Website = iletisimBilgileri.Website;
                     }
-
-
-
                     kul.Hakkimda = kullanici.Hakkimda;
                     kul.Adi = kullanici.Adi;
                     kul.DogumTarihi = kullanici.DogumTarihi;
                     kul.Mail = kullanici.Mail;
                     kul.ProfilFoto = kullanici.ProfilFoto;
                     kul.Soyadi = kullanici.Soyadi;
+                    
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
+        public bool ParolaDegistir(int kullaniciID, string parola)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == kullaniciID
+                               select k).SingleOrDefault();
 
+                    kul.Parola = parola;
                     db.SaveChanges();
                 }
                 return true;
