@@ -46,7 +46,8 @@ namespace kodusorServis
         [OperationContract]
         bool ParolaDegistir(int kullaniciID, string parola);
 
-
+        [OperationContract]
+        kullaniciListesi KullaniciBilgileriniGetir(int kullaniciID);
 
 
         [OperationContract]

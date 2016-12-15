@@ -252,5 +252,20 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public kullaniciListesi KullaniciBilgileriniGetir(int kullaniciID)
+        {
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var kul = (from k in db.Kullanicilar
+                           where k.KullaniciID == kullaniciID
+                           select k).SingleOrDefault();
+
+                if (kul != null)
+                    return NesneDuzenle.KullaniciOlustur(kul);
+                else
+                    return null;
+            }
+        }
     }
 }

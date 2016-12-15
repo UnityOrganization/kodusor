@@ -39,7 +39,8 @@ namespace kodusorServis
                 Mail = kullanici.Mail,
                 Parola = kullanici.Parola,
                 ProfilFoto = kullanici.ProfilFoto,
-                Soyadi = kullanici.Soyadi
+                Soyadi = kullanici.Soyadi,
+                IletisimBilgileri = IletisimBilgisiOlustur(kullanici.IletisimBilgileri)
             };
             return Kullanici;
         }
