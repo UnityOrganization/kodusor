@@ -155,4 +155,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSorular" nillable="true" type="tns:ArrayOfSorular" />
+  <xs:complexType name="ArrayOfEtiketler">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Etiketler" nillable="true" type="tns:Etiketler" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEtiketler" nillable="true" type="tns:ArrayOfEtiketler" />
 </xs:schema>

@@ -68,11 +68,9 @@ namespace kodusorServis
 
             kodusorDBEntities db = new kodusorDBEntities();
             List<kullaniciListesi> kul = new List<kullaniciListesi>();
-            IletisimBilgileriListesi ib;
             var zxc = db.Kullanicilar;
             foreach (var item in zxc)
             {
-                ib = NesneDuzenle.IletisimBilgisiOlustur(item.IletisimBilgileri);
                 kullaniciListesi k = new kullaniciListesi()
                 {
                     Adi = item.Adi,
@@ -81,9 +79,7 @@ namespace kodusorServis
                     Mail = item.Mail,
                     Parola = item.Parola,
                     ProfilFoto = item.ProfilFoto,
-                    Hakkimda = item.Hakkimda,
-                    IletisimBilgileriID = Convert.ToInt32(item.IletisimBilgileriID),
-                    IletisimBilgileri = ib
+                    Hakkimda = item.Hakkimda
                 };
 
                 kul.Add(k);
@@ -188,7 +184,7 @@ namespace kodusorServis
             return etiketler;
         }
 
-        public bool KullaniciBilgileriGuncelle(Kullanicilar kullanici, IletisimBilgileri iletisimBilgileri)
+        public bool KullaniciBilgileriGuncelle(Kullanicilar kullanici)
         {
             //KONTROL EDİLECEK !!!
             try
@@ -198,24 +194,7 @@ namespace kodusorServis
                     var kul = (from k in db.Kullanicilar
                                where k.KullaniciID == kullanici.KullaniciID
                                select k).SingleOrDefault();
-
-                    var iletisimB = (from b in db.IletisimBilgileri
-                                     where b.IletisimBilgileriID == kul.IletisimBilgileriID
-                                     select b).SingleOrDefault();
                     
-                    if (iletisimB == null)
-                    {
-                        db.IletisimBilgileri.Add(iletisimBilgileri);
-                        kul.IletisimBilgileri = iletisimBilgileri;
-                    }
-                    else
-                    {
-                        iletisimB.CepTel = iletisimBilgileri.CepTel;
-                        iletisimB.Github = iletisimBilgileri.Github;
-                        iletisimB.Linkedin = iletisimBilgileri.Linkedin;
-                        iletisimB.Twitter = iletisimBilgileri.Twitter;
-                        iletisimB.Website = iletisimBilgileri.Website;
-                    }
                     kul.Hakkimda = kullanici.Hakkimda;
                     kul.Adi = kullanici.Adi;
                     kul.DogumTarihi = kullanici.DogumTarihi;

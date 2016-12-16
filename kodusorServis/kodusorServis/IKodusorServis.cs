@@ -41,7 +41,7 @@ namespace kodusorServis
         List<EtiketListesi> KullanicininEtiketleri(int kullaniciID);
 
         [OperationContract]
-        bool KullaniciBilgileriGuncelle(Kullanicilar kullanici, IletisimBilgileri iletisimBilgileri);
+        bool KullaniciBilgileriGuncelle(Kullanicilar kullanici);
 
         [OperationContract]
         bool ParolaDegistir(int kullaniciID, string parola);
@@ -79,7 +79,7 @@ namespace kodusorServis
     }
 
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    //Kontrol edildi
     [DataContract]
     public class SoruListesi
     {
@@ -166,6 +166,7 @@ namespace kodusorServis
         }
     }
 
+    //Kontrol edildi
     [DataContract]
     public class kullaniciListesi
     {
@@ -177,20 +178,28 @@ namespace kodusorServis
         private string parola = "";
         private string profilFoto = "";
         private string hakkimda = "";
-        private int iletisimBilgileriID = 0;
-        private IletisimBilgileriListesi iletisimBilgileri = null;
-        
+        private string github;
+        private string ceptel;
+        private string linkedin;
+
+
         [DataMember]
-        public IletisimBilgileriListesi IletisimBilgileri
+        public string Linkedin
         {
-            get { return iletisimBilgileri; }
-            set { iletisimBilgileri = value; }
+            get { return linkedin; }
+            set { linkedin = value; }
         }
         [DataMember]
-        public int IletisimBilgileriID
+        public string Ceptel
         {
-            get { return iletisimBilgileriID; }
-            set { iletisimBilgileriID = value; }
+            get { return ceptel; }
+            set { ceptel = value; }
+        }
+        [DataMember]
+        public string Github
+        {
+            get { return github; }
+            set { github = value; }
         }
         [DataMember]
         public int KullaniciID
@@ -242,6 +251,7 @@ namespace kodusorServis
         }
     }
 
+    //Kontrol edildi
     [DataContract]
     public class EtiketListesi
     {
@@ -263,6 +273,7 @@ namespace kodusorServis
         }
     }
 
+    //Kontrol edildi
     [DataContract]
     public class CevapListesi
     {
@@ -323,74 +334,20 @@ namespace kodusorServis
         }
 
         private List<YorumListesi> yorumListesi;
-
+        [DataMember]
         public List<YorumListesi> YorumListesi
         {
             get { return yorumListesi; }
             set { yorumListesi = value; }
         }
-
-
     }
 
-    [DataContract]
-    public class IletisimBilgileriListesi
-    {
-        private int iletisimBilgileriID;
-        [DataMember]
-        public int IletisimBilgileriID
-        {
-            get { return iletisimBilgileriID; }
-            set { iletisimBilgileriID = value; }
-        }
-
-        private string website;
-        [DataMember]
-        public string Website
-        {
-            get { return website; }
-            set { website = value; }
-        }
-        
-        private string twitter;
-        [DataMember]
-        public string Twitter
-        {
-            get { return twitter; }
-            set { twitter = value; }
-        }
-        
-        private string github;
-        [DataMember]
-        public string Github
-        {
-            get { return github; }
-            set { github = value; }
-        }
-        
-        private string linkedin;
-        [DataMember]
-        public string Linkedin
-        {
-            get { return linkedin; }
-            set { linkedin = value; }
-        }
-        
-        private string ceptel;
-        [DataMember]
-        public string Ceptel
-        {
-            get { return ceptel; }
-            set { ceptel = value; }
-        }
-
-    }
-
+    //Kontrol edildi
     [DataContract]
     public class YorumListesi
     {
         private int yorumID;
-
+        [DataMember]
         public int YorumID
         {
             get { return yorumID; }
@@ -398,7 +355,7 @@ namespace kodusorServis
         }
 
         private string yorum;
-
+        [DataMember]
         public string Yorum
         {
             get { return yorum; }
@@ -406,12 +363,13 @@ namespace kodusorServis
         }
 
         private DateTime tarih;
-
+        [DataMember]
         public DateTime Tarih
         {
             get { return tarih; }
             set { tarih = value; }
         }
+
 
     }
 }

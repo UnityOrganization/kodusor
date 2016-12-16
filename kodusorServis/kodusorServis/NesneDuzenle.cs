@@ -15,7 +15,6 @@ namespace kodusorServis
         private static List<EtiketListesi> etiketler;
         private static CevapListesi Cevap { get; set; }
         private static List<SoruListesi> sorular;
-        private static IletisimBilgileriListesi Iletisim { get; set; }
         private static List<CevapListesi> cevaplar { get; set; }
         private static YorumListesi yorum;
         private static List<YorumListesi> yorumlar { get; set; }
@@ -42,7 +41,9 @@ namespace kodusorServis
                 Parola = kullanici.Parola,
                 ProfilFoto = kullanici.ProfilFoto,
                 Soyadi = kullanici.Soyadi,
-                IletisimBilgileri = IletisimBilgisiOlustur(kullanici.IletisimBilgileri)
+                Ceptel = kullanici.CepTel,
+                Github = kullanici.Github,
+                Linkedin = kullanici.Linkedin
             };
             return Kullanici;
         }
@@ -97,20 +98,6 @@ namespace kodusorServis
             return Cevap;
         }
 
-        public static IletisimBilgileriListesi IletisimBilgisiOlustur(IletisimBilgileri iletisimBilgileri)
-        {
-            Iletisim = new IletisimBilgileriListesi()
-            {
-                Ceptel = iletisimBilgileri.CepTel,
-                Github = iletisimBilgileri.Github,
-                IletisimBilgileriID = iletisimBilgileri.IletisimBilgileriID,
-                Linkedin = iletisimBilgileri.Linkedin,
-                Twitter = iletisimBilgileri.Twitter,
-                Website = iletisimBilgileri.Website
-            };
-            return Iletisim;
-        }
-
         public static void EtiketEkle(List<Etiketler> etiketler)
         {
             using (kodusorDBEntities db = new kodusorDBEntities())
@@ -140,7 +127,7 @@ namespace kodusorServis
             {
                 Yorum = y.Yorum1,
                 Tarih = y.Tarih,
-                YorumID = y.YorumID
+                YorumID = y.YorumID,
             };
             return yorum;
         }

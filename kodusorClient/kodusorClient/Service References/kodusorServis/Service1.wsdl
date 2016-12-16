@@ -32,6 +32,96 @@
   <wsdl:message name="IKodusorServis_GirisYap_OutputMessage">
     <wsdl:part name="parameters" element="tns:GirisYapResponse" />
   </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciCevapları_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciCevapları" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciCevapları_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciCevaplarıResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_FavoriSorular_InputMessage">
+    <wsdl:part name="parameters" element="tns:FavoriSorular" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_FavoriSorular_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FavoriSorularResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_FavoriCevaplar_InputMessage">
+    <wsdl:part name="parameters" element="tns:FavoriCevaplar" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_FavoriCevaplar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FavoriCevaplarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullanicininEtiketleri_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullanicininEtiketleri" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullanicininEtiketleri_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullanicininEtiketleriResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciBilgileriGuncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciBilgileriGuncelle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciBilgileriGuncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciBilgileriGuncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_ParolaDegistir_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParolaDegistir" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_ParolaDegistir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParolaDegistirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciBilgileriniGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciBilgileriniGetir" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_KullaniciBilgileriniGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciBilgileriniGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruEkle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruSil_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruSil" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruSil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruSilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevapEkle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevapEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_YorumEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:YorumEkle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_YorumEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:YorumEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruyuFavoriyeEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruyuFavoriyeEkle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruyuFavoriyeEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruyuFavoriyeEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevabiFavoriyeEkle_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevabiFavoriyeEkle" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevabiFavoriyeEkle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevabiFavoriyeEkleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevabıOnayla_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevabıOnayla" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevabıOnayla_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevabıOnaylaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruGetir" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruGetirResponse" />
+  </wsdl:message>
   <wsdl:message name="IKodusorServis_KullanicilariListele_InputMessage">
     <wsdl:part name="parameters" element="tns:KullanicilariListele" />
   </wsdl:message>
@@ -54,6 +144,66 @@
     <wsdl:operation name="GirisYap">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/GirisYap" message="tns:IKodusorServis_GirisYap_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/GirisYapResponse" message="tns:IKodusorServis_GirisYap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciCevapları">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciCevapları" message="tns:IKodusorServis_KullaniciCevapları_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciCevaplarıResponse" message="tns:IKodusorServis_KullaniciCevapları_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FavoriSorular">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/FavoriSorular" message="tns:IKodusorServis_FavoriSorular_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/FavoriSorularResponse" message="tns:IKodusorServis_FavoriSorular_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FavoriCevaplar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/FavoriCevaplar" message="tns:IKodusorServis_FavoriCevaplar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/FavoriCevaplarResponse" message="tns:IKodusorServis_FavoriCevaplar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullanicininEtiketleri">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullanicininEtiketleri" message="tns:IKodusorServis_KullanicininEtiketleri_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullanicininEtiketleriResponse" message="tns:IKodusorServis_KullanicininEtiketleri_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciBilgileriGuncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle" message="tns:IKodusorServis_KullaniciBilgileriGuncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse" message="tns:IKodusorServis_KullaniciBilgileriGuncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ParolaDegistir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/ParolaDegistir" message="tns:IKodusorServis_ParolaDegistir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/ParolaDegistirResponse" message="tns:IKodusorServis_ParolaDegistir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciBilgileriniGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriniGetir" message="tns:IKodusorServis_KullaniciBilgileriniGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriniGetirResponse" message="tns:IKodusorServis_KullaniciBilgileriniGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruEkle" message="tns:IKodusorServis_SoruEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruEkleResponse" message="tns:IKodusorServis_SoruEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruSil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruSil" message="tns:IKodusorServis_SoruSil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruSilResponse" message="tns:IKodusorServis_SoruSil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevapEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevapEkle" message="tns:IKodusorServis_CevapEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/CevapEkleResponse" message="tns:IKodusorServis_CevapEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="YorumEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/YorumEkle" message="tns:IKodusorServis_YorumEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/YorumEkleResponse" message="tns:IKodusorServis_YorumEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruyuFavoriyeEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruyuFavoriyeEkle" message="tns:IKodusorServis_SoruyuFavoriyeEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruyuFavoriyeEkleResponse" message="tns:IKodusorServis_SoruyuFavoriyeEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevabiFavoriyeEkle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevabiFavoriyeEkle" message="tns:IKodusorServis_CevabiFavoriyeEkle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/CevabiFavoriyeEkleResponse" message="tns:IKodusorServis_CevabiFavoriyeEkle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevabıOnayla">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevabıOnayla" message="tns:IKodusorServis_CevabıOnayla_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/CevabıOnaylaResponse" message="tns:IKodusorServis_CevabıOnayla_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruGetir">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetir" message="tns:IKodusorServis_SoruGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetirResponse" message="tns:IKodusorServis_SoruGetir_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="KullanicilariListele">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullanicilariListele" message="tns:IKodusorServis_KullanicilariListele_InputMessage" />
@@ -91,6 +241,141 @@
     </wsdl:operation>
     <wsdl:operation name="GirisYap">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/GirisYap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciCevapları">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullaniciCevapları" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FavoriSorular">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/FavoriSorular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FavoriCevaplar">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/FavoriCevaplar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullanicininEtiketleri">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullanicininEtiketleri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciBilgileriGuncelle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParolaDegistir">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/ParolaDegistir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciBilgileriniGetir">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriniGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruEkle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruSil">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruSil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevapEkle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/CevapEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YorumEkle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/YorumEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruyuFavoriyeEkle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruyuFavoriyeEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevabiFavoriyeEkle">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/CevabiFavoriyeEkle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevabıOnayla">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/CevabıOnayla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruGetir">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruGetir" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

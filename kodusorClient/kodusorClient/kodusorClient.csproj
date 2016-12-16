@@ -102,6 +102,12 @@
     <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.SoruListesi.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.CevapListesi.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.EtiketListesi.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\kodusorServis\KodusorServis.disco" />
     <None Include="Service References\kodusorServis\configuration91.svcinfo" />
     <None Include="Service References\kodusorServis\configuration.svcinfo" />
@@ -146,6 +152,7 @@
     <Content Include="Views\Home\Soru.cshtml" />
     <Content Include="Views\Shared\_LayoutProfil.cshtml" />
     <Content Include="Views\Profil\SoruSor.cshtml" />
+    <Content Include="Views\Profil\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

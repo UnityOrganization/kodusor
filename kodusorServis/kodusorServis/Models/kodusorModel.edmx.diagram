@@ -4,25 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e68d4ca01d5e4836bd38690e14b9ffb1" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="kodusorDBModel.Cevaplar" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.Etiketler" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.FavoriCevaplar" Width="1.5" PointX="9.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.FavoriSorular" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.IletisimBilgileri" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.Kullanicilar" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.SoruEtiket" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.Sorular" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="kodusorDBModel.Yorum" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
+      <Diagram DiagramId="c0e5a875c76d4a3aa7cb9dd42616cf6f" Name="Diagram1">
+        <EntityTypeShape EntityType="kodusorDBModel.Cevaplar" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.Etiketler" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.FavoriCevaplar" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.FavoriSorular" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.SoruEtiket" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.Sorular" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kodusorDBModel.Yorum" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Kullanicilar" ManuallyRouted="false" />
-        <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Sorular" ManuallyRouted="false" />
+        <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Sorular" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="12.126152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="11.751152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="12.067946465945514" />
+          <ConnectorPoint PointX="5.0035744349011209" PointY="11.939372031044391" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="11.821520900846634" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="11.691793619791667" />
+        </AssociationConnector>
         <AssociationConnector Association="kodusorDBModel.FK_FavoriCevaplar_Cevaplar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_Yorum_Cevaplar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_SoruEtiket_Etiketler" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_FavoriCevaplar_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_FavoriSorular_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_FavoriSorular_Sorular" ManuallyRouted="false" />
-        <AssociationConnector Association="kodusorDBModel.FK_Kullanicilar_IletisimBilgileri" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_Sorular_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_Yorum_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_SoruEtiket_Sorular" ManuallyRouted="false" />

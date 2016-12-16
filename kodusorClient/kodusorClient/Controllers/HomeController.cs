@@ -15,7 +15,7 @@ namespace kodusorClient.Controllers
         public ActionResult Index()
         {
             servis = new KodusorServisClient();
-            List<SoruListesi> sorular = servis.SorulariListele().ToList();
+            List<SoruListesi> sorular = servis.SorulariListele(0).ToList();
             servis.Close();
             return View(sorular);
         }
@@ -33,5 +33,34 @@ namespace kodusorClient.Controllers
             return View(id);
         }
 
+
+
+
+        public ActionResult Giris()
+        {
+            if (Request.Cookies["KullaniciKimligi"] != null)
+            {
+                return RedirectToAction("Index", "Profil");
+            }
+            return View();
+        }
+
+        public JsonResult GirisKontrol(string mail, string parola)
+        {
+            servis = new KodusorServisClient();
+            var kullanici = servis.GirisYap(mail, parola);
+
+            if (kullanici != 0)
+            {
+                Session["kullaniciID"] = kullanici;
+                return Json("+");
+            }
+            else
+            {
+                return Json("-");
+            }
+        }
+
+        
     }
 }

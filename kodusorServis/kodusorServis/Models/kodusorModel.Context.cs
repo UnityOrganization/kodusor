@@ -29,7 +29,6 @@ namespace kodusorServis.Models
         public virtual DbSet<Etiketler> Etiketler { get; set; }
         public virtual DbSet<FavoriCevaplar> FavoriCevaplar { get; set; }
         public virtual DbSet<FavoriSorular> FavoriSorular { get; set; }
-        public virtual DbSet<IletisimBilgileri> IletisimBilgileri { get; set; }
         public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
         public virtual DbSet<SoruEtiket> SoruEtiket { get; set; }
         public virtual DbSet<Sorular> Sorular { get; set; }

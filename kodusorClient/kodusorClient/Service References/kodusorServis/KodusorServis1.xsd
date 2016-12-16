@@ -32,7 +32,9 @@
   </xs:element>
   <xs:element name="SorulariListele">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SorulariListeleResponse">
@@ -57,6 +59,222 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="KullaniciCevapları">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullaniciCevaplarıResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullaniciCevaplarıResult" nillable="true" type="q3:ArrayOfCevapListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FavoriSorular">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FavoriSorularResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="FavoriSorularResult" nillable="true" type="q4:ArrayOfSoruListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FavoriCevaplar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FavoriCevaplarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="FavoriCevaplarResult" nillable="true" type="q5:ArrayOfCevapListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullanicininEtiketleri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullanicininEtiketleriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicininEtiketleriResult" nillable="true" type="q6:ArrayOfEtiketListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullaniciBilgileriGuncelle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="kullanici" nillable="true" type="q7:Kullanicilar" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="iletisimBilgileri" nillable="true" type="q8:IletisimBilgileri" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullaniciBilgileriGuncelleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KullaniciBilgileriGuncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParolaDegistir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+        <xs:element minOccurs="0" name="parola" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParolaDegistirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ParolaDegistirResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullaniciBilgileriniGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KullaniciBilgileriniGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullaniciBilgileriniGetirResult" nillable="true" type="q9:kullaniciListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="soru" nillable="true" type="q10:Sorular" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="etiketler" nillable="true" type="q11:ArrayOfEtiketler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruSil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruSilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruSilResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="cevap" nillable="true" type="q12:Cevaplar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YorumEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="yourum" nillable="true" type="q13:Yorum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YorumEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="YorumEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavoriyeEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriSorular" nillable="true" type="q14:FavoriSorular" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruyuFavoriyeEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruyuFavoriyeEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavoriyeEkle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriCevaplar" nillable="true" type="q15:FavoriCevaplar" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabiFavoriyeEkleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevabiFavoriyeEkleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabıOnayla">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+        <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevabıOnaylaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevabıOnaylaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruGetir">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruGetirResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SoruGetirResult" nillable="true" type="q16:SoruListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="KullanicilariListele">
     <xs:complexType>
       <xs:sequence />
@@ -65,7 +283,7 @@
   <xs:element name="KullanicilariListeleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q3:ArrayOfkullaniciListesi" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q17:ArrayOfkullaniciListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

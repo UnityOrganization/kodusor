@@ -39,17 +39,6 @@
           <Property Name="KullaniciID" Type="int" Nullable="false" />
           <Property Name="SoruID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="IletisimBilgileri">
-          <Key>
-            <PropertyRef Name="IletisimBilgileriID" />
-          </Key>
-          <Property Name="IletisimBilgileriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Website" Type="nvarchar" MaxLength="50" />
-          <Property Name="Twitter" Type="nvarchar" MaxLength="50" />
-          <Property Name="Github" Type="nvarchar" MaxLength="50" />
-          <Property Name="Linkedin" Type="nvarchar" MaxLength="50" />
-          <Property Name="CepTel" Type="nvarchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
             <PropertyRef Name="KullaniciID" />
@@ -62,7 +51,9 @@
           <Property Name="Parola" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProfilFoto" Type="nvarchar" MaxLength="200" />
           <Property Name="Hakkimda" Type="nvarchar(max)" />
-          <Property Name="IletisimBilgileriID" Type="int" />
+          <Property Name="Github" Type="nvarchar" MaxLength="100" />
+          <Property Name="Linkedin" Type="nvarchar" MaxLength="100" />
+          <Property Name="CepTel" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="SoruEtiket">
           <Key>
@@ -166,18 +157,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Kullanicilar_IletisimBilgileri">
-          <End Role="IletisimBilgileri" Type="Self.IletisimBilgileri" Multiplicity="0..1" />
-          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IletisimBilgileri">
-              <PropertyRef Name="IletisimBilgileriID" />
-            </Principal>
-            <Dependent Role="Kullanicilar">
-              <PropertyRef Name="IletisimBilgileriID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SoruEtiket_Etiketler">
           <End Role="Etiketler" Type="Self.Etiketler" Multiplicity="1" />
           <End Role="SoruEtiket" Type="Self.SoruEtiket" Multiplicity="*" />
@@ -243,7 +222,6 @@
           <EntitySet Name="Etiketler" EntityType="Self.Etiketler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoriCevaplar" EntityType="Self.FavoriCevaplar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavoriSorular" EntityType="Self.FavoriSorular" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IletisimBilgileri" EntityType="Self.IletisimBilgileri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoruEtiket" EntityType="Self.SoruEtiket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sorular" EntityType="Self.Sorular" Schema="dbo" store:Type="Tables" />
@@ -271,10 +249,6 @@
           <AssociationSet Name="FK_FavoriSorular_Sorular" Association="Self.FK_FavoriSorular_Sorular">
             <End Role="Sorular" EntitySet="Sorular" />
             <End Role="FavoriSorular" EntitySet="FavoriSorular" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kullanicilar_IletisimBilgileri" Association="Self.FK_Kullanicilar_IletisimBilgileri">
-            <End Role="IletisimBilgileri" EntitySet="IletisimBilgileri" />
-            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
           </AssociationSet>
           <AssociationSet Name="FK_SoruEtiket_Etiketler" Association="Self.FK_SoruEtiket_Etiketler">
             <End Role="Etiketler" EntitySet="Etiketler" />
@@ -345,18 +319,6 @@
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_FavoriSorular_Kullanicilar" FromRole="FavoriSorular" ToRole="Kullanicilar" />
           <NavigationProperty Name="Sorular" Relationship="Self.FK_FavoriSorular_Sorular" FromRole="FavoriSorular" ToRole="Sorular" />
         </EntityType>
-        <EntityType Name="IletisimBilgileri">
-          <Key>
-            <PropertyRef Name="IletisimBilgileriID" />
-          </Key>
-          <Property Name="IletisimBilgileriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Twitter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Github" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Linkedin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CepTel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Kullanicilar_IletisimBilgileri" FromRole="IletisimBilgileri" ToRole="Kullanicilar" />
-        </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
             <PropertyRef Name="KullaniciID" />
@@ -369,11 +331,12 @@
           <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProfilFoto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Hakkimda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IletisimBilgileriID" Type="Int32" />
+          <Property Name="Github" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CepTel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cevaplar" Relationship="Self.FK_Cevaplar_Kullanicilar" FromRole="Kullanicilar" ToRole="Cevaplar" />
           <NavigationProperty Name="FavoriCevaplar" Relationship="Self.FK_FavoriCevaplar_Kullanicilar" FromRole="Kullanicilar" ToRole="FavoriCevaplar" />
           <NavigationProperty Name="FavoriSorular" Relationship="Self.FK_FavoriSorular_Kullanicilar" FromRole="Kullanicilar" ToRole="FavoriSorular" />
-          <NavigationProperty Name="IletisimBilgileri" Relationship="Self.FK_Kullanicilar_IletisimBilgileri" FromRole="Kullanicilar" ToRole="IletisimBilgileri" />
           <NavigationProperty Name="Sorular" Relationship="Self.FK_Sorular_Kullanicilar" FromRole="Kullanicilar" ToRole="Sorular" />
           <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Kullanicilar" FromRole="Kullanicilar" ToRole="Yorum" />
         </EntityType>
@@ -511,18 +474,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Kullanicilar_IletisimBilgileri">
-          <End Role="IletisimBilgileri" Type="Self.IletisimBilgileri" Multiplicity="0..1" />
-          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IletisimBilgileri">
-              <PropertyRef Name="IletisimBilgileriID" />
-            </Principal>
-            <Dependent Role="Kullanicilar">
-              <PropertyRef Name="IletisimBilgileriID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sorular_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
           <End Role="Sorular" Type="Self.Sorular" Multiplicity="*" />
@@ -564,7 +515,6 @@
           <EntitySet Name="Etiketler" EntityType="Self.Etiketler" />
           <EntitySet Name="FavoriCevaplar" EntityType="Self.FavoriCevaplar" />
           <EntitySet Name="FavoriSorular" EntityType="Self.FavoriSorular" />
-          <EntitySet Name="IletisimBilgileri" EntityType="Self.IletisimBilgileri" />
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
           <EntitySet Name="SoruEtiket" EntityType="Self.SoruEtiket" />
           <EntitySet Name="Sorular" EntityType="Self.Sorular" />
@@ -600,10 +550,6 @@
           <AssociationSet Name="FK_FavoriSorular_Sorular" Association="Self.FK_FavoriSorular_Sorular">
             <End Role="Sorular" EntitySet="Sorular" />
             <End Role="FavoriSorular" EntitySet="FavoriSorular" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kullanicilar_IletisimBilgileri" Association="Self.FK_Kullanicilar_IletisimBilgileri">
-            <End Role="IletisimBilgileri" EntitySet="IletisimBilgileri" />
-            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
           </AssociationSet>
           <AssociationSet Name="FK_Sorular_Kullanicilar" Association="Self.FK_Sorular_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -662,18 +608,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IletisimBilgileri">
-            <EntityTypeMapping TypeName="kodusorDBModel.IletisimBilgileri">
-              <MappingFragment StoreEntitySet="IletisimBilgileri">
-                <ScalarProperty Name="IletisimBilgileriID" ColumnName="IletisimBilgileriID" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="Github" ColumnName="Github" />
-                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
-                <ScalarProperty Name="CepTel" ColumnName="CepTel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Kullanicilar">
             <EntityTypeMapping TypeName="kodusorDBModel.Kullanicilar">
               <MappingFragment StoreEntitySet="Kullanicilar">
@@ -685,7 +619,9 @@
                 <ScalarProperty Name="Parola" ColumnName="Parola" />
                 <ScalarProperty Name="ProfilFoto" ColumnName="ProfilFoto" />
                 <ScalarProperty Name="Hakkimda" ColumnName="Hakkimda" />
-                <ScalarProperty Name="IletisimBilgileriID" ColumnName="IletisimBilgileriID" />
+                <ScalarProperty Name="Github" ColumnName="Github" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="CepTel" ColumnName="CepTel" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

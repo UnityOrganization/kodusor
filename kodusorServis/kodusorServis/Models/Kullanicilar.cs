@@ -32,7 +32,9 @@ namespace kodusorServis.Models
         public string Parola { get; set; }
         public string ProfilFoto { get; set; }
         public string Hakkimda { get; set; }
-        public Nullable<int> IletisimBilgileriID { get; set; }
+        public string Github { get; set; }
+        public string Linkedin { get; set; }
+        public string CepTel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cevaplar> Cevaplar { get; set; }
@@ -40,7 +42,6 @@ namespace kodusorServis.Models
         public virtual ICollection<FavoriCevaplar> FavoriCevaplar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriSorular> FavoriSorular { get; set; }
-        public virtual IletisimBilgileri IletisimBilgileri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sorular> Sorular { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,13 +19,28 @@
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#modalGiris">Soru Sor</a></li>
-                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                        @if (Session["kullaniciID"] == null)
+                        {
+                            <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                            <li><a href="#modalGiris">Giriş Yap</a></li>
+                        }
+                        else
+                        {
+                            <li><a id="cikisyap">Çıkış</a></li>
+                        }
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <li><a href="#modalGiris">Soru Sor</a></li>
-                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                        
+                        @if (Session["kullaniciID"] == null)
+                        {
+                            <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                            <li><a href="#modalGiris">Giriş Yap</a></li>
+                        }
+                        else
+                        {
+                            <li><a id="cikisyap">Çıkış</a></li>
+                        }
                     </ul>
                 </div>
                 
@@ -68,7 +83,7 @@
                 </form>
                 <div class="center-align">
                     <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
-                    <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
+                    <button id="modalGiris" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
                 </div>
                 
             </div>
@@ -85,19 +100,19 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="mail" type="text" class="validate" value="" />
+                            <input id="girismail" type="text" class="validate" value="" />
                             <label for="icon_prefix">E-posta</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="parola" type="password" class="validate" value="" />
+                            <input id="girisparola" type="password" class="validate" value="" />
                             <label for="icon_prefix">Parola</label>
                         </div>
                     </div>
                 </form>
                 <div class="center-align">
                     <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
-                    <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
+                    <button id="modalKayit" class="waves-effect waves-light btn">Kayıt Ol</button>
                 </div>
 
             </div>
@@ -157,6 +172,26 @@
             else {
                 alert("Parolalar uyuşmuyor");
             }
+        });
+
+        $("#GirisYap").click(function () {
+            var mail = $("#girismail").val();
+            var parola = $("#girisparola").val();
+            $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
+                if (sonuc == "+") {
+                    window.location = "/Profil/Index";
+                }
+                alert(sonuc);
+            });
+        });
+
+        $("#cikisyap").click(function () {
+            $.post("../Profil/Cikis", "", function (sonuc) {
+                if (sonuc == "+") {
+                    window.location = "/Home/Index";
+                }
+                alert(sonuc);
+            });
         });
     });
     </script>

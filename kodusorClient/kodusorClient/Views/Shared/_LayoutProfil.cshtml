@@ -24,11 +24,11 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#soruSor">Soru Sor</a></li>
-                    <li><a href="#cikis">Çıkış Yap</a></li>
+                    <li><a id="cikis">Çıkış Yap</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="#soruSor">Soru Sor</a></li>
-                    <li><a href="#cikis">Çıkış Yap</a></li>
+                    <li><a id="cikis">Çıkış Yap</a></li>
                 </ul>
             </div>
 
@@ -61,6 +61,16 @@
         $(document).ready(function () {
             $(".button-collapse").sideNav();
             $('.modal').modal();
+
+            $("#cikis").click(function () {
+                console.log("çıkış");
+                $.post("../Profil/Cikis", "", function (sonuc) {
+                    if (sonuc == "+") {
+                        console.log("çıkış yapıldı");
+                        window.location = "/Home/Index";
+                    }
+                });
+            });
         });
     </script>
 </body>

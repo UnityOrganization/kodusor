@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://servis.kodusor.com/kodusorServis.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://servis.kodusor.com/KodusorServis.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="KodusorServis.xsd" MetadataType="Schema" ID="7778f1c5-3e55-4054-9da0-7105860e5749" SourceId="1" SourceUrl="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd2" />
