@@ -67,6 +67,12 @@ namespace kodusorServis
         [OperationContract]
         bool CevabiFavoriyeEkle(FavoriCevaplar favoriCevaplar);
 
+        [OperationContract]
+        bool CevabıOnayla(int soruID, int cevapID);
+
+        [OperationContract]
+        SoruListesi SoruGetir(int soruID);
+
 
         [OperationContract]
         List<kullaniciListesi> KullanicilariListele();
@@ -86,7 +92,15 @@ namespace kodusorServis
         private kullaniciListesi kullanici;
         private List<EtiketListesi> etiketler;
         private int cevapSayisi;
+        private List<CevapListesi> cevaplar;
 
+
+        [DataMember]
+        public List<CevapListesi> Cevaplar
+        {
+            get { return cevaplar; }
+            set { cevaplar = value; }
+        }
 
         [DataMember]
         public int SoruID
@@ -308,6 +322,15 @@ namespace kodusorServis
             set { sorular = value; }
         }
 
+        private List<YorumListesi> yorumListesi;
+
+        public List<YorumListesi> YorumListesi
+        {
+            get { return yorumListesi; }
+            set { yorumListesi = value; }
+        }
+
+
     }
 
     [DataContract]
@@ -359,6 +382,35 @@ namespace kodusorServis
         {
             get { return ceptel; }
             set { ceptel = value; }
+        }
+
+    }
+
+    [DataContract]
+    public class YorumListesi
+    {
+        private int yorumID;
+
+        public int YorumID
+        {
+            get { return yorumID; }
+            set { yorumID = value; }
+        }
+
+        private string yorum;
+
+        public string Yorum
+        {
+            get { return yorum; }
+            set { yorum = value; }
+        }
+
+        private DateTime tarih;
+
+        public DateTime Tarih
+        {
+            get { return tarih; }
+            set { tarih = value; }
         }
 
     }

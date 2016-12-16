@@ -16,7 +16,9 @@ namespace kodusorServis
         private static CevapListesi Cevap { get; set; }
         private static List<SoruListesi> sorular;
         private static IletisimBilgileriListesi Iletisim { get; set; }
-
+        private static List<CevapListesi> cevaplar { get; set; }
+        private static YorumListesi yorum;
+        private static List<YorumListesi> yorumlar { get; set; }
 
         public static EtiketListesi EtiketOlustur(SoruEtiket etiket)
         {
@@ -52,6 +54,12 @@ namespace kodusorServis
             {
                 etiketler.Add(EtiketOlustur(item));
             }
+            cevaplar = new List<CevapListesi>();
+            foreach (var item in soru.Cevaplar)
+            {
+                cevaplar.Add(CevapOlustur(item));
+            }
+
             Soru = new SoruListesi()
             {
                 SoruID = soru.SoruID,
@@ -62,17 +70,20 @@ namespace kodusorServis
                 OnayCevapID = Convert.ToInt32(soru.OnayCevapID),
                 BegeniSayisi = Convert.ToInt32(soru.BegeniSayisi),
                 Etiketler = etiketler,
-                CevapSayisi = soru.Cevaplar.Count
+                CevapSayisi = soru.Cevaplar.Count,
+                Cevaplar = cevaplar
             };
             return Soru;
         }
 
         public static CevapListesi CevapOlustur (Cevaplar cevap)
         {
-            var soru = (from s in db.Sorular
-                        where s.SoruID == cevap.SoruID
-                        select s).SingleOrDefault();
-
+            yorumlar = new List<YorumListesi>();
+            foreach (var item in cevap.Yorum)
+            {
+                yorumlar.Add(YorumOlustur(item));
+            }
+            
             Cevap = new CevapListesi()
             {
                 CevapID = cevap.CevapID,
@@ -81,7 +92,7 @@ namespace kodusorServis
                 Cevap = cevap.Cevap,
                 BegeniSayisi = Convert.ToInt32(cevap.BegeniSayisi),
                 Tarih = Convert.ToDateTime(cevap.Tarih),
-                Sorular = SoruOlustur(soru)
+                YorumListesi = yorumlar
             };
             return Cevap;
         }
@@ -121,6 +132,17 @@ namespace kodusorServis
                 }
                 db.SaveChanges();
             }
+        }
+
+        public static YorumListesi YorumOlustur(Yorum y)
+        {
+            yorum = new YorumListesi()
+            {
+                Yorum = y.Yorum1,
+                Tarih = y.Tarih,
+                YorumID = y.YorumID
+            };
+            return yorum;
         }
     }
 }

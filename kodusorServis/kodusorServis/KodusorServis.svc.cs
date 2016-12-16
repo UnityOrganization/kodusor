@@ -477,5 +477,44 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public bool CevabıOnayla(int soruID, int cevapID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var soru = (from s in db.Sorular
+                                where s.SoruID == soruID
+                                select s).SingleOrDefault();
+
+                    if (soru.OnayCevapID == cevapID)
+                        soru.OnayCevapID = null;
+                    else
+                        soru.OnayCevapID = cevapID;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public SoruListesi SoruGetir(int soruID)
+        {
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                var soru = (from s in db.Sorular
+                            where s.SoruID == soruID
+                            select s).SingleOrDefault();
+
+                if (soru != null)
+                    return NesneDuzenle.SoruOlustur(soru);
+                else
+                    return null;
+            }
+        }
     }
 }
