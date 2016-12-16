@@ -438,5 +438,44 @@ namespace kodusorServis
                 return false;
             }
         }
+
+        public bool CevabiFavoriyeEkle(FavoriCevaplar favoriCevaplar)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var favoricevap = (from fc in db.FavoriCevaplar
+                                      where fc.KullaniciID == favoriCevaplar.KullaniciID && fc.CevapID == favoriCevaplar.CevapID
+                                      select fc).SingleOrDefault();
+
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == favoriCevaplar.KullaniciID
+                               select k).SingleOrDefault();
+
+                    var cevap = (from c in db.Cevaplar
+                                where c.CevapID == favoriCevaplar.CevapID
+                                select c).SingleOrDefault();
+
+                    if (favoricevap == null)
+                    {
+                        kul.FavoriCevaplar.Add(favoriCevaplar);
+                        cevap.FavoriCevaplar.Add(favoriCevaplar);
+                    }
+                    else
+                    {
+                        kul.FavoriCevaplar.Remove(favoricevap);
+                        cevap.FavoriCevaplar.Remove(favoricevap);
+                        db.FavoriCevaplar.Remove(favoricevap);
+                    }
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
