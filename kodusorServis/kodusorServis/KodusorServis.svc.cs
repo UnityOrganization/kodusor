@@ -17,7 +17,7 @@ namespace kodusorServis
         {
             return string.Format("You entered: {0}", value);
         }
-
+        //
         public string KayitOl(Kullanicilar kullanici)
         {
             try
@@ -30,6 +30,8 @@ namespace kodusorServis
 
                     if (kul == null)
                     {
+                        kullanici.ProfilFoto = "http://www.excavationmadopal.com/wp-content/uploads/2015/02/avatar.jpg";
+                        kullanici.DogumTarihi = DateTime.Now;
                         db.Kullanicilar.Add(kullanici);
                         db.SaveChanges();
                         return "+";
@@ -43,7 +45,7 @@ namespace kodusorServis
                 return "--";
             }
         }
-
+        //
         public List<SoruListesi> SorulariListele(int id)
         {
             List<SoruListesi> sorular = new List<SoruListesi>();
@@ -86,7 +88,7 @@ namespace kodusorServis
             }
             return kul;
         }
-
+        //
         public int GirisYap(string mail, string parola)
         {
             using (kodusorDBEntities db = new kodusorDBEntities())
@@ -100,7 +102,7 @@ namespace kodusorServis
                     return 0;
             }
         }
-
+        //
         public List<CevapListesi> KullaniciCevapları(int kullaniciID)
         {
             List<CevapListesi> cevaplar = new List<CevapListesi>();
@@ -117,7 +119,7 @@ namespace kodusorServis
             }
             return cevaplar;
         }
-        
+        //
         public List<SoruListesi> FavoriSorular(int kullaniciID)
         {
             List<SoruListesi> sorular = new List<SoruListesi>();
@@ -134,7 +136,7 @@ namespace kodusorServis
             }
             return sorular;
         }
-
+        //
         public List<CevapListesi> FavoriCevaplar(int kullaniciID)
         {
             List<CevapListesi> cevaplar = new List<CevapListesi>();
@@ -150,7 +152,7 @@ namespace kodusorServis
             }
             return cevaplar;
         }
-
+        //
         public List<EtiketListesi> KullanicininEtiketleri(int kullaniciID)
         {
             List<EtiketListesi> etiketler = new List<EtiketListesi>();
@@ -186,7 +188,6 @@ namespace kodusorServis
 
         public bool KullaniciBilgileriGuncelle(Kullanicilar kullanici)
         {
-            //KONTROL EDİLECEK !!!
             try
             {
                 using (kodusorDBEntities db = new kodusorDBEntities())
@@ -194,14 +195,16 @@ namespace kodusorServis
                     var kul = (from k in db.Kullanicilar
                                where k.KullaniciID == kullanici.KullaniciID
                                select k).SingleOrDefault();
-                    
-                    kul.Hakkimda = kullanici.Hakkimda;
+
                     kul.Adi = kullanici.Adi;
-                    kul.DogumTarihi = kullanici.DogumTarihi;
-                    kul.Mail = kullanici.Mail;
-                    kul.ProfilFoto = kullanici.ProfilFoto;
                     kul.Soyadi = kullanici.Soyadi;
-                    
+                    kul.Hakkimda = kullanici.Hakkimda;
+                    kul.Mail = kullanici.Mail;
+                    kul.DogumTarihi = kullanici.DogumTarihi;
+                    kul.CepTel = kullanici.CepTel;
+                    kul.Github = kullanici.Github;
+                    kul.Linkedin = kullanici.Linkedin;
+                                        
                     db.SaveChanges();
                 }
                 return true;
@@ -232,7 +235,7 @@ namespace kodusorServis
                 return false;
             }
         }
-
+        //
         public kullaniciListesi KullaniciBilgileriniGetir(int kullaniciID)
         {
             using (kodusorDBEntities db = new kodusorDBEntities())
@@ -259,7 +262,10 @@ namespace kodusorServis
                                select k).FirstOrDefault();
                     
                     NesneDuzenle.EtiketEkle(etiketler);
-                    //soru.KullaniciID = kullaniciID;
+                    soru.KullaniciID = kullaniciID;
+                    soru.Tarih = DateTime.Now;
+                    soru.BegeniSayisi = 0;
+
                     db.Sorular.Add(soru);
                     kul.Sorular.Add(soru);
                     db.SaveChanges();

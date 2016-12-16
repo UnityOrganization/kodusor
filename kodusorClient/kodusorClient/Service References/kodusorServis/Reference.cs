@@ -26,6 +26,9 @@ namespace kodusorClient.kodusorServis {
         private string AdiField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CepTelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private kodusorClient.kodusorServis.Cevaplar[] CevaplarField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -38,16 +41,16 @@ namespace kodusorClient.kodusorServis {
         private kodusorClient.kodusorServis.FavoriSorular[] FavoriSorularField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GithubField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string HakkimdaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private kodusorClient.kodusorServis.IletisimBilgileri IletisimBilgileriField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> IletisimBilgileriIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int KullaniciIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinkedinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MailField;
@@ -86,6 +89,19 @@ namespace kodusorClient.kodusorServis {
                 if ((object.ReferenceEquals(this.AdiField, value) != true)) {
                     this.AdiField = value;
                     this.RaisePropertyChanged("Adi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CepTel {
+            get {
+                return this.CepTelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CepTelField, value) != true)) {
+                    this.CepTelField = value;
+                    this.RaisePropertyChanged("CepTel");
                 }
             }
         }
@@ -143,6 +159,19 @@ namespace kodusorClient.kodusorServis {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Github {
+            get {
+                return this.GithubField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GithubField, value) != true)) {
+                    this.GithubField = value;
+                    this.RaisePropertyChanged("Github");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Hakkimda {
             get {
                 return this.HakkimdaField;
@@ -156,32 +185,6 @@ namespace kodusorClient.kodusorServis {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public kodusorClient.kodusorServis.IletisimBilgileri IletisimBilgileri {
-            get {
-                return this.IletisimBilgileriField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IletisimBilgileriField, value) != true)) {
-                    this.IletisimBilgileriField = value;
-                    this.RaisePropertyChanged("IletisimBilgileri");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> IletisimBilgileriID {
-            get {
-                return this.IletisimBilgileriIDField;
-            }
-            set {
-                if ((this.IletisimBilgileriIDField.Equals(value) != true)) {
-                    this.IletisimBilgileriIDField = value;
-                    this.RaisePropertyChanged("IletisimBilgileriID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int KullaniciID {
             get {
                 return this.KullaniciIDField;
@@ -190,6 +193,19 @@ namespace kodusorClient.kodusorServis {
                 if ((this.KullaniciIDField.Equals(value) != true)) {
                     this.KullaniciIDField = value;
                     this.RaisePropertyChanged("KullaniciID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Linkedin {
+            get {
+                return this.LinkedinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinkedinField, value) != true)) {
+                    this.LinkedinField = value;
+                    this.RaisePropertyChanged("Linkedin");
                 }
             }
         }
@@ -268,147 +284,6 @@ namespace kodusorClient.kodusorServis {
                 if ((object.ReferenceEquals(this.YorumField, value) != true)) {
                     this.YorumField = value;
                     this.RaisePropertyChanged("Yorum");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IletisimBilgileri", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis.Models")]
-    [System.SerializableAttribute()]
-    public partial class IletisimBilgileri : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CepTelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GithubField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IletisimBilgileriIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private kodusorClient.kodusorServis.Kullanicilar[] KullanicilarField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LinkedinField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TwitterField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WebsiteField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CepTel {
-            get {
-                return this.CepTelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CepTelField, value) != true)) {
-                    this.CepTelField = value;
-                    this.RaisePropertyChanged("CepTel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Github {
-            get {
-                return this.GithubField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GithubField, value) != true)) {
-                    this.GithubField = value;
-                    this.RaisePropertyChanged("Github");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IletisimBilgileriID {
-            get {
-                return this.IletisimBilgileriIDField;
-            }
-            set {
-                if ((this.IletisimBilgileriIDField.Equals(value) != true)) {
-                    this.IletisimBilgileriIDField = value;
-                    this.RaisePropertyChanged("IletisimBilgileriID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public kodusorClient.kodusorServis.Kullanicilar[] Kullanicilar {
-            get {
-                return this.KullanicilarField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.KullanicilarField, value) != true)) {
-                    this.KullanicilarField = value;
-                    this.RaisePropertyChanged("Kullanicilar");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Linkedin {
-            get {
-                return this.LinkedinField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LinkedinField, value) != true)) {
-                    this.LinkedinField = value;
-                    this.RaisePropertyChanged("Linkedin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Twitter {
-            get {
-                return this.TwitterField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TwitterField, value) != true)) {
-                    this.TwitterField = value;
-                    this.RaisePropertyChanged("Twitter");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Website {
-            get {
-                return this.WebsiteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WebsiteField, value) != true)) {
-                    this.WebsiteField = value;
-                    this.RaisePropertyChanged("Website");
                 }
             }
         }
@@ -1564,19 +1439,22 @@ namespace kodusorClient.kodusorServis {
         private string AdiField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CeptelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DogumTarihiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GithubField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string HakkimdaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private kodusorClient.kodusorServis.IletisimBilgileriListesi IletisimBilgileriField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IletisimBilgileriIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int KullaniciIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinkedinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MailField;
@@ -1614,6 +1492,19 @@ namespace kodusorClient.kodusorServis {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Ceptel {
+            get {
+                return this.CeptelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CeptelField, value) != true)) {
+                    this.CeptelField = value;
+                    this.RaisePropertyChanged("Ceptel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime DogumTarihi {
             get {
                 return this.DogumTarihiField;
@@ -1622,6 +1513,19 @@ namespace kodusorClient.kodusorServis {
                 if ((this.DogumTarihiField.Equals(value) != true)) {
                     this.DogumTarihiField = value;
                     this.RaisePropertyChanged("DogumTarihi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Github {
+            get {
+                return this.GithubField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GithubField, value) != true)) {
+                    this.GithubField = value;
+                    this.RaisePropertyChanged("Github");
                 }
             }
         }
@@ -1640,32 +1544,6 @@ namespace kodusorClient.kodusorServis {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public kodusorClient.kodusorServis.IletisimBilgileriListesi IletisimBilgileri {
-            get {
-                return this.IletisimBilgileriField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IletisimBilgileriField, value) != true)) {
-                    this.IletisimBilgileriField = value;
-                    this.RaisePropertyChanged("IletisimBilgileri");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IletisimBilgileriID {
-            get {
-                return this.IletisimBilgileriIDField;
-            }
-            set {
-                if ((this.IletisimBilgileriIDField.Equals(value) != true)) {
-                    this.IletisimBilgileriIDField = value;
-                    this.RaisePropertyChanged("IletisimBilgileriID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int KullaniciID {
             get {
                 return this.KullaniciIDField;
@@ -1674,6 +1552,19 @@ namespace kodusorClient.kodusorServis {
                 if ((this.KullaniciIDField.Equals(value) != true)) {
                     this.KullaniciIDField = value;
                     this.RaisePropertyChanged("KullaniciID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Linkedin {
+            get {
+                return this.LinkedinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinkedinField, value) != true)) {
+                    this.LinkedinField = value;
+                    this.RaisePropertyChanged("Linkedin");
                 }
             }
         }
@@ -1769,6 +1660,9 @@ namespace kodusorClient.kodusorServis {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime TarihField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private kodusorClient.kodusorServis.YorumListesi[] YorumListesiField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1871,6 +1765,19 @@ namespace kodusorClient.kodusorServis {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public kodusorClient.kodusorServis.YorumListesi[] YorumListesi {
+            get {
+                return this.YorumListesiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.YorumListesiField, value) != true)) {
+                    this.YorumListesiField = value;
+                    this.RaisePropertyChanged("YorumListesi");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1944,30 +1851,21 @@ namespace kodusorClient.kodusorServis {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IletisimBilgileriListesi", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="YorumListesi", Namespace="http://schemas.datacontract.org/2004/07/kodusorServis")]
     [System.SerializableAttribute()]
-    public partial class IletisimBilgileriListesi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class YorumListesi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CeptelField;
+        private System.DateTime TarihField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GithubField;
+        private string YorumField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IletisimBilgileriIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LinkedinField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TwitterField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WebsiteField;
+        private int YorumIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1980,79 +1878,40 @@ namespace kodusorClient.kodusorServis {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Ceptel {
+        public System.DateTime Tarih {
             get {
-                return this.CeptelField;
+                return this.TarihField;
             }
             set {
-                if ((object.ReferenceEquals(this.CeptelField, value) != true)) {
-                    this.CeptelField = value;
-                    this.RaisePropertyChanged("Ceptel");
+                if ((this.TarihField.Equals(value) != true)) {
+                    this.TarihField = value;
+                    this.RaisePropertyChanged("Tarih");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Github {
+        public string Yorum {
             get {
-                return this.GithubField;
+                return this.YorumField;
             }
             set {
-                if ((object.ReferenceEquals(this.GithubField, value) != true)) {
-                    this.GithubField = value;
-                    this.RaisePropertyChanged("Github");
+                if ((object.ReferenceEquals(this.YorumField, value) != true)) {
+                    this.YorumField = value;
+                    this.RaisePropertyChanged("Yorum");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IletisimBilgileriID {
+        public int YorumID {
             get {
-                return this.IletisimBilgileriIDField;
+                return this.YorumIDField;
             }
             set {
-                if ((this.IletisimBilgileriIDField.Equals(value) != true)) {
-                    this.IletisimBilgileriIDField = value;
-                    this.RaisePropertyChanged("IletisimBilgileriID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Linkedin {
-            get {
-                return this.LinkedinField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LinkedinField, value) != true)) {
-                    this.LinkedinField = value;
-                    this.RaisePropertyChanged("Linkedin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Twitter {
-            get {
-                return this.TwitterField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TwitterField, value) != true)) {
-                    this.TwitterField = value;
-                    this.RaisePropertyChanged("Twitter");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Website {
-            get {
-                return this.WebsiteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WebsiteField, value) != true)) {
-                    this.WebsiteField = value;
-                    this.RaisePropertyChanged("Website");
+                if ((this.YorumIDField.Equals(value) != true)) {
+                    this.YorumIDField = value;
+                    this.RaisePropertyChanged("YorumID");
                 }
             }
         }
@@ -2120,10 +1979,10 @@ namespace kodusorClient.kodusorServis {
         System.Threading.Tasks.Task<kodusorClient.kodusorServis.EtiketListesi[]> KullanicininEtiketleriAsync(int kullaniciID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle", ReplyAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse")]
-        bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici, kodusorClient.kodusorServis.IletisimBilgileri iletisimBilgileri);
+        bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle", ReplyAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse")]
-        System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici, kodusorClient.kodusorServis.IletisimBilgileri iletisimBilgileri);
+        System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/ParolaDegistir", ReplyAction="http://tempuri.org/IKodusorServis/ParolaDegistirResponse")]
         bool ParolaDegistir(int kullaniciID, string parola);
@@ -2283,12 +2142,12 @@ namespace kodusorClient.kodusorServis {
             return base.Channel.KullanicininEtiketleriAsync(kullaniciID);
         }
         
-        public bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici, kodusorClient.kodusorServis.IletisimBilgileri iletisimBilgileri) {
-            return base.Channel.KullaniciBilgileriGuncelle(kullanici, iletisimBilgileri);
+        public bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici) {
+            return base.Channel.KullaniciBilgileriGuncelle(kullanici);
         }
         
-        public System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici, kodusorClient.kodusorServis.IletisimBilgileri iletisimBilgileri) {
-            return base.Channel.KullaniciBilgileriGuncelleAsync(kullanici, iletisimBilgileri);
+        public System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici) {
+            return base.Channel.KullaniciBilgileriGuncelleAsync(kullanici);
         }
         
         public bool ParolaDegistir(int kullaniciID, string parola) {

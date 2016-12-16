@@ -15,7 +15,7 @@ namespace kodusorClient.Controllers
         public ActionResult Index()
         {
             servis = new KodusorServisClient();
-            List<SoruListesi> sorular = servis.SorulariListele(0).ToList();
+            var sorular = servis.SorulariListele(0).ToList();
             servis.Close();
             return View(sorular);
         }
@@ -26,23 +26,6 @@ namespace kodusorClient.Controllers
             string sonuc = servis.KayitOl(k);
             servis.Close();
             return Json(sonuc);
-        }
-
-        public ActionResult Soru(int? id)
-        {
-            return View(id);
-        }
-
-
-
-
-        public ActionResult Giris()
-        {
-            if (Request.Cookies["KullaniciKimligi"] != null)
-            {
-                return RedirectToAction("Index", "Profil");
-            }
-            return View();
         }
 
         public JsonResult GirisKontrol(string mail, string parola)
@@ -61,6 +44,13 @@ namespace kodusorClient.Controllers
             }
         }
 
-        
+
+
+        public ActionResult Soru(int? id)
+        {
+            return View(id);
+        }
+
+
     }
 }

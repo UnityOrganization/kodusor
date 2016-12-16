@@ -1,8 +1,8 @@
-﻿@model kodusorClient.kodusorServis.Kullanicilar
+﻿@model kodusorClient.ViewModel.KullaniciModel
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutProfil.cshtml";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,63 +12,122 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Adi)
+            @Html.DisplayNameFor(model => model.Kullanici.Adi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Adi)
+            @Html.DisplayFor(model => model.Kullanici.Adi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DogumTarihi)
+            @Html.DisplayNameFor(model => model.Kullanici.DogumTarihi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DogumTarihi)
+            @Html.DisplayFor(model => model.Kullanici.DogumTarihi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hakkimda)
+            @Html.DisplayNameFor(model => model.Kullanici.Hakkimda)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hakkimda)
+            @Html.DisplayFor(model => model.Kullanici.Hakkimda)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mail)
+            @Html.DisplayNameFor(model => model.Kullanici.Mail)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Mail)
+            @Html.DisplayFor(model => model.Kullanici.Mail)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Parola)
+            @Html.DisplayNameFor(model => model.Kullanici.ProfilFoto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Parola)
+            @Html.DisplayFor(model => model.Kullanici.ProfilFoto)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProfilFoto)
+            @Html.DisplayNameFor(model => model.Kullanici.Soyadi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProfilFoto)
+            @Html.DisplayFor(model => model.Kullanici.Soyadi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Soyadi)
+            @Html.DisplayNameFor(model => model.Kullanici.Github)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Soyadi)
+            @Html.DisplayFor(model => model.Kullanici.Github)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.Linkedin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.Linkedin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kullanici.Ceptel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kullanici.Ceptel)
+        </dd>
     </dl>
 </div>
+
+<div>
+    <h4>sorularım</h4>
+    @foreach (var item in Model.SoruListesi)
+    {
+        <h6>@item.SoruID</h6><br />
+    }
+</div>
+<br />
+<div>
+    <h4>cevaplarım</h4>
+    @foreach (var item in Model.CevapListesi)
+    {
+        <h6>@item.CevapID</h6><br />
+    }
+</div><br />
+<div>
+    <h4>etiketlerim</h4>
+    @foreach (var item in Model.EtiketListesi)
+    {
+        <h6>@item.EtiketID</h6><br />
+    }
+</div><br />
+<div>
+    <h4>sorularım</h4>
+    @foreach (var item in Model.SoruListesi)
+    {
+        <h6>@item.SoruID</h6><br />
+    }
+</div><br />
+<div>
+    <h4>favori sorularım</h4>
+    @foreach (var item in Model.FavoriSorular)
+    {
+        <h6>@item.SoruID</h6><br />
+    }
+</div><br />
+<div>
+    <h4>favori cevaplarım</h4>
+    @foreach (var item in Model.FavoriCevaplar)
+    {
+        <h6>@item.CevapID</h6><br />
+    }
+</div><br />
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")

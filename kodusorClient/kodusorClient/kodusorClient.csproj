@@ -130,6 +130,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\KullaniciModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -150,9 +151,9 @@
     </None>
     <None Include="Service References\kodusorServis\Service1.wsdl" />
     <Content Include="Views\Home\Soru.cshtml" />
-    <Content Include="Views\Shared\_LayoutProfil.cshtml" />
     <Content Include="Views\Profil\SoruSor.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
+    <Content Include="Views\Profil\KullaniciGuncelle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,7 +164,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

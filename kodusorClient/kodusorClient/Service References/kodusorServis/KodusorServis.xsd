@@ -3,14 +3,15 @@
   <xs:complexType name="Kullanicilar">
     <xs:sequence>
       <xs:element minOccurs="0" name="Adi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CepTel" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Cevaplar" nillable="true" type="tns:ArrayOfCevaplar" />
       <xs:element minOccurs="0" name="DogumTarihi" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FavoriCevaplar" nillable="true" type="tns:ArrayOfFavoriCevaplar" />
       <xs:element minOccurs="0" name="FavoriSorular" nillable="true" type="tns:ArrayOfFavoriSorular" />
+      <xs:element minOccurs="0" name="Github" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hakkimda" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IletisimBilgileri" nillable="true" type="tns:IletisimBilgileri" />
-      <xs:element minOccurs="0" name="IletisimBilgileriID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="KullaniciID" type="xs:int" />
+      <xs:element minOccurs="0" name="Linkedin" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Parola" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProfilFoto" nillable="true" type="xs:string" />
@@ -131,24 +132,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Yorum" nillable="true" type="tns:Yorum" />
-  <xs:complexType name="IletisimBilgileri">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CepTel" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Github" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IletisimBilgileriID" type="xs:int" />
-      <xs:element minOccurs="0" name="Kullanicilar" nillable="true" type="tns:ArrayOfKullanicilar" />
-      <xs:element minOccurs="0" name="Linkedin" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Twitter" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Website" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="IletisimBilgileri" nillable="true" type="tns:IletisimBilgileri" />
-  <xs:complexType name="ArrayOfKullanicilar">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Kullanicilar" nillable="true" type="tns:Kullanicilar" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfKullanicilar" nillable="true" type="tns:ArrayOfKullanicilar" />
   <xs:complexType name="ArrayOfSorular">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Sorular" nillable="true" type="tns:Sorular" />

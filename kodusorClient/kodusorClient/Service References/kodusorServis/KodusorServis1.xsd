@@ -119,7 +119,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="kullanici" nillable="true" type="q7:Kullanicilar" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="iletisimBilgileri" nillable="true" type="q8:IletisimBilgileri" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,7 +154,7 @@
   <xs:element name="KullaniciBilgileriniGetirResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullaniciBilgileriniGetirResult" nillable="true" type="q9:kullaniciListesi" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullaniciBilgileriniGetirResult" nillable="true" type="q8:kullaniciListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -163,8 +162,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="kullaniciID" type="xs:int" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="soru" nillable="true" type="q10:Sorular" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="etiketler" nillable="true" type="q11:ArrayOfEtiketler" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="soru" nillable="true" type="q9:Sorular" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="etiketler" nillable="true" type="q10:ArrayOfEtiketler" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -193,7 +192,7 @@
   <xs:element name="CevapEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="cevap" nillable="true" type="q12:Cevaplar" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="cevap" nillable="true" type="q11:Cevaplar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -207,7 +206,7 @@
   <xs:element name="YorumEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="yourum" nillable="true" type="q13:Yorum" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="yourum" nillable="true" type="q12:Yorum" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -221,7 +220,7 @@
   <xs:element name="SoruyuFavoriyeEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriSorular" nillable="true" type="q14:FavoriSorular" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriSorular" nillable="true" type="q13:FavoriSorular" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -235,7 +234,7 @@
   <xs:element name="CevabiFavoriyeEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriCevaplar" nillable="true" type="q15:FavoriCevaplar" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="favoriCevaplar" nillable="true" type="q14:FavoriCevaplar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -271,7 +270,7 @@
   <xs:element name="SoruGetirResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SoruGetirResult" nillable="true" type="q16:SoruListesi" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SoruGetirResult" nillable="true" type="q15:SoruListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -283,7 +282,7 @@
   <xs:element name="KullanicilariListeleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q17:ArrayOfkullaniciListesi" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="KullanicilariListeleResult" nillable="true" type="q16:ArrayOfkullaniciListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

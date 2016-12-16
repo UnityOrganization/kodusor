@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />    
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
@@ -12,40 +12,43 @@
 </head>
 <body>
     <!-- Navbar -->
-        <nav>
-            <div class="nav-wrapper blue-grey lighten-1">
-                <div class="container" style="width:944px">
-                    <a href="#!" class="brand-logo">kodusor.com</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
+    <nav>
+        <div class="nav-wrapper blue-grey lighten-1">
+            <div class="container" style="width:944px">
+                <a href="#!" class="brand-logo">kodusor.com</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    @if (Session["kullaniciID"] == null)
+                    {
                         <li><a href="#modalGiris">Soru Sor</a></li>
-                        @if (Session["kullaniciID"] == null)
-                        {
-                            <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                            <li><a href="#modalGiris">Giriş Yap</a></li>
-                        }
-                        else
-                        {
-                            <li><a id="cikisyap">Çıkış</a></li>
-                        }
-                    </ul>
-                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Profil/Index">Profil</a></li>
+                        <li><a href="/Profil/SoruSor">Soru Sor</a></li>
+                        <li><a id="cikisyap">Çıkış</a></li>
+                    }
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    @if (Session["kullaniciID"] == null)
+                    {
                         <li><a href="#modalGiris">Soru Sor</a></li>
-                        
-                        @if (Session["kullaniciID"] == null)
-                        {
-                            <li><a href="#modalKayıt">Kayıt Ol</a></li>
-                            <li><a href="#modalGiris">Giriş Yap</a></li>
-                        }
-                        else
-                        {
-                            <li><a id="cikisyap">Çıkış</a></li>
-                        }
-                    </ul>
-                </div>
-                
+                        <li><a href="#modalKayıt">Kayıt Ol</a></li>
+                        <li><a href="#modalGiris">Giriş Yap</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Profil/Index">Profil</a></li>
+                        <li><a href="/Profil/SoruSor">Soru Sor</a></li>
+                        <li><a id="cikisyap">Çıkış</a></li>
+                    }
+                </ul>
             </div>
-        </nav>
+
+        </div>
+    </nav>
     <!-- Navbar Bitiş -->
     <!-- Kayıt Ol Modal -->
     <div id="modalKayıt" class="modal">
@@ -83,11 +86,11 @@
                 </form>
                 <div class="center-align">
                     <button id="KayitOl" class="waves-effect waves-light btn">Kayıt Ol</button>
-                    <button id="modalGiris" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
+                    <button id="mGiris" href="#modalGiris" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
                 </div>
-                
+
             </div>
-            
+
         </div>
     </div>
     <!-- Kayıt Ol Modal Bitiş -->
@@ -112,7 +115,7 @@
                 </form>
                 <div class="center-align">
                     <button id="GirisYap" class="waves-effect light-green darken-1 btn">Giriş Yap</button>
-                    <button id="modalKayit" class="waves-effect waves-light btn">Kayıt Ol</button>
+                    <button id="mKayit" href="#modalKayıt" class="waves-effect waves-light btn">Kayıt Ol</button>
                 </div>
 
             </div>
@@ -148,52 +151,60 @@
         });
     </script>
     <script>
-    $(function () {
-        console.log("Çalıştı ");
-        $("#KayitOl").click(function () {
-            console.log("tıklandı");
-            if ($("#parola").val() == $("#parolaT").val()) {
-                var kullanici = {
-                    Adi: $("#kAdi").val(),
-                    Soyadi: $("#kSoyadi").val(),
-                    Mail: $("#mail").val(),
-                    Parola: $("#parola").val()
-                };
-                console.log(kullanici);
-                $.post("../Home/kayit", kullanici, function (sonuc) {
-                    if (sonuc == "+")
-                        alert("Kayıt başarılı");
-                    else if (sonuc == "-")
-                        alert("Mail adresi zaten kayıtlı");
-                    else
-                        alert("Veritabanı bağlantı hatası");
+        $(function () {
+            //KAYIT OL BAŞLANGIÇ
+            $("#KayitOl").click(function () {
+                if ($("#parola").val() == $("#parolaT").val()) {
+                    var kullanici = {
+                        Adi: $("#kAdi").val(),
+                        Soyadi: $("#kSoyadi").val(),
+                        Mail: $("#mail").val(),
+                        Parola: $("#parola").val()
+                    };
+                    $.post("../Home/kayit", kullanici, function (sonuc) {
+                        if (sonuc == "+")
+                            alert("Kayıt başarılı");
+                        else if (sonuc == "-")
+                            alert("Mail adresi zaten kayıtlı");
+                        else
+                            alert("Veritabanı bağlantı hatası");
+                    });
+                }
+                else {
+                    alert("Parolalar uyuşmuyor");
+                }
+            });
+            //KAYIT OL BİTİŞ
+            //GİRİŞ YAP BAŞLANGIÇ
+            $("#GirisYap").click(function () {
+                var mail = $("#girismail").val();
+                var parola = $("#girisparola").val();
+                $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
+                    if (sonuc == "+") {
+                        window.location = "/Profil/Index";
+                    }
                 });
-            }
-            else {
-                alert("Parolalar uyuşmuyor");
-            }
-        });
-
-        $("#GirisYap").click(function () {
-            var mail = $("#girismail").val();
-            var parola = $("#girisparola").val();
-            $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
-                if (sonuc == "+") {
-                    window.location = "/Profil/Index";
-                }
-                alert(sonuc);
+            });
+            //GİRİŞ YAP BİTİŞ
+            //ÇIKIŞ YAP BAŞLANGIÇ
+            $("#cikisyap").click(function () {
+                $.post("../Profil/Cikis", "", function (sonuc) {
+                    if (sonuc == "+") {
+                        window.location = "/Home/Index";
+                    }
+                });
+            });
+            //ÇIKIŞ YAP BİTİŞ
+            //MODALLAR
+            $("#mGiris").click(function () {
+                $("#modalKayıt").modal('close');
+                $("#modalGiris").modal('open');
+            });
+            $("#mKayit").click(function () {
+                $("#modalGiris").modal('close');
+                $("#modalKayıt").modal('open');
             });
         });
-
-        $("#cikisyap").click(function () {
-            $.post("../Profil/Cikis", "", function (sonuc) {
-                if (sonuc == "+") {
-                    window.location = "/Home/Index";
-                }
-                alert(sonuc);
-            });
-        });
-    });
     </script>
 </body>
 </html>
