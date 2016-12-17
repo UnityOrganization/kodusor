@@ -94,6 +94,8 @@
     <Content Include="Content\materialize.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\profil.png" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\materialize.min.js" />
     <Content Include="Service References\kodusorServis\kodusorClient.kodusorServis.kullaniciListesi.datasource">

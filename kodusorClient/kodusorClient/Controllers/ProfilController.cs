@@ -79,7 +79,14 @@ namespace kodusorClient.Controllers
                 return Json("-");
         }
 
-
+        public ActionResult ProfilGuncelle()
+        {
+            if (Session["kullaniciID"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
         public JsonResult Cikis()
         {

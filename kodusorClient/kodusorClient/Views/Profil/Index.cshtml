@@ -5,130 +5,155 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-<h2>Index</h2>
-
-<div>
-    <h4>Kullanicilar</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Adi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Adi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.DogumTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.DogumTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Hakkimda)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Hakkimda)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Mail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.ProfilFoto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.ProfilFoto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Soyadi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Soyadi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Github)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Github)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Linkedin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Linkedin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kullanici.Ceptel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kullanici.Ceptel)
-        </dd>
-    </dl>
-</div>
-
-<div>
-    <h4>sorularım</h4>
-    @foreach (var item in Model.SoruListesi)
-    {
-        <h6>@item.SoruID</h6><br />
-    }
-</div>
 <br />
-<div>
-    <h4>cevaplarım</h4>
-    @foreach (var item in Model.CevapListesi)
-    {
-        <h6>@item.CevapID</h6><br />
-    }
-</div><br />
-<div>
-    <h4>etiketlerim</h4>
-    @foreach (var item in Model.EtiketListesi)
-    {
-        <h6>@item.EtiketID</h6><br />
-    }
-</div><br />
-<div>
-    <h4>sorularım</h4>
-    @foreach (var item in Model.SoruListesi)
-    {
-        <h6>@item.SoruID</h6><br />
-    }
-</div><br />
-<div>
-    <h4>favori sorularım</h4>
-    @foreach (var item in Model.FavoriSorular)
-    {
-        <h6>@item.SoruID</h6><br />
-    }
-</div><br />
-<div>
-    <h4>favori cevaplarım</h4>
-    @foreach (var item in Model.FavoriCevaplar)
-    {
-        <h6>@item.CevapID</h6><br />
-    }
-</div><br />
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab col s12"><a class="active" href="#profil">Profil</a></li>
+            <li class="tab col s12"><a href="#sorular">Sorular</a></li>
+            <li class="tab col s12"><a href="#cevaplar">Cevaplar</a></li>
+            <li class="tab col s12"><a href="#favoriSorular">Favori Sorular</a></li>
+            <li class="tab col s12"><a href="#favoriCevaplar">Favori Cevaplar</a></li>
+        </ul>
+    </div>
+    <!--Profil-->
+    <div id="profil" class="col s12">
+
+        <div class="row">
+            <div class="col s12">
+
+                <div class="card horizontal blue-grey darken-2">
+                    <div class="card-image">
+                        <img src="~/Images/profil.png" />
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <span class="white-text">
+                                <b>Ad: </b>@Html.DisplayFor(model => model.Kullanici.Adi)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Soyad: </b>@Html.DisplayFor(model => model.Kullanici.Soyadi)
+                            </span><br />
+                            <span class="white-text">
+                                <b>E-Posta: </b>@Html.DisplayFor(model => model.Kullanici.Mail)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Doğum Tarihi: </b>@Html.DisplayFor(model => model.Kullanici.DogumTarihi)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Hakkımda: </b>@Html.DisplayFor(model => model.Kullanici.Hakkimda)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Telefon: </b>@Html.DisplayFor(model => model.Kullanici.Ceptel)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Github: </b>@Html.DisplayFor(model => model.Kullanici.Github)
+                            </span><br />
+                            <span class="white-text">
+                                <b>Linkedin: </b>@Html.DisplayFor(model => model.Kullanici.Linkedin)
+                            </span>
+                        </div>
+                        <div class="col s12 center-align valign">
+                            <a class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Profil Bilgilerini Güncelle</a>
+                            <a href="#modalParola" id="yeniParola" class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Parola Değiştir</a>
+                        </div>
+                        <div>&nbsp;</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Profil Bitiş-->
+    <!--Sorular-->
+    <div id="sorular" class="col s12">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            @foreach (var item in Model.SoruListesi)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">subject</i>@item.Baslik</div>
+                    <div class="collapsible-body"><p>@item.Icerik</p></div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--Sorular Bitiş-->
+    <!--Cevaplar-->
+    <div id="cevaplar" class="col s12">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            @foreach (var item in Model.CevapListesi)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">question_answer</i>soru baslik</div>
+                    <div class="collapsible-body"><p>@item.Cevap</p></div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--Cevaplar Bitiş-->
+    <!--Favori Sorular-->
+    <div id="favoriSorular" class="col s12">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            @foreach (var item in Model.FavoriSorular)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">star</i>@item.Baslik</div>
+                    <div class="collapsible-body"><p>@item.Icerik</p></div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--Favori Sorular Bitiş-->
+    <!--Favori Cevaplar-->
+    <div id="favoriCevaplar" class="col s12">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            @foreach (var item in Model.FavoriCevaplar)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">stars</i>Soru Baslik</div>
+                    <div class="collapsible-body"><p>@item.Cevap</p></div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!--Favori Cevaplar Bitiş-->
+</div>
+<!-- Parola Değiştir Modal -->
+<div id="modalParola" class="modal">
+    <div class="modal-content">
+        <h5>Parola Değiştir</h5>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="girisparola" type="password" class="validate" value="" />
+                        <label for="icon_prefix">Eski Parola</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="girisparola" type="password" class="validate" value="" />
+                        <label for="icon_prefix">Yeni Parola</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="girisparola" type="password" class="validate" value="" />
+                        <label for="icon_prefix">Yeni Parola Doğrula</label>
+                    </div>
+                </div>
+            </form>
+            <div class="center-align">
+                <button id="ParolaDegistir" class="waves-effect light-green darken-1 btn">Parola Değiştir</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Parola Değiştir Modal Bitiş -->
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>

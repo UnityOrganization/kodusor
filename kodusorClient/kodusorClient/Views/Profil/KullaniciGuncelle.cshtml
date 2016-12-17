@@ -7,68 +7,53 @@
 
 <h2>KullaniciGuncelle</h2>
 
-<div class="form-horizontal">
-    <h4>Kullanicilar</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Adi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Adi, new { htmlAttributes = new { @class = "form-control" } })
+<form class="col s12">
+    <div class="row">
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="kAdi" type="text" class="validate" value="@Model.Adi" />
+            <label for="icon_prefix">Adınız</label>
+        </div>
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="kSoyadi" type="text" class="validate" value="@Model.Soyadi" />
+            <label for="icon_prefix">Soyadınız</label>
+        </div>
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">email</i>
+            <input id="kMail" type="text" class="validate" value="@Model.Mail" />
+            <label for="icon_prefix">E-posta</label>
+        </div>
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">av_timer</i>
+            <input id="kDogumTarihi" type="text" class="validate" placeholder="YYYY/MM/DD" value="@Model.DogumTarihi" />
+            <label for="icon_prefix">Doğum Tarihi</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <textarea id="icon_prefix" class="materialize-textarea">@Model.Hakkimda</textarea>
+            <label for="icon_prefix">Hakkımda(Opsiyonel)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">phone</i>
+            <input id="kCepTel" type="tel" class="validate" value="@Model.Ceptel">
+            <label for="icon_telephone">Telefon(Opsiyonel)</label>
+        </div>
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <input id="kGithub" type="text" class="validate" value="@Model.Github">
+            <label for="icon_telephone">Github(Opsiyonel)</label>
+        </div>
+        <div class="input-field col m6 s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <input id="kLinkedin" type="text" class="validate" value="@Model.Linkedin">
+            <label for="icon_telephone">Linkedin(Opsiyonel)</label>
+        </div>
+        <div class="center-align">
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">mode_edit</i>Düzenle</a>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Ceptel, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Ceptel, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DogumTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.DogumTarihi, new { htmlAttributes = new { @class = "form-control" } })*@
-            <input type="text" class="form-control" value="@Model.DogumTarihi.ToShortDateString()" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Github, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Github, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Hakkimda, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Hakkimda, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Linkedin, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Linkedin, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Soyadi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Soyadi, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <button id="Guncelle">Kaydet</button>
-</div>
+</form>
 
 <script>
     $(function () {
