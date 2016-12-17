@@ -70,7 +70,7 @@
           <Property Name="SoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Baslik" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Icerik" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tarih" Type="date" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
           <Property Name="BegeniSayisi" Type="int" />
           <Property Name="KullaniciID" Type="int" Nullable="false" />
           <Property Name="OnayCevapID" Type="int" />
@@ -357,7 +357,7 @@
           <Property Name="SoruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BegeniSayisi" Type="Int32" />
           <Property Name="KullaniciID" Type="Int32" Nullable="false" />
           <Property Name="OnayCevapID" Type="Int32" />

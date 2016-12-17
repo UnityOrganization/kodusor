@@ -40,14 +40,14 @@ namespace kodusorClient.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public JsonResult SoruyuKaydet(Sorular soru, ICollection<Etiketler> etiketler)
+        public JsonResult SoruyuKaydet(Sorular soru, List<Etiketler> etiketler)
         {
             servis = new KodusorServisClient();
             int kulID = Convert.ToInt32(Session["kullaniciID"]);
-            //if (servis.SoruEkle(kulID, soru, etiketler.ToArray()))
-            //   return Json("+");
-            //else
-            return Json("-");
+            if (servis.SoruEkle(kulID, soru, etiketler.ToArray()))
+                return Json("+");
+            else
+                return Json("-");
         }
 
         //public ActionResult SoruyuKaydet(Sorular soru, List<Etiketler> etiketler)

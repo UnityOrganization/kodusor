@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c0e5a875c76d4a3aa7cb9dd42616cf6f" Name="Diagram1">
+      <Diagram DiagramId="317dea131a8e43feb684e65dc1088647" Name="Diagram1">
         <EntityTypeShape EntityType="kodusorDBModel.Cevaplar" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="kodusorDBModel.Etiketler" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="kodusorDBModel.FavoriCevaplar" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
@@ -14,14 +14,7 @@
         <EntityTypeShape EntityType="kodusorDBModel.Sorular" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="kodusorDBModel.Yorum" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Kullanicilar" ManuallyRouted="false" />
-        <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Sorular" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="12.126152846153847" />
-          <ConnectorPoint PointX="4.875" PointY="11.751152846153847" />
-          <ConnectorPoint PointX="4.875" PointY="12.067946465945514" />
-          <ConnectorPoint PointX="5.0035744349011209" PointY="11.939372031044391" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="11.821520900846634" />
-          <ConnectorPoint PointX="5.2511528461538459" PointY="11.691793619791667" />
-        </AssociationConnector>
+        <AssociationConnector Association="kodusorDBModel.FK_Cevaplar_Sorular" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_FavoriCevaplar_Cevaplar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_Yorum_Cevaplar" ManuallyRouted="false" />
         <AssociationConnector Association="kodusorDBModel.FK_SoruEtiket_Etiketler" ManuallyRouted="false" />

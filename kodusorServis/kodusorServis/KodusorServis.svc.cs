@@ -55,7 +55,7 @@ namespace kodusorServis
                 if (id == 0)
                     soruListesi = db.Sorular.OrderByDescending(s => s.Tarih);
                 else
-                    soruListesi = db.Sorular.Where(s => s.KullaniciID == id).OrderByDescending(s => s.Tarih);
+                    soruListesi = db.Sorular.OrderByDescending(s => s.Tarih).Where(s => s.KullaniciID == id);
 
                 foreach (var item in soruListesi)
                 {
@@ -257,18 +257,19 @@ namespace kodusorServis
             {
                 using (kodusorDBEntities db = new kodusorDBEntities())
                 {
-                    var kul = (from k in db.Kullanicilar
-                               where k.KullaniciID == soru.KullaniciID
-                               select k).FirstOrDefault();
-                    
                     NesneDuzenle.EtiketEkle(etiketler);
                     soru.KullaniciID = kullaniciID;
                     soru.Tarih = DateTime.Now;
                     soru.BegeniSayisi = 0;
 
                     db.Sorular.Add(soru);
-                    kul.Sorular.Add(soru);
                     db.SaveChanges();
+
+                    var kul = (from k in db.Kullanicilar
+                               where k.KullaniciID == soru.KullaniciID
+                               select k).FirstOrDefault();
+                    kul.Sorular.Add(soru);
+                    
                     SoruEtiket se;
                     foreach (var item in etiketler)
                     {

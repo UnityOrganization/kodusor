@@ -46,19 +46,25 @@
                 Icerik: $(".icerik").val()
                 
             };
-            var etiket = [];
+            var etiketler = [];
             $(".chip").each(function () {
-                etiket.push($(this).text().slice(0, -5));
+                etiketler.push({ EtiketAdi: $(this).text().slice(0, -5) });
             });
-            console.log(etiket);
+            console.log(etiketler);
             console.log(soru);
-
-            $.post("/Profil/SoruyuKaydet", { soru: soru, etiketler: etiket }, function (sonuc) {
-                if (sonuc == "+")
-                    alert("Kayıt başarılı");
-                else
-                    alert("Veritabanı bağlantı hatası");
-            });
+            if (etiketler[0] != null) {
+                $.post("/Profil/SoruyuKaydet", { soru: soru, etiketler: etiketler }, function (sonuc) {
+                    if (sonuc == "+")
+                        window.location = "/Profil/Index";
+                    else
+                        alert("Veritabanı bağlantı hatası");
+                });
+            }
+            else
+            {
+                alert("etiketleri boş geçmeyin!");
+            }
+            
         });
     });
 </script>
