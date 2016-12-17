@@ -84,7 +84,10 @@ namespace kodusorServis
             {
                 yorumlar.Add(YorumOlustur(item));
             }
-            
+            SoruListesi sorum = new SoruListesi()
+            {
+                Baslik = cevap.Sorular.Baslik
+            };
             Cevap = new CevapListesi()
             {
                 CevapID = cevap.CevapID,
@@ -93,7 +96,8 @@ namespace kodusorServis
                 Cevap = cevap.Cevap,
                 BegeniSayisi = Convert.ToInt32(cevap.BegeniSayisi),
                 Tarih = Convert.ToDateTime(cevap.Tarih),
-                YorumListesi = yorumlar
+                YorumListesi = yorumlar,
+                Sorular = sorum
             };
             return Cevap;
         }

@@ -86,7 +86,7 @@
             @foreach (var item in Model.CevapListesi)
             {
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">question_answer</i>soru baslik</div>
+                    <div class="collapsible-header"><i class="material-icons">question_answer</i>@item.Sorular.Baslik soru baslik</div>
                     <div class="collapsible-body"><p>@item.Cevap</p></div>
                 </li>
             }
@@ -112,7 +112,7 @@
             @foreach (var item in Model.FavoriCevaplar)
             {
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">stars</i>Soru Baslik</div>
+                    <div class="collapsible-header"><i class="material-icons">stars</i>@item.Sorular.Baslik Soru Baslik</div>
                     <div class="collapsible-body"><p>@item.Cevap</p></div>
                 </li>
             }
@@ -129,17 +129,17 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock</i>
-                        <input id="girisparola" type="password" class="validate" value="" />
+                        <input id="eskiParola" type="password" class="validate" value="" />
                         <label for="icon_prefix">Eski Parola</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock</i>
-                        <input id="girisparola" type="password" class="validate" value="" />
+                        <input id="yeniParolatxt" type="password" class="validate" value="" />
                         <label for="icon_prefix">Yeni Parola</label>
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock</i>
-                        <input id="girisparola" type="password" class="validate" value="" />
+                        <input id="yeniParolaT" type="password" class="validate" value="" />
                         <label for="icon_prefix">Yeni Parola Doğrula</label>
                     </div>
                 </div>
@@ -155,5 +155,31 @@
 <script>
     $(document).ready(function () {
         $('.collapsible').collapsible();
+    });
+</script>
+<script>
+    $(function () {
+        $("#ParolaDegistir").click(function () {
+            var eskiP = $("#eskiParola").val();
+            var yeniP = $("#yeniParolatxt").val();
+            var yeniPT = $("#yeniParolaT").val();
+            console.log(eskiP);
+            console.log(yeniP);
+            console.log(yeniPT);
+            if (eskiP != null && yeniP != null && yeniPT != null) {
+                if (yeniP == yeniPT) {
+                    $.post("/Profil/ParolaGuncelle", { eskiParola: eskiP, yeniParola: yeniP }, function (sonuc) {
+                        if (sonuc == "+")
+                            window.location = "/Profil/Index";
+                        else
+                            alert("Veritabanı bağlantı hatası");
+                    });
+                }
+                else
+                    alert("Parolalar uyuşmuyor");
+            }
+            else
+                alert("Boş alan bırakmayın!");
+        });
     });
 </script>

@@ -50,14 +50,6 @@ namespace kodusorClient.Controllers
                 return Json("-");
         }
 
-        //public ActionResult SoruyuKaydet(Sorular soru, List<Etiketler> etiketler)
-        //{
-        //    servis = new KodusorServisClient();
-        //    int kulID = Convert.ToInt32(Session["kullaniciID"]);
-        //    servis.SoruEkle(kulID, soru, etiketler.ToArray());
-        //    return RedirectToAction("Index", "Profil");
-        //}
-
         public ActionResult KullaniciGuncelle()
         {
             if (Session["kullaniciID"] != null)
@@ -86,6 +78,22 @@ namespace kodusorClient.Controllers
                 return View();
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        public JsonResult ParolaGuncelle(string eskiParola, string yeniParola)
+        {
+            servis = new KodusorServisClient();
+            int kulID = Convert.ToInt32(Session["kullaniciID"]);
+            var kul = servis.KullaniciBilgileriniGetir(kulID);
+            if(kul.Parola == eskiParola)
+            {
+                if (servis.ParolaDegistir(kulID, yeniParola))
+                    return Json("+");
+                else
+                    return Json("-");
+            }
+            else
+                return Json("-");
         }
 
         public JsonResult Cikis()
