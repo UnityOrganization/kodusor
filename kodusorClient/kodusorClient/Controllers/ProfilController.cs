@@ -49,37 +49,7 @@ namespace kodusorClient.Controllers
             else
                 return Json("-");
         }
-
-        public ActionResult KullaniciGuncelle()
-        {
-            if (Session["kullaniciID"] != null)
-            {
-                servis = new KodusorServisClient();
-                int kulID = Convert.ToInt32(Session["kullaniciID"]);
-                var kullanici = servis.KullaniciBilgileriniGetir(kulID);
-                return View(kullanici);
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
-        public JsonResult BilgileriGuncelle(Kullanicilar kullanici)
-        {
-            servis = new KodusorServisClient();
-            if (servis.KullaniciBilgileriGuncelle(kullanici))
-                return Json("+");
-            else
-                return Json("-");
-        }
-
-        public ActionResult ProfilGuncelle()
-        {
-            if (Session["kullaniciID"] != null)
-            {
-                return View();
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
+        
         public JsonResult ParolaGuncelle(string eskiParola, string yeniParola)
         {
             servis = new KodusorServisClient();

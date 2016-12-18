@@ -1650,6 +1650,9 @@ namespace kodusorClient.kodusorServis {
         private int CevapIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private kodusorClient.kodusorServis.kullaniciListesi KullaniciField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int KullaniciIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1709,6 +1712,19 @@ namespace kodusorClient.kodusorServis {
                 if ((this.CevapIDField.Equals(value) != true)) {
                     this.CevapIDField = value;
                     this.RaisePropertyChanged("CevapID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public kodusorClient.kodusorServis.kullaniciListesi Kullanici {
+            get {
+                return this.KullaniciField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KullaniciField, value) != true)) {
+                    this.KullaniciField = value;
+                    this.RaisePropertyChanged("Kullanici");
                 }
             }
         }
@@ -1859,6 +1875,9 @@ namespace kodusorClient.kodusorServis {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private kodusorClient.kodusorServis.kullaniciListesi KullaniciField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime TarihField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1874,6 +1893,19 @@ namespace kodusorClient.kodusorServis {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public kodusorClient.kodusorServis.kullaniciListesi Kullanici {
+            get {
+                return this.KullaniciField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KullaniciField, value) != true)) {
+                    this.KullaniciField = value;
+                    this.RaisePropertyChanged("Kullanici");
+                }
             }
         }
         
@@ -1930,12 +1962,6 @@ namespace kodusorClient.kodusorServis {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="kodusorServis.IKodusorServis")]
     public interface IKodusorServis {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/GetData", ReplyAction="http://tempuri.org/IKodusorServis/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/GetData", ReplyAction="http://tempuri.org/IKodusorServis/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KayitOl", ReplyAction="http://tempuri.org/IKodusorServis/KayitOlResponse")]
         string KayitOl(kodusorClient.kodusorServis.Kullanicilar kullanici);
         
@@ -1978,12 +2004,6 @@ namespace kodusorClient.kodusorServis {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullanicininEtiketleri", ReplyAction="http://tempuri.org/IKodusorServis/KullanicininEtiketleriResponse")]
         System.Threading.Tasks.Task<kodusorClient.kodusorServis.EtiketListesi[]> KullanicininEtiketleriAsync(int kullaniciID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle", ReplyAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse")]
-        bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle", ReplyAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse")]
-        System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/ParolaDegistir", ReplyAction="http://tempuri.org/IKodusorServis/ParolaDegistirResponse")]
         bool ParolaDegistir(int kullaniciID, string parola);
         
@@ -2001,12 +2021,6 @@ namespace kodusorClient.kodusorServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruEkle", ReplyAction="http://tempuri.org/IKodusorServis/SoruEkleResponse")]
         System.Threading.Tasks.Task<bool> SoruEkleAsync(int kullaniciID, kodusorClient.kodusorServis.Sorular soru, kodusorClient.kodusorServis.Etiketler[] etiketler);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruSil", ReplyAction="http://tempuri.org/IKodusorServis/SoruSilResponse")]
-        bool SoruSil(int kullaniciID, int soruID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruSil", ReplyAction="http://tempuri.org/IKodusorServis/SoruSilResponse")]
-        System.Threading.Tasks.Task<bool> SoruSilAsync(int kullaniciID, int soruID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/CevapEkle", ReplyAction="http://tempuri.org/IKodusorServis/CevapEkleResponse")]
         bool CevapEkle(kodusorClient.kodusorServis.Cevaplar cevap);
@@ -2043,12 +2057,6 @@ namespace kodusorClient.kodusorServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruGetir", ReplyAction="http://tempuri.org/IKodusorServis/SoruGetirResponse")]
         System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi> SoruGetirAsync(int soruID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullanicilariListele", ReplyAction="http://tempuri.org/IKodusorServis/KullanicilariListeleResponse")]
-        kodusorClient.kodusorServis.kullaniciListesi[] KullanicilariListele();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/KullanicilariListele", ReplyAction="http://tempuri.org/IKodusorServis/KullanicilariListeleResponse")]
-        System.Threading.Tasks.Task<kodusorClient.kodusorServis.kullaniciListesi[]> KullanicilariListeleAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2076,14 +2084,6 @@ namespace kodusorClient.kodusorServis {
         
         public KodusorServisClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
         }
         
         public string KayitOl(kodusorClient.kodusorServis.Kullanicilar kullanici) {
@@ -2142,14 +2142,6 @@ namespace kodusorClient.kodusorServis {
             return base.Channel.KullanicininEtiketleriAsync(kullaniciID);
         }
         
-        public bool KullaniciBilgileriGuncelle(kodusorClient.kodusorServis.Kullanicilar kullanici) {
-            return base.Channel.KullaniciBilgileriGuncelle(kullanici);
-        }
-        
-        public System.Threading.Tasks.Task<bool> KullaniciBilgileriGuncelleAsync(kodusorClient.kodusorServis.Kullanicilar kullanici) {
-            return base.Channel.KullaniciBilgileriGuncelleAsync(kullanici);
-        }
-        
         public bool ParolaDegistir(int kullaniciID, string parola) {
             return base.Channel.ParolaDegistir(kullaniciID, parola);
         }
@@ -2172,14 +2164,6 @@ namespace kodusorClient.kodusorServis {
         
         public System.Threading.Tasks.Task<bool> SoruEkleAsync(int kullaniciID, kodusorClient.kodusorServis.Sorular soru, kodusorClient.kodusorServis.Etiketler[] etiketler) {
             return base.Channel.SoruEkleAsync(kullaniciID, soru, etiketler);
-        }
-        
-        public bool SoruSil(int kullaniciID, int soruID) {
-            return base.Channel.SoruSil(kullaniciID, soruID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> SoruSilAsync(int kullaniciID, int soruID) {
-            return base.Channel.SoruSilAsync(kullaniciID, soruID);
         }
         
         public bool CevapEkle(kodusorClient.kodusorServis.Cevaplar cevap) {
@@ -2228,14 +2212,6 @@ namespace kodusorClient.kodusorServis {
         
         public System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi> SoruGetirAsync(int soruID) {
             return base.Channel.SoruGetirAsync(soruID);
-        }
-        
-        public kodusorClient.kodusorServis.kullaniciListesi[] KullanicilariListele() {
-            return base.Channel.KullanicilariListele();
-        }
-        
-        public System.Threading.Tasks.Task<kodusorClient.kodusorServis.kullaniciListesi[]> KullanicilariListeleAsync() {
-            return base.Channel.KullanicilariListeleAsync();
         }
     }
 }

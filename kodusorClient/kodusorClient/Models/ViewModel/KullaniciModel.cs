@@ -14,5 +14,6 @@ namespace kodusorClient.ViewModel
         public List<EtiketListesi> EtiketListesi { get; set; }
         public List<SoruListesi> FavoriSorular { get; set; }
         public List<CevapListesi> FavoriCevaplar { get; set; }
+        public SoruListesi Soru { get; set; }
     }
 }

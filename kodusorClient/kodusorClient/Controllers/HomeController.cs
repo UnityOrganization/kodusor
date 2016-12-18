@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kodusorClient.kodusorServis;
+using kodusorClient.ViewModel;
 
 namespace kodusorClient.Controllers
 {
     public class HomeController : Controller
     {
         KodusorServisClient servis;
-
+        KullaniciModel kullaniciModeli;
         // GET: Home
         public ActionResult Index()
         {
@@ -46,11 +47,33 @@ namespace kodusorClient.Controllers
 
 
 
-        public ActionResult Soru(int? id)
+        public ActionResult Soru(int id)
         {
-            return View(id);
+            kullaniciModeli = new KullaniciModel();
+            servis = new KodusorServisClient();
+            
+            kullaniciModeli.Soru = servis.SoruGetir(id);
+            if (Session["kullaniciID"] != null)
+            {
+                int kulID = Convert.ToInt32(Session["kullaniciID"]);
+                kullaniciModeli.Kullanici = servis.KullaniciBilgileriniGetir(kulID);
+            }
+            return View(kullaniciModeli);
         }
-
-
+        //[HttpPost]
+        //public ActionResult FavoriEkle(int? id)
+        //{
+        //    servis = new KodusorServisClient();
+        //    int kulID = Convert.ToInt32(Session["kullaniciID"]);
+        //    FavoriCevaplar favoriCevap = new FavoriCevaplar()
+        //    {
+        //        KullaniciID = kulID,
+        //        CevapID = (int)id
+        //    };
+        //    servis.CevabiFavoriyeEkle(favoriCevap);
+        //    var sonuc = servis.CevabiFavoriyeEkle(favoriCevap);
+        //    return RedirectToAction("Index", "Home");
+        //    //return Json("");
+        //}
     }
 }

@@ -1,9 +1,55 @@
-﻿@Model
+﻿@model kodusorClient.ViewModel.KullaniciModel
 @{
     ViewBag.Title = "Soru";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-<h2>Soru - @Model</h2>
+@*soru bilgileri*@
+<h4>Başlık - @Model.Soru.Baslik</h4><br />
+<p>İçerik - @Model.Soru.Icerik</p><br />
+<span>@Model.Soru.Tarih</span><br />
+<span>@Model.Soru.Kullanici.Adi</span><br />
+<span>@Model.Soru.BegeniSayisi</span><br /><br />
+
+@*cevaplar*@
+@foreach (var item in Model.Soru.Cevaplar)
+{
+    //if (Session["kullaniciID"] != null)
+    //{
+        <!--<a onclick="CevabiFavoriyeEkle(@/*item.CevapID*/)"><i class="material-icons">star</i></a>-->
+        @/*Html.ActionLink("FavoriEkle", "FavoriEkle", "Home" ,new { id = "2" })*/
+    //}
+    <h1>cevaplar</h1>
+    <p>@item.Cevap</p><br />
+    <span>@item.Tarih</span><br />
+    <span>@item.Kullanici.Adi @item.Kullanici.Soyadi</span><br />
+    <span>@item.BegeniSayisi</span><br /><br />
+
+
+    foreach (var yorum in item.YorumListesi)
+    {
+        <h1>yorumlar</h1><br />
+        <p>@yorum.Yorum</p><br />
+        <span>@yorum.Tarih</span><br />
+        <span>@yorum.Kullanici.Adi @yorum.Kullanici.Soyadi</span><br /><br />
+    }
+}
+
+<script>
+   
+    //function CevabiFavoriyeEkle(cevapID) {
+    //    var data = {
+    //        cevapID : cevapID
+    //    };
+        
+    //    console.log(data);
+    //    $.post("/Home/FavoriEkle", data ,function(sonuc){
+    //        console(sonuc);
+    //    });
+
+    //}
+  
+</script>
+
 
 

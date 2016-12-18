@@ -13,10 +13,6 @@ namespace kodusorServis
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IKodusorServis
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
         //
         public string KayitOl(Kullanicilar kullanici)
         {
@@ -63,30 +59,6 @@ namespace kodusorServis
                 }
             }
             return sorular;
-        }
-
-        public List<kullaniciListesi> KullanicilariListele()
-        {
-
-            kodusorDBEntities db = new kodusorDBEntities();
-            List<kullaniciListesi> kul = new List<kullaniciListesi>();
-            var zxc = db.Kullanicilar;
-            foreach (var item in zxc)
-            {
-                kullaniciListesi k = new kullaniciListesi()
-                {
-                    Adi = item.Adi,
-                    Soyadi = item.Soyadi,
-                    DogumTarihi = Convert.ToDateTime(item.DogumTarihi),
-                    Mail = item.Mail,
-                    Parola = item.Parola,
-                    ProfilFoto = item.ProfilFoto,
-                    Hakkimda = item.Hakkimda
-                };
-
-                kul.Add(k);
-            }
-            return kul;
         }
         //
         public int GirisYap(string mail, string parola)
@@ -186,35 +158,6 @@ namespace kodusorServis
             return etiketler;
         }
 
-        public bool KullaniciBilgileriGuncelle(Kullanicilar kullanici)
-        {
-            try
-            {
-                using (kodusorDBEntities db = new kodusorDBEntities())
-                {
-                    var kul = (from k in db.Kullanicilar
-                               where k.KullaniciID == kullanici.KullaniciID
-                               select k).SingleOrDefault();
-
-                    kul.Adi = kullanici.Adi;
-                    kul.Soyadi = kullanici.Soyadi;
-                    kul.Hakkimda = kullanici.Hakkimda;
-                    kul.Mail = kullanici.Mail;
-                    kul.DogumTarihi = kullanici.DogumTarihi;
-                    kul.CepTel = kullanici.CepTel;
-                    kul.Github = kullanici.Github;
-                    kul.Linkedin = kullanici.Linkedin;
-                                        
-                    db.SaveChanges();
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         public bool ParolaDegistir(int kullaniciID, string parola)
         {
             try
@@ -295,48 +238,7 @@ namespace kodusorServis
                 return false;
             }
         }
-
-        public bool SoruSil(int kullaniciID, int soruID)
-        {
-            try
-            {
-                using (kodusorDBEntities db = new kodusorDBEntities())
-                {
-                    var kul = (from k in db.Kullanicilar
-                               where k.KullaniciID == kullaniciID
-                               select k).FirstOrDefault();
-
-                    var soru = (from s in db.Sorular
-                                where s.SoruID == soruID
-                                select s).FirstOrDefault();
-
-                    kul.Sorular.Remove(soru);
-                    foreach (var item in db.Cevaplar)
-                    {
-                        if (item.SoruID == soruID)
-                            db.Cevaplar.Remove(item);
-                    }
-                    foreach (var item in db.SoruEtiket)
-                    {
-                        if (item.SoruID == soruID)
-                            db.SoruEtiket.Remove(item);
-                    }
-                    foreach (var item in db.FavoriSorular)
-                    {
-                        if (item.SoruID == soruID)
-                            db.FavoriSorular.Remove(item);
-                    }
-                    db.Sorular.Remove(soru);
-                    db.SaveChanges();
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
+        
         public bool CevapEkle(Cevaplar cevap)
         {
             try

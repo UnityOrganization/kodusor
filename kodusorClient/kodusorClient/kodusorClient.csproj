@@ -155,7 +155,6 @@
     <Content Include="Views\Home\Soru.cshtml" />
     <Content Include="Views\Profil\SoruSor.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
-    <Content Include="Views\Profil\KullaniciGuncelle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

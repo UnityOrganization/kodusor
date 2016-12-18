@@ -8,12 +8,6 @@
       <xsd:import schemaLocation="http://servis.kodusor.com/KodusorServis.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/kodusorServis" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IKodusorServis_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
-  </wsdl:message>
-  <wsdl:message name="IKodusorServis_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
-  </wsdl:message>
   <wsdl:message name="IKodusorServis_KayitOl_InputMessage">
     <wsdl:part name="parameters" element="tns:KayitOl" />
   </wsdl:message>
@@ -56,12 +50,6 @@
   <wsdl:message name="IKodusorServis_KullanicininEtiketleri_OutputMessage">
     <wsdl:part name="parameters" element="tns:KullanicininEtiketleriResponse" />
   </wsdl:message>
-  <wsdl:message name="IKodusorServis_KullaniciBilgileriGuncelle_InputMessage">
-    <wsdl:part name="parameters" element="tns:KullaniciBilgileriGuncelle" />
-  </wsdl:message>
-  <wsdl:message name="IKodusorServis_KullaniciBilgileriGuncelle_OutputMessage">
-    <wsdl:part name="parameters" element="tns:KullaniciBilgileriGuncelleResponse" />
-  </wsdl:message>
   <wsdl:message name="IKodusorServis_ParolaDegistir_InputMessage">
     <wsdl:part name="parameters" element="tns:ParolaDegistir" />
   </wsdl:message>
@@ -79,12 +67,6 @@
   </wsdl:message>
   <wsdl:message name="IKodusorServis_SoruEkle_OutputMessage">
     <wsdl:part name="parameters" element="tns:SoruEkleResponse" />
-  </wsdl:message>
-  <wsdl:message name="IKodusorServis_SoruSil_InputMessage">
-    <wsdl:part name="parameters" element="tns:SoruSil" />
-  </wsdl:message>
-  <wsdl:message name="IKodusorServis_SoruSil_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SoruSilResponse" />
   </wsdl:message>
   <wsdl:message name="IKodusorServis_CevapEkle_InputMessage">
     <wsdl:part name="parameters" element="tns:CevapEkle" />
@@ -122,17 +104,7 @@
   <wsdl:message name="IKodusorServis_SoruGetir_OutputMessage">
     <wsdl:part name="parameters" element="tns:SoruGetirResponse" />
   </wsdl:message>
-  <wsdl:message name="IKodusorServis_KullanicilariListele_InputMessage">
-    <wsdl:part name="parameters" element="tns:KullanicilariListele" />
-  </wsdl:message>
-  <wsdl:message name="IKodusorServis_KullanicilariListele_OutputMessage">
-    <wsdl:part name="parameters" element="tns:KullanicilariListeleResponse" />
-  </wsdl:message>
   <wsdl:portType name="IKodusorServis">
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/GetData" message="tns:IKodusorServis_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/GetDataResponse" message="tns:IKodusorServis_GetData_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="KayitOl">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KayitOl" message="tns:IKodusorServis_KayitOl_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KayitOlResponse" message="tns:IKodusorServis_KayitOl_OutputMessage" />
@@ -161,10 +133,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullanicininEtiketleri" message="tns:IKodusorServis_KullanicininEtiketleri_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullanicininEtiketleriResponse" message="tns:IKodusorServis_KullanicininEtiketleri_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="KullaniciBilgileriGuncelle">
-      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle" message="tns:IKodusorServis_KullaniciBilgileriGuncelle_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelleResponse" message="tns:IKodusorServis_KullaniciBilgileriGuncelle_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ParolaDegistir">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/ParolaDegistir" message="tns:IKodusorServis_ParolaDegistir_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/ParolaDegistirResponse" message="tns:IKodusorServis_ParolaDegistir_OutputMessage" />
@@ -176,10 +144,6 @@
     <wsdl:operation name="SoruEkle">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruEkle" message="tns:IKodusorServis_SoruEkle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruEkleResponse" message="tns:IKodusorServis_SoruEkle_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SoruSil">
-      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruSil" message="tns:IKodusorServis_SoruSil_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruSilResponse" message="tns:IKodusorServis_SoruSil_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CevapEkle">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevapEkle" message="tns:IKodusorServis_CevapEkle_InputMessage" />
@@ -205,22 +169,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetir" message="tns:IKodusorServis_SoruGetir_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetirResponse" message="tns:IKodusorServis_SoruGetir_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="KullanicilariListele">
-      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KullanicilariListele" message="tns:IKodusorServis_KullanicilariListele_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/KullanicilariListeleResponse" message="tns:IKodusorServis_KullanicilariListele_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IKodusorServis" type="tns:IKodusorServis">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IKodusorServis/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="KayitOl">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/KayitOl" style="document" />
       <wsdl:input>
@@ -284,15 +235,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="KullaniciBilgileriGuncelle">
-      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullaniciBilgileriGuncelle" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ParolaDegistir">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/ParolaDegistir" style="document" />
       <wsdl:input>
@@ -313,15 +255,6 @@
     </wsdl:operation>
     <wsdl:operation name="SoruEkle">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruEkle" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SoruSil">
-      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruSil" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -376,15 +309,6 @@
     </wsdl:operation>
     <wsdl:operation name="SoruGetir">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruGetir" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="KullanicilariListele">
-      <soap:operation soapAction="http://tempuri.org/IKodusorServis/KullanicilariListele" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

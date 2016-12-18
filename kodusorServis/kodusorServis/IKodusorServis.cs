@@ -13,11 +13,6 @@ namespace kodusorServis
     [ServiceContract]
     public interface IKodusorServis
     {
-
-        [OperationContract]
-        string GetData(int value);
-
-
         // TODO: Add your service operations here
         [OperationContract]
         string KayitOl(Kullanicilar kullanici);
@@ -41,9 +36,6 @@ namespace kodusorServis
         List<EtiketListesi> KullanicininEtiketleri(int kullaniciID);
 
         [OperationContract]
-        bool KullaniciBilgileriGuncelle(Kullanicilar kullanici);
-
-        [OperationContract]
         bool ParolaDegistir(int kullaniciID, string parola);
 
         [OperationContract]
@@ -51,9 +43,6 @@ namespace kodusorServis
 
         [OperationContract]
         bool SoruEkle(int kullaniciID, Sorular soru, List<Etiketler> etiketler);
-
-        [OperationContract]
-        bool SoruSil(int kullaniciID, int soruID);
 
         [OperationContract]
         bool CevapEkle(Cevaplar cevap);
@@ -72,10 +61,6 @@ namespace kodusorServis
 
         [OperationContract]
         SoruListesi SoruGetir(int soruID);
-
-
-        [OperationContract]
-        List<kullaniciListesi> KullanicilariListele();
     }
 
 
@@ -340,6 +325,15 @@ namespace kodusorServis
             get { return yorumListesi; }
             set { yorumListesi = value; }
         }
+
+        private kullaniciListesi kullanici;
+        [DataMember]
+        public kullaniciListesi Kullanici
+        {
+            get { return kullanici; }
+            set { kullanici = value; }
+        }
+
     }
 
     //Kontrol edildi
@@ -370,6 +364,13 @@ namespace kodusorServis
             set { tarih = value; }
         }
 
+        private kullaniciListesi kullanici;
+        [DataMember]
+        public kullaniciListesi Kullanici
+        {
+            get { return kullanici; }
+            set { kullanici = value; }
+        }
 
     }
 }

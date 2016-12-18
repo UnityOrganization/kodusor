@@ -97,7 +97,8 @@ namespace kodusorServis
                 BegeniSayisi = Convert.ToInt32(cevap.BegeniSayisi),
                 Tarih = Convert.ToDateTime(cevap.Tarih),
                 YorumListesi = yorumlar,
-                Sorular = sorum
+                Sorular = sorum,
+                Kullanici = KullaniciOlustur(cevap.Kullanicilar)
             };
             return Cevap;
         }
@@ -132,6 +133,7 @@ namespace kodusorServis
                 Yorum = y.Yorum1,
                 Tarih = y.Tarih,
                 YorumID = y.YorumID,
+                Kullanici = KullaniciOlustur(y.Kullanicilar)
             };
             return yorum;
         }

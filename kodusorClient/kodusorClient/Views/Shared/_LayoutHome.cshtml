@@ -161,9 +161,12 @@
                         Mail: $("#mail").val(),
                         Parola: $("#parola").val()
                     };
-                    $.post("../Home/kayit", kullanici, function (sonuc) {
+                    $.post("/Home/kayit", kullanici, function (sonuc) {
                         if (sonuc == "+")
-                            alert("Kayıt başarılı");
+                        {
+                            $("#modalKayıt").modal('close');
+                            $("#modalGiris").modal('open');
+                        }
                         else if (sonuc == "-")
                             alert("Mail adresi zaten kayıtlı");
                         else
@@ -179,7 +182,7 @@
             $("#GirisYap").click(function () {
                 var mail = $("#girismail").val();
                 var parola = $("#girisparola").val();
-                $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
+                $.post("/Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
                     if (sonuc == "+") {
                         window.location = "/Profil/Index";
                     }
@@ -188,7 +191,7 @@
             //GİRİŞ YAP BİTİŞ
             //ÇIKIŞ YAP BAŞLANGIÇ
             $("#cikisyap").click(function () {
-                $.post("../Profil/Cikis", "", function (sonuc) {
+                $.post("/Profil/Cikis", "", function (sonuc) {
                     if (sonuc == "+") {
                         window.location = "/Home/Index";
                     }
