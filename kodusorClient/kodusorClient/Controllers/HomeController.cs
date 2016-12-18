@@ -60,20 +60,35 @@ namespace kodusorClient.Controllers
             }
             return View(kullaniciModeli);
         }
-        //[HttpPost]
-        //public ActionResult FavoriEkle(int? id)
-        //{
-        //    servis = new KodusorServisClient();
-        //    int kulID = Convert.ToInt32(Session["kullaniciID"]);
-        //    FavoriCevaplar favoriCevap = new FavoriCevaplar()
-        //    {
-        //        KullaniciID = kulID,
-        //        CevapID = (int)id
-        //    };
-        //    servis.CevabiFavoriyeEkle(favoriCevap);
-        //    var sonuc = servis.CevabiFavoriyeEkle(favoriCevap);
-        //    return RedirectToAction("Index", "Home");
-        //    //return Json("");
-        //}
+
+        public JsonResult SoruyuFavEkle(int soruID)
+        {
+            servis = new KodusorServisClient();
+            int kulID = Convert.ToInt32(Session["kullaniciID"]);
+            FavoriSorular favoriSoru = new FavoriSorular()
+            {
+                KullaniciID = kulID,
+                SoruID = soruID
+            };
+            if (servis.SoruyuFavoriyeEkle(favoriSoru))
+                return Json("soru Favoriye eklendi");
+            else
+                return Json("hata");
+        }
+
+        public JsonResult CevabıFavEkle(int cevapID)
+        {
+            servis = new KodusorServisClient();
+            int kulID = Convert.ToInt32(Session["kullaniciID"]);
+            FavoriCevaplar favoriCevap = new FavoriCevaplar()
+            {
+                KullaniciID = kulID,
+                CevapID = cevapID
+            };
+            if (servis.CevabiFavoriyeEkle(favoriCevap))
+                return Json("cevap favoriye eklendi");
+            else
+                return Json("hata");
+        }
     }
 }
