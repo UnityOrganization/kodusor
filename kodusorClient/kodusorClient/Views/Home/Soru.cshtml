@@ -3,52 +3,87 @@
     ViewBag.Title = "Soru";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
+<h5>Soru</h5>
+<div class="card-panel blue-grey darken-2">
+    <div class="row">
+        <div class="col s1 valign">
+            <i class="material-icons white-text">thumb_up</i><br />
+            <span class="white-text">@Model.Soru.BegeniSayisi</span>
+            <br /><i class="material-icons white-text" style="margin-top:5px;">thumb_down</i><br />
+            <i class="material-icons small">star</i>
+        </div>
+        <div class="col s11">
+            <span class="white-text">
+                <span class="flow-text">@Model.Soru.Baslik</span>
+                <div class="divider"></div><br />
+                <span>@Model.Soru.Icerik</span>
+            </span>
+            <br />
+            <div class="white-text valign-wrapper right">
+                <br />
+                <span class="right-align">@Model.Soru.Kullanici.Adi @Model.Soru.Kullanici.Soyadi<br />@Model.Soru.Tarih</span>
+            </div>
+        </div>
+    </div>
+</div>
 
-@*soru bilgileri*@
-<h4>Başlık - @Model.Soru.Baslik</h4><br />
-<p>İçerik - @Model.Soru.Icerik</p><br />
-<span>@Model.Soru.Tarih</span><br />
-<span>@Model.Soru.Kullanici.Adi</span><br />
-<span>@Model.Soru.BegeniSayisi</span><br /><br />
+<h5>Cevaplar</h5>
 
-@*cevaplar*@
 @foreach (var item in Model.Soru.Cevaplar)
 {
-    //if (Session["kullaniciID"] != null)
-    //{
-        <!--<a onclick="CevabiFavoriyeEkle(@/*item.CevapID*/)"><i class="material-icons">star</i></a>-->
-        @/*Html.ActionLink("FavoriEkle", "FavoriEkle", "Home" ,new { id = "2" })*/
-    //}
-    <h1>cevaplar</h1>
-    <p>@item.Cevap</p><br />
-    <span>@item.Tarih</span><br />
-    <span>@item.Kullanici.Adi @item.Kullanici.Soyadi</span><br />
-    <span>@item.BegeniSayisi</span><br /><br />
-
-
+    <div class="card-panel blue-grey darken-2">
+        <div class="row">
+            <div class="col s1 valign">
+                <i class="material-icons white-text">thumb_up</i><br />
+                <span class="white-text">@item.BegeniSayisi</span>
+                <br /><i class="material-icons white-text" style="margin-top:5px;">thumb_down</i><br />
+                <i class="material-icons small">star</i>
+            </div>
+            <div class="col s11">
+                <span class="white-text">
+                    <span>@item.Cevap</span>
+                    <div class="row" style="margin-bottom:0px;"><br /><br /><br />
+                        <a class="waves-effect waves-light btn left">Yorum Ekle</a>
+                        <div class="white-text valign-wrapper right">
+                            <br />
+                            <span class="right-align">@item.Kullanici.Adi @item.Kullanici.Soyadi<br />@Model.Soru.Tarih</span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
     foreach (var yorum in item.YorumListesi)
     {
-        <h1>yorumlar</h1><br />
-        <p>@yorum.Yorum</p><br />
-        <span>@yorum.Tarih</span><br />
-        <span>@yorum.Kullanici.Adi @yorum.Kullanici.Soyadi</span><br /><br />
+        <div class="row">
+            <div class="col s11 offset-s1">
+                <div class="card-panel teal">
+                    <span class="white-text">
+                        <p>@yorum.Yorum</p>
+                        <span class="right-align">@yorum.Kullanici.Adi @yorum.Kullanici.Soyadi<br />@yorum.Tarih</span>
+                    </span>
+                </div>
+            </div>
+        </div>
     }
 }
 
+
 <script>
-   
+
     //function CevabiFavoriyeEkle(cevapID) {
     //    var data = {
     //        cevapID : cevapID
     //    };
-        
+
     //    console.log(data);
     //    $.post("/Home/FavoriEkle", data ,function(sonuc){
     //        console(sonuc);
     //    });
 
     //}
-  
+
 </script>
 
 
