@@ -15,9 +15,10 @@
     <nav>
         <div class="nav-wrapper blue-grey lighten-1">
             <div class="container" style="width:944px">
-                <a href="/Home/Index" class="brand-logo"><img src="~/Images/logo.png" style="margin-top:10px;" /></a>
+                <a href="/" class="brand-logo"><img src="~/Images/logo.png" style="margin-top:10px;" /></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Anasayfa</a></li>
                     @if (Session["kullaniciID"] == null)
                     {
                         <li><a href="#modalGiris">Soru Sor</a></li>
@@ -32,6 +33,7 @@
                     }
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
+                    <li><a href="/">Anasayfa</a></li>
                     @if (Session["kullaniciID"] == null)
                     {
                         <li><a href="#modalGiris">Soru Sor</a></li>
@@ -162,8 +164,7 @@
                         Parola: $("#parola").val()
                     };
                     $.post("/Home/kayit", kullanici, function (sonuc) {
-                        if (sonuc == "+")
-                        {
+                        if (sonuc == "+") {
                             $("#modalKayıt").modal('close');
                             $("#modalGiris").modal('open');
                         }
