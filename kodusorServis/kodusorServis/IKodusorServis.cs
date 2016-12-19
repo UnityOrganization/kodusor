@@ -48,7 +48,7 @@ namespace kodusorServis
         bool CevapEkle(Cevaplar cevap);
 
         [OperationContract]
-        bool YorumEkle(Yorum yourum);
+        bool YorumEkle(Yorum yorum);
 
         [OperationContract]
         bool SoruyuFavoriyeEkle(FavoriSorular favoriSorular);
@@ -61,6 +61,21 @@ namespace kodusorServis
 
         [OperationContract]
         SoruListesi SoruGetir(int soruID);
+
+        [OperationContract]
+        bool SoruBegen(int soruID);
+
+        [OperationContract]
+        bool SoruBegenme(int soruID);
+
+        [OperationContract]
+        bool CevapBegen(int cevapID);
+
+        [OperationContract]
+        bool CevapBegenme(int cevapID);
+
+        [OperationContract]
+        List<SoruListesi> SoruAra(string baslik);
     }
 
 

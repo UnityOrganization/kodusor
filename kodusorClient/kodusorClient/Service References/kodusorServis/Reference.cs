@@ -2029,10 +2029,10 @@ namespace kodusorClient.kodusorServis {
         System.Threading.Tasks.Task<bool> CevapEkleAsync(kodusorClient.kodusorServis.Cevaplar cevap);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/YorumEkle", ReplyAction="http://tempuri.org/IKodusorServis/YorumEkleResponse")]
-        bool YorumEkle(kodusorClient.kodusorServis.Yorum yourum);
+        bool YorumEkle(kodusorClient.kodusorServis.Yorum yorum);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/YorumEkle", ReplyAction="http://tempuri.org/IKodusorServis/YorumEkleResponse")]
-        System.Threading.Tasks.Task<bool> YorumEkleAsync(kodusorClient.kodusorServis.Yorum yourum);
+        System.Threading.Tasks.Task<bool> YorumEkleAsync(kodusorClient.kodusorServis.Yorum yorum);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruyuFavoriyeEkle", ReplyAction="http://tempuri.org/IKodusorServis/SoruyuFavoriyeEkleResponse")]
         bool SoruyuFavoriyeEkle(kodusorClient.kodusorServis.FavoriSorular favoriSorular);
@@ -2057,6 +2057,36 @@ namespace kodusorClient.kodusorServis {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruGetir", ReplyAction="http://tempuri.org/IKodusorServis/SoruGetirResponse")]
         System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi> SoruGetirAsync(int soruID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruBegen", ReplyAction="http://tempuri.org/IKodusorServis/SoruBegenResponse")]
+        bool SoruBegen(int soruID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruBegen", ReplyAction="http://tempuri.org/IKodusorServis/SoruBegenResponse")]
+        System.Threading.Tasks.Task<bool> SoruBegenAsync(int soruID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruBegenme", ReplyAction="http://tempuri.org/IKodusorServis/SoruBegenmeResponse")]
+        bool SoruBegenme(int soruID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruBegenme", ReplyAction="http://tempuri.org/IKodusorServis/SoruBegenmeResponse")]
+        System.Threading.Tasks.Task<bool> SoruBegenmeAsync(int soruID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/CevapBegen", ReplyAction="http://tempuri.org/IKodusorServis/CevapBegenResponse")]
+        bool CevapBegen(int cevapID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/CevapBegen", ReplyAction="http://tempuri.org/IKodusorServis/CevapBegenResponse")]
+        System.Threading.Tasks.Task<bool> CevapBegenAsync(int cevapID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/CevapBegenme", ReplyAction="http://tempuri.org/IKodusorServis/CevapBegenmeResponse")]
+        bool CevapBegenme(int cevapID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/CevapBegenme", ReplyAction="http://tempuri.org/IKodusorServis/CevapBegenmeResponse")]
+        System.Threading.Tasks.Task<bool> CevapBegenmeAsync(int cevapID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruAra", ReplyAction="http://tempuri.org/IKodusorServis/SoruAraResponse")]
+        kodusorClient.kodusorServis.SoruListesi[] SoruAra(string baslik);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKodusorServis/SoruAra", ReplyAction="http://tempuri.org/IKodusorServis/SoruAraResponse")]
+        System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi[]> SoruAraAsync(string baslik);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2174,12 +2204,12 @@ namespace kodusorClient.kodusorServis {
             return base.Channel.CevapEkleAsync(cevap);
         }
         
-        public bool YorumEkle(kodusorClient.kodusorServis.Yorum yourum) {
-            return base.Channel.YorumEkle(yourum);
+        public bool YorumEkle(kodusorClient.kodusorServis.Yorum yorum) {
+            return base.Channel.YorumEkle(yorum);
         }
         
-        public System.Threading.Tasks.Task<bool> YorumEkleAsync(kodusorClient.kodusorServis.Yorum yourum) {
-            return base.Channel.YorumEkleAsync(yourum);
+        public System.Threading.Tasks.Task<bool> YorumEkleAsync(kodusorClient.kodusorServis.Yorum yorum) {
+            return base.Channel.YorumEkleAsync(yorum);
         }
         
         public bool SoruyuFavoriyeEkle(kodusorClient.kodusorServis.FavoriSorular favoriSorular) {
@@ -2212,6 +2242,46 @@ namespace kodusorClient.kodusorServis {
         
         public System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi> SoruGetirAsync(int soruID) {
             return base.Channel.SoruGetirAsync(soruID);
+        }
+        
+        public bool SoruBegen(int soruID) {
+            return base.Channel.SoruBegen(soruID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SoruBegenAsync(int soruID) {
+            return base.Channel.SoruBegenAsync(soruID);
+        }
+        
+        public bool SoruBegenme(int soruID) {
+            return base.Channel.SoruBegenme(soruID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SoruBegenmeAsync(int soruID) {
+            return base.Channel.SoruBegenmeAsync(soruID);
+        }
+        
+        public bool CevapBegen(int cevapID) {
+            return base.Channel.CevapBegen(cevapID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevapBegenAsync(int cevapID) {
+            return base.Channel.CevapBegenAsync(cevapID);
+        }
+        
+        public bool CevapBegenme(int cevapID) {
+            return base.Channel.CevapBegenme(cevapID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CevapBegenmeAsync(int cevapID) {
+            return base.Channel.CevapBegenmeAsync(cevapID);
+        }
+        
+        public kodusorClient.kodusorServis.SoruListesi[] SoruAra(string baslik) {
+            return base.Channel.SoruAra(baslik);
+        }
+        
+        public System.Threading.Tasks.Task<kodusorClient.kodusorServis.SoruListesi[]> SoruAraAsync(string baslik) {
+            return base.Channel.SoruAraAsync(baslik);
         }
     }
 }

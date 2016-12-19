@@ -7,10 +7,30 @@
 <div class="card-panel blue-grey darken-2">
     <div class="row">
         <div class="col s1 valign">
-            <i class="material-icons white-text">thumb_up</i><br />
+            <a><i class="material-icons white-text" onclick="SoruBegen(@Model.Soru.SoruID)">thumb_up</i></a><br />
             <span class="white-text">@Model.Soru.BegeniSayisi</span>
-            <br /><i class="material-icons white-text" style="margin-top:5px;">thumb_down</i><br />
-            <i class="material-icons small" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i>
+            <br /><a><i class="material-icons white-text" style="margin-top:5px;" onclick="SoruBegenme(@Model.Soru.SoruID)">thumb_down</i></a><br />
+            @if (Session["kullaniciID"] != null)
+            {
+                bool durum = false;
+                foreach (var item in Model.FavoriSorular)
+                {
+                    if (item.SoruID == Model.Soru.SoruID)
+                    {
+                        durum = true;
+                        break;
+                    }
+                }
+                if (durum)
+                {
+                    <a><i class="material-icons small yellow-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                }
+                else
+                {
+                    <a><i class="material-icons small white-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                }
+            }
+
         </div>
         <div class="col s11">
             <span class="white-text">
@@ -38,17 +58,63 @@
             <div class="card-panel blue-grey darken-2" style="margin-top: 0px;">
                 <div class="row">
                     <div class="col s1 valign">
-                        <i class="material-icons white-text">thumb_up</i><br />
+                        <a><i class="material-icons white-text" onclick="CevapBegen(@item.CevapID)">thumb_up</i></a><br />
                         <span class="white-text">@item.BegeniSayisi</span>
-                        <br /><i class="material-icons white-text" style="margin-top:5px;">thumb_down</i><br />
-                        <i class="material-icons small" onclick="CevapIDGetir(@item.CevapID)">star</i>
+                        <br /><a><i class="material-icons white-text" style="margin-top:5px;" onclick="CevapBegenme(@item.CevapID)">thumb_down</i></a><br />
+                        @if (Session["kullaniciID"] != null)
+                        {
+                            bool durum2 = false;
+                            foreach (var fc in Model.FavoriCevaplar)
+                            {
+                                if (fc.CevapID == item.CevapID)
+                                {
+                                    durum2 = true;
+                                    break;
+                                }
+                            }
+                            if (durum2)
+                            {
+                                <a><i class="material-icons small yellow-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
+                            }
+                            else
+                            {
+                                <a><i class="material-icons small white-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
+                            }
+                            
+
+                            if (Model.Soru.Kullanici.KullaniciID == Convert.ToInt32(Session["kullaniciID"]))
+                            {
+                                if (item.CevapID == Model.Soru.OnayCevapID)
+                                {
+                                    <a onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons green-text">done</i></a>
+                                }
+                                else
+                                {
+                                    <a onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons white-text">done</i></a>
+                                }
+                            }
+                            else
+                            {
+                                if (item.CevapID == Model.Soru.OnayCevapID)
+                                {
+                                    <a><i class="material-icons green-text">done</i></a>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (item.CevapID == Model.Soru.OnayCevapID)
+                            {
+                                <a><i class="material-icons green-text">done</i></a>
+                            }
+                        }
                     </div>
                     <div class="col s11">
                         <span class="white-text">
                             <span>@item.Cevap</span>
                             <div class="row" style="margin-bottom:0px;">
                                 <br /><br /><br />
-                                <a class="waves-effect waves-light btn left">Yorum Ekle</a>
+
                                 <div class="white-text valign-wrapper right">
                                     <br />
                                     <span class="right-align">@item.Kullanici.Adi @item.Kullanici.Soyadi<br />@Model.Soru.Tarih</span>
@@ -73,10 +139,65 @@
                         </div>
                     </div>
                 }
+                <br />
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">chat_bubble_outline</i>
+                                <textarea id="icon_prefix2" class="materialize-textarea yorumText"></textarea>
+                                <label for="icon_prefix2">Yorumum</label>
+                            </div>
+                        </div>
+                    </form>
+                    <a class="waves-effect waves-light btn right-align" onclick="YorumYap(@item.CevapID)">Yorum Ekle</a>
+                </div>
             </div>
         </li>
     </ul>
+
 }
+
+<!-- Cevap alanı başlangıç -->
+<div class="card-panel blue-grey darken-2" style="margin-top: 0px;">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <span class="white-text">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">question_answer</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea cevapText"></textarea>
+                        <label for="icon_prefix2">Cevabım</label>
+                    </div>
+                    <span class="valign-wrapper right-align"><a class="waves-effect waves-light btn" onclick="CevapVer(@Model.Soru.SoruID)"><i class="material-icons right">send</i>Cevabı Kaydet</a></span>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Cevap alanı bitiş -->
+<!-- Yarum yap modal başlangıç -->
+<div id="yorumYap" class="modal">
+    <div class="modal-content">
+        <h4>Yorum Yaz</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">chat_bubble_outline</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                        <label for="icon_prefix2">Yorumum</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yorumu Kaydet</a>
+    </div>
+</div>
+<!-- Yarum yap modal bitiş-->
+
 
 <script>
 
@@ -107,17 +228,98 @@
         });
     }
 
-    //function CevabiFavoriyeEkle(cevapID) {
-    //    var data = {
-    //        cevapID : cevapID
-    //    };
+    function CevapVer(soruID) {
+        $(function () {
+            var data = {
+                SoruID: soruID,
+                Cevap: $(".cevapText").val()
+            };
 
-    //    console.log(data);
-    //    $.post("/Home/FavoriEkle", data ,function(sonuc){
-    //        console(sonuc);
-    //    });
+            console.log(data);
 
-    //}
+            $.post("/Home/CevapVer", { cevap: data }, function (sonuc) {
+                alert(sonuc);
+            });
+        });
+    }
+
+    function YorumYap(cevapID) {
+        $(function () {
+            var data = {
+                CevapID: cevapID,
+                Yorum1: $(".yorumText").val()
+            };
+
+            console.log(data);
+
+            $.post("/Home/YorumYap", { yorum: data }, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
+
+    function SoruBegen(soruID) {
+        $(function () {
+            var data = {
+                soruID: soruID
+            };
+            console.log(soruID);
+
+            $.post("/Home/SoruBegen", data, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
+
+    function SoruBegenme(soruID) {
+        $(function () {
+            var data = {
+                soruID: soruID
+            };
+            console.log(data);
+
+            $.post("/Home/SoruBegenme", data, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
+
+    function CevapBegen(cevapID) {
+        $(function () {
+            var data = {
+                cevapID: cevapID
+            };
+            console.log(data);
+
+            $.post("/Home/CevapBegen", data, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
+
+    function CevapBegenme(cevapID) {
+        $(function () {
+            var data = {
+                cevapID: cevapID
+            };
+            console.log(data);
+
+            $.post("/Home/CevapBegenme", data, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
+
+    function CevapOnayla(soruID, cevapID) {
+        $(function () {
+            console.log(cevapID);
+            console.log(soruID);
+
+            $.post("/Home/CevapOnayla", { soruID: soruID, cevapID: cevapID }, function (sonuc) {
+                alert(sonuc);
+            })
+        });
+    }
 
 </script>
 

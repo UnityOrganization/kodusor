@@ -21,6 +21,14 @@ namespace kodusorClient.Controllers
             return View(sorular);
         }
 
+        [HttpPost]
+        public ActionResult SoruAra(string aranacakSoru)
+        {
+            servis = new KodusorServisClient();
+            var sorular = servis.SoruAra(aranacakSoru);
+            return View(sorular);
+        }
+
         public JsonResult kayit(Kullanicilar k)
         {
             servis = new KodusorServisClient();
@@ -44,9 +52,7 @@ namespace kodusorClient.Controllers
                 return Json("-");
             }
         }
-
-
-
+        
         public ActionResult Soru(int id)
         {
             kullaniciModeli = new KullaniciModel();
@@ -57,6 +63,8 @@ namespace kodusorClient.Controllers
             {
                 int kulID = Convert.ToInt32(Session["kullaniciID"]);
                 kullaniciModeli.Kullanici = servis.KullaniciBilgileriniGetir(kulID);
+                kullaniciModeli.FavoriSorular = servis.FavoriSorular(kulID).ToList();
+                kullaniciModeli.FavoriCevaplar = servis.FavoriCevaplar(kulID).ToList();
             }
             return View(kullaniciModeli);
         }
@@ -89,6 +97,75 @@ namespace kodusorClient.Controllers
                 return Json("cevap favoriye eklendi");
             else
                 return Json("hata");
+        }
+
+        public JsonResult CevapVer(Cevaplar cevap)
+        {
+            servis = new KodusorServisClient();
+            int kulID = Convert.ToInt32(Session["kullaniciID"]);
+            cevap.KullaniciID = kulID;
+            cevap.Tarih = DateTime.Now;
+            if (servis.CevapEkle(cevap))
+                return Json("Cevabınız kayıt edildi");
+            else
+                return Json("hata");
+        }
+
+        public JsonResult YorumYap(Yorum yorum)
+        {
+            servis = new KodusorServisClient();
+            int kulID = Convert.ToInt32(Session["kullaniciID"]);
+            yorum.KullaniciID = kulID;
+            yorum.Tarih = DateTime.Now;
+            if (servis.YorumEkle(yorum))
+                return Json("yorumunuz kaydedildi");
+            else
+                return Json("hata");
+        }
+
+        public JsonResult SoruBegen(int soruID)
+        {
+            servis = new KodusorServisClient();
+            if (servis.SoruBegen(soruID))
+                return Json("+");
+            else
+                return Json("-");
+        }
+
+        public JsonResult SoruBegenme(int soruID)
+        {
+            servis = new KodusorServisClient();
+            if (servis.SoruBegenme(soruID))
+                return Json("+");
+            else
+                return Json("-");
+        }
+
+        public JsonResult CevapBegen(int cevapID)
+        {
+            servis = new KodusorServisClient();
+            if (servis.CevapBegen(cevapID))
+                return Json("+");
+            else
+                return Json("-");
+        }
+
+        public JsonResult CevapBegenme(int cevapID)
+        {
+            servis = new KodusorServisClient();
+            if (servis.CevapBegenme(cevapID))
+                return Json("+");
+            else
+                return Json("-");
+        }
+
+        public JsonResult CevapOnayla(int soruID, int cevapID)
+        {
+            servis = new KodusorServisClient();
+            if (servis.CevabıOnayla(soruID, cevapID))
+                return Json("+");
+            else
+                return Json("-");
         }
     }
 }

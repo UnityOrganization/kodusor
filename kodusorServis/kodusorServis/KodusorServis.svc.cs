@@ -80,11 +80,8 @@ namespace kodusorServis
             List<CevapListesi> cevaplar = new List<CevapListesi>();
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var kul = (from k in db.Kullanicilar
-                           where k.KullaniciID == kullaniciID
-                           select k).SingleOrDefault();
-
-                foreach (var item in kul.Cevaplar)
+                var kulCevaplar = db.Cevaplar.OrderByDescending(kc => kc.Tarih).Where(kc => kc.KullaniciID == kullaniciID);
+                foreach (var item in kulCevaplar)
                 {
                     cevaplar.Add(NesneDuzenle.CevapOlustur(item));
                 }
@@ -97,9 +94,7 @@ namespace kodusorServis
             List<SoruListesi> sorular = new List<SoruListesi>();
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var favoriSorular = (from fs in db.FavoriSorular
-                                     where fs.KullaniciID == kullaniciID
-                                     select fs).ToList();
+                var favoriSorular = db.FavoriSorular.OrderByDescending(fs => fs.Sorular.Tarih).Where(fs => fs.KullaniciID == kullaniciID).ToList();
 
                 foreach (var item in favoriSorular)
                 {
@@ -114,10 +109,9 @@ namespace kodusorServis
             List<CevapListesi> cevaplar = new List<CevapListesi>();
             using (kodusorDBEntities db = new kodusorDBEntities())
             {
-                var kul = (from k in db.Kullanicilar
-                           where k.KullaniciID == kullaniciID
-                           select k).SingleOrDefault();
-                foreach (var item in kul.FavoriCevaplar)
+                var favoriCevaplar = db.FavoriCevaplar.OrderByDescending(fc => fc.Cevaplar.Tarih).Where(fc => fc.KullaniciID == kullaniciID).ToList();
+
+                foreach (var item in favoriCevaplar)
                 {
                     cevaplar.Add(NesneDuzenle.CevapOlustur(item.Cevaplar));
                 }
@@ -193,7 +187,7 @@ namespace kodusorServis
                     return null;
             }
         }
-
+        //
         public bool SoruEkle(int kullaniciID, Sorular soru, List<Etiketler> etiketler)
         {
             try
@@ -238,13 +232,14 @@ namespace kodusorServis
                 return false;
             }
         }
-        
+        //
         public bool CevapEkle(Cevaplar cevap)
         {
             try
             {
                 using (kodusorDBEntities db = new kodusorDBEntities())
                 {
+                    cevap.BegeniSayisi = 0;
                     db.Cevaplar.Add(cevap);
                     var kul = (from k in db.Kullanicilar
                                where k.KullaniciID == cevap.KullaniciID
@@ -259,24 +254,24 @@ namespace kodusorServis
                 return false;
             }
         }
-
-        public bool YorumEkle(Yorum yourum)
+        //
+        public bool YorumEkle(Yorum yorum)
         {
             try
             {
                 using (kodusorDBEntities db = new kodusorDBEntities())
                 {
                     var cevap = (from c in db.Cevaplar
-                                 where c.CevapID == yourum.CevapID
+                                 where c.CevapID == yorum.CevapID
                                  select c).SingleOrDefault();
 
                     var kul = (from k in db.Kullanicilar
-                               where k.KullaniciID == yourum.KullaniciID
+                               where k.KullaniciID == yorum.KullaniciID
                                select k).SingleOrDefault();
 
-                    db.Yorum.Add(yourum);
-                    kul.Yorum.Add(yourum);
-                    cevap.Yorum.Add(yourum);
+                    db.Yorum.Add(yorum);
+                    kul.Yorum.Add(yorum);
+                    cevap.Yorum.Add(yorum);
 
                     db.SaveChanges();
                 }
@@ -287,7 +282,7 @@ namespace kodusorServis
                 return false;
             }
         }
-
+        //
         public bool SoruyuFavoriyeEkle(FavoriSorular favoriSorular)
         {
             try
@@ -326,7 +321,7 @@ namespace kodusorServis
                 return false;
             }
         }
-
+        //
         public bool CevabiFavoriyeEkle(FavoriCevaplar favoriCevaplar)
         {
             try
@@ -402,6 +397,106 @@ namespace kodusorServis
                     return NesneDuzenle.SoruOlustur(soru);
                 else
                     return null;
+            }
+        }
+
+        public bool SoruBegen(int soruID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var soru = (from s in db.Sorular
+                                where s.SoruID == soruID
+                                select s).SingleOrDefault();
+
+                    soru.BegeniSayisi += 1;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SoruBegenme(int soruID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var soru = (from s in db.Sorular
+                                where s.SoruID == soruID
+                                select s).SingleOrDefault();
+
+                    soru.BegeniSayisi -= 1;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool CevapBegen(int cevapID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var cevap = (from c in db.Cevaplar
+                                where c.CevapID == cevapID
+                                select c).SingleOrDefault();
+
+                    cevap.BegeniSayisi += 1;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool CevapBegenme(int cevapID)
+        {
+            try
+            {
+                using (kodusorDBEntities db = new kodusorDBEntities())
+                {
+                    var cevap = (from c in db.Cevaplar
+                                 where c.CevapID == cevapID
+                                 select c).SingleOrDefault();
+
+                    cevap.BegeniSayisi -= 1;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public List<SoruListesi> SoruAra(string baslik)
+        {
+            using (kodusorDBEntities db = new kodusorDBEntities())
+            {
+                List<SoruListesi> arananSorular = new List<SoruListesi>();
+                var sorular = (from s in db.Sorular
+                               where s.Baslik.Contains(baslik)
+                               select s).ToList();
+                foreach (var item in sorular)
+                {
+                    arananSorular.Add(NesneDuzenle.SoruOlustur(item));
+                }
+                return arananSorular;
             }
         }
     }

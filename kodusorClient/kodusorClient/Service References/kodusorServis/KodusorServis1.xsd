@@ -163,7 +163,7 @@
   <xs:element name="YorumEkle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="yourum" nillable="true" type="q11:Yorum" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/kodusorServis.Models" minOccurs="0" name="yorum" nillable="true" type="q11:Yorum" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -228,6 +228,76 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SoruGetirResult" nillable="true" type="q14:SoruListesi" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBegen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBegenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruBegenResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBegenme">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruBegenmeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SoruBegenmeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBegen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBegenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapBegenResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBegenme">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CevapBegenmeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CevapBegenmeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruAra">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="baslik" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SoruAraResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/kodusorServis" minOccurs="0" name="SoruAraResult" nillable="true" type="q15:ArrayOfSoruListesi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

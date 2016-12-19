@@ -1,0 +1,68 @@
+﻿@model IEnumerable<kodusorClient.kodusorServis.SoruListesi>
+@{
+    ViewBag.Title = "SoruAra";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<br />
+<nav>
+    <div class="nav-wrapper blue-grey lighten-1">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Soru Ara" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<ul class="collection">
+    @foreach (var item in Model)
+    {
+        <li class="collection-item row">
+
+            <div class="col m1 s1">
+                <i class="material-icons prefix">thumb_up</i><br />
+                @Html.DisplayFor(modelItem => item.BegeniSayisi)
+            </div>
+            <div class="col m1 s1">
+                <i class="material-icons prefix">chat_bubble</i><br />
+                @Html.DisplayFor(modelItem => item.CevapSayisi)
+            </div>
+            <div class="col m7 s10">
+                <b>@Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID }, new { @class = "soruBaslik" })</b><br />
+
+                <span class="tarih">@Html.DisplayFor(modelItem => (item.Tarih))</span>
+                <span>-</span>
+
+                @Html.ActionLink(item.Kullanici.Adi, "Index", "Profil", new { id = item.Kullanici.KullaniciID }, new { @class = "soranKul" })
+            </div>
+            <div class="col m3 s12 offset-s2">
+                @foreach (var etiket in item.Etiketler)
+                {
+                    @Html.ActionLink(etiket.EtiketAdi, "Etiket", new { id = etiket.EtiketID }, new { @class = "etiket" })<span>&nbsp;</span>
+                }
+            </div>
+
+        </li>
+
+    }
+</ul>
+
+<script>
+    $(function () {
+        $('#search').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)
+            {
+                var data = {
+                    aranacakSoru: $("#search").val()
+                };
+                $.post("/Home/Index", data, function () {
+
+                });
+            }
+        });
+    });
+</script>

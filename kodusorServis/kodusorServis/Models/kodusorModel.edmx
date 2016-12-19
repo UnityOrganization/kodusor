@@ -13,7 +13,7 @@
           <Property Name="SoruID" Type="int" Nullable="false" />
           <Property Name="KullaniciID" Type="int" Nullable="false" />
           <Property Name="Cevap" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tarih" Type="date" />
+          <Property Name="Tarih" Type="datetime" />
           <Property Name="BegeniSayisi" Type="int" />
         </EntityType>
         <EntityType Name="Etiketler">
@@ -83,7 +83,7 @@
           <Property Name="CevapID" Type="int" Nullable="false" />
           <Property Name="KullaniciID" Type="int" Nullable="false" />
           <Property Name="Yorum" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tarih" Type="date" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cevaplar_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
@@ -284,7 +284,7 @@
           <Property Name="SoruID" Type="Int32" Nullable="false" />
           <Property Name="KullaniciID" Type="Int32" Nullable="false" />
           <Property Name="Cevap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
           <Property Name="BegeniSayisi" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Cevaplar_Kullanicilar" FromRole="Cevaplar" ToRole="Kullanicilar" />
           <NavigationProperty Name="Sorular" Relationship="Self.FK_Cevaplar_Sorular" FromRole="Cevaplar" ToRole="Sorular" />
@@ -374,7 +374,7 @@
           <Property Name="CevapID" Type="Int32" Nullable="false" />
           <Property Name="KullaniciID" Type="Int32" Nullable="false" />
           <Property Name="Yorum1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Cevaplar" Relationship="Self.FK_Yorum_Cevaplar" FromRole="Yorum" ToRole="Cevaplar" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Yorum_Kullanicilar" FromRole="Yorum" ToRole="Kullanicilar" />
         </EntityType>

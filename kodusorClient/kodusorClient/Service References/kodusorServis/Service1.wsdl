@@ -104,6 +104,36 @@
   <wsdl:message name="IKodusorServis_SoruGetir_OutputMessage">
     <wsdl:part name="parameters" element="tns:SoruGetirResponse" />
   </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruBegen_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBegen" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruBegen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBegenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruBegenme_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBegenme" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruBegenme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruBegenmeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapBegen_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevapBegen" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapBegen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevapBegenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapBegenme_InputMessage">
+    <wsdl:part name="parameters" element="tns:CevapBegenme" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_CevapBegenme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CevapBegenmeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruAra_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoruAra" />
+  </wsdl:message>
+  <wsdl:message name="IKodusorServis_SoruAra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoruAraResponse" />
+  </wsdl:message>
   <wsdl:portType name="IKodusorServis">
     <wsdl:operation name="KayitOl">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/KayitOl" message="tns:IKodusorServis_KayitOl_InputMessage" />
@@ -168,6 +198,26 @@
     <wsdl:operation name="SoruGetir">
       <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetir" message="tns:IKodusorServis_SoruGetir_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruGetirResponse" message="tns:IKodusorServis_SoruGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruBegen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruBegen" message="tns:IKodusorServis_SoruBegen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruBegenResponse" message="tns:IKodusorServis_SoruBegen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruBegenme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruBegenme" message="tns:IKodusorServis_SoruBegenme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruBegenmeResponse" message="tns:IKodusorServis_SoruBegenme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevapBegen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevapBegen" message="tns:IKodusorServis_CevapBegen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/CevapBegenResponse" message="tns:IKodusorServis_CevapBegen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CevapBegenme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/CevapBegenme" message="tns:IKodusorServis_CevapBegenme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/CevapBegenmeResponse" message="tns:IKodusorServis_CevapBegenme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoruAra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKodusorServis/SoruAra" message="tns:IKodusorServis_SoruAra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKodusorServis/SoruAraResponse" message="tns:IKodusorServis_SoruAra_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IKodusorServis" type="tns:IKodusorServis">
@@ -309,6 +359,51 @@
     </wsdl:operation>
     <wsdl:operation name="SoruGetir">
       <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruBegen">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruBegen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruBegenme">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruBegenme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevapBegen">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/CevapBegen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CevapBegenme">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/CevapBegenme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoruAra">
+      <soap:operation soapAction="http://tempuri.org/IKodusorServis/SoruAra" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

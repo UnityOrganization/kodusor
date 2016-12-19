@@ -182,7 +182,9 @@
             $("#GirisYap").click(function () {
                 var mail = $("#girismail").val();
                 var parola = $("#girisparola").val();
-                $.post("/Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
+                console.log(mail);
+                console.log(parola);
+                $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
                     if (sonuc == "+") {
                         window.location = "/Profil/Index";
                     }

@@ -46,8 +46,22 @@
             
         </li>
 
-
-            @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "ui primary button", @style = "margin-bottom: 5px;" })*@
-
     }
 </ul>
+
+<script>
+    $(function () {
+        $('#search').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)
+            {
+                var data = {
+                    aranacakSoru: $("#search").val()
+                };
+                $.post("/Home/SoruAra", data, function () {
+
+                });
+            }
+        });
+    });
+</script>
