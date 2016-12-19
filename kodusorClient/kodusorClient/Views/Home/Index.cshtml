@@ -20,48 +20,77 @@
     @foreach (var item in Model)
     {
         <li class="collection-item row">
-            
-                <div class="col m1 s1" >
-                    <i class="material-icons prefix">thumb_up</i><br />
-                    @Html.DisplayFor(modelItem => item.BegeniSayisi)
-                </div>
-                <div class="col m1 s1">
-                    <i class="material-icons prefix">chat_bubble</i><br />
-                    @Html.DisplayFor(modelItem => item.CevapSayisi)
-                </div>
-                <div class="col m7 s10">
-                    <b>@Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID }, new { @class = "soruBaslik" })</b><br />
-                    
-                    <span class="tarih">@Html.DisplayFor(modelItem => (item.Tarih))</span>
-                    <span>-</span>
-                    
-                    @Html.ActionLink(item.Kullanici.Adi, "Index", "Profil", new { id = item.Kullanici.KullaniciID }, new { @class = "soranKul"})
-                </div>
-                <div class="col m3 s12 offset-s2">
-                    @foreach (var etiket in item.Etiketler)
-                    {
-                        @Html.ActionLink(etiket.EtiketAdi, "Etiket", new { id = etiket.EtiketID }, new { @class = "etiket"})<span>&nbsp;</span>
-                    }
-                </div>
-            
+
+            <div class="col m1 s1">
+                <i class="material-icons prefix">thumb_up</i><br />
+                @item.BegeniSayisi
+            </div>
+            <div class="col m1 s1">
+                <i class="material-icons prefix">chat_bubble</i><br />
+                @item.CevapSayisi
+            </div>
+            <div class="col m7 s10">
+                <a href="/Home/Soru/@item.SoruID" class="soruBaslik"><b>@item.Baslik</b></a><br />
+
+                <span class="tarih">@item.Tarih</span>
+                <span>-</span>
+
+                <span class="soranKul">@item.Kullanici.Adi</span>
+            </div>
+            <div class="col m3 s12 offset-s2">
+                @foreach (var etiket in item.Etiketler)
+                {
+                    <span class="etiket">@etiket.EtiketAdi</span><span>&nbsp;</span>
+                }
+            </div>
+
         </li>
 
     }
 </ul>
 
 <script>
-    $(function () {
-        $('#search').keypress(function (e) {
-            var key = e.which;
-            if (key == 13)
-            {
-                var data = {
-                    aranacakSoru: $("#search").val()
-                };
-                $.post("/Home/SoruAra", data, function () {
+    //$(function () {
+    //    $('#search').keypress(function (e) {
+    //        var key = e.which;
+    //        if (key == 13)
+    //        {
+    //            var data = {
+    //                aranacakSoru: $("#search").val()
+    //            };
+    //            $.post("/Home/SoruAra", data, function () {
 
+    //            });
+    //        }
+    //    });
+    //});
+
+    $(function () {
+        $('#search').keyup(function () {
+            $(".collection").empty();
+            var data = {
+                aranacakSoru: $("#search").val()
+            };
+            $.post("/Home/SoruAra", data, function (sorular) {
+                $.each(sorular, function (i, item) {
+                    $(".collection").append('<li class="collection-item row"><div class="col m1 s1" ><i class="material-icons prefix">thumb_up</i><br />' + item.BegeniSayisi + '</div><div class="col m1 s1"><i class="material-icons prefix">chat_bubble</i><br /> ' + item.CevapSayisi + '</div><div class="col m7 s10"><a href="/Home/Soru/' + item.SoruID + '" class = "soruBaslik"><b>' + item.Baslik + '</b></a><br /><span class="soranKul">' + item.Kullanici.Adi + '</span></div><div class="col m3 s12 offset-s2"></div>'+item.Etiketler[0].EtiketAdi+'</li>');
                 });
-            }
+            })
         });
     });
+    @*@Html.ActionLink(item.Baslik, "Soru", new { id = item.SoruID }, new { @class = "soruBaslik" })*@
+    //function SoruGetir(soruID) {
+    //    $(function () {
+
+    //        $("#soruGit").click(function(){
+    //            var data = {
+    //                id: soruID
+    //            };
+    //            $.post("/Home/Soru", data,function(){
+    //                location.window('/Home/Soru/'+soruID);
+    //            });
+    //        });
+
+    //    });
+    //}
 </script>

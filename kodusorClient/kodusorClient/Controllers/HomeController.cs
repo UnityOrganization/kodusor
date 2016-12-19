@@ -20,13 +20,13 @@ namespace kodusorClient.Controllers
             servis.Close();
             return View(sorular);
         }
-
-        [HttpPost]
-        public ActionResult SoruAra(string aranacakSoru)
+        
+        public JsonResult SoruAra(string aranacakSoru)
         {
             servis = new KodusorServisClient();
             var sorular = servis.SoruAra(aranacakSoru);
-            return View(sorular);
+            
+            return Json(sorular);
         }
 
         public JsonResult kayit(Kullanicilar k)
