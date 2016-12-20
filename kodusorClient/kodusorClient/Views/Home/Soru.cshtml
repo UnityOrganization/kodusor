@@ -9,9 +9,9 @@
         <div class="col s1 valign">
             <a href="#"><i class="material-icons white-text" onclick="SoruBegen(@Model.Soru.SoruID)">thumb_up</i></a><br />
             <span class="white-text">@Model.Soru.BegeniSayisi</span>
-            <br /><a href="#">
-                <i class="material-icons white-text" style="margin-top:5px;" onclick="SoruBegenme(@Model.Soru.SoruID)">thumb_down</i></ahref=""><br />
-                @if (Session["kullaniciID"] != null)
+            <br />
+            <a href="#"><i class="material-icons white-text" style="margin-top:5px;" onclick="SoruBegenme(@Model.Soru.SoruID)">thumb_down</i></a><br />
+            @if (Session["kullaniciID"] != null)
             {
                 bool durum = false;
                 foreach (var item in Model.FavoriSorular)
@@ -24,13 +24,13 @@
                 }
                 if (durum)
                 {
-                        <a href="#"><i class="material-icons small yellow-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
-                    }
-                    else
-                    {
-                        <a href="#"><i class="material-icons small white-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
-                    }
+                    <a href="#"><i class="material-icons small yellow-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
                 }
+                else
+                {
+                    <a href="#"><i class="material-icons small white-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                }
+            }
 
         </div>
         <div class="col s11">
@@ -87,11 +87,11 @@
                             {
                                 if (item.CevapID == Model.Soru.OnayCevapID)
                                 {
-                                    <a onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons green-text">done</i></a>
+                                    <a href="#" onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons green-text">done</i></a>
                                 }
                                 else
                                 {
-                                    <a onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons white-text">done</i></a>
+                                    <a href="#" onclick="CevapOnayla(@Model.Soru.SoruID, @item.CevapID)"><i class="material-icons white-text">done</i></a>
                                 }
                             }
                             else
