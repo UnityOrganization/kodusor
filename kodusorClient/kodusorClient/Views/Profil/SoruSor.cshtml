@@ -44,27 +44,23 @@
             var soru = {
                 Baslik : $(".baslik").val(),
                 Icerik: $(".icerik").val()
-                
             };
             var etiketler = [];
             $(".chip").each(function () {
                 etiketler.push({ EtiketAdi: $(this).text().slice(0, -5) });
             });
-            console.log(etiketler);
-            console.log(soru);
-            if (etiketler[0] != null) {
+            if (etiketler[0] != null || soru.Baslik != "" || soru.Icerik != "") {
                 $.post("/Profil/SoruyuKaydet", { soru: soru, etiketler: etiketler }, function (sonuc) {
-                    if (sonuc == "+")
+                    if (sonuc) {
+                        Materialize.toast('Sorunuz başarıyla kaydedildi.', 2000);
                         window.location = "/Profil/Index";
+                    }
                     else
-                        alert("Veritabanı bağlantı hatası");
+                        Materialize.toast('Bağlantı hatası!', 2000);
                 });
             }
             else
-            {
-                alert("etiketleri boş geçmeyin!");
-            }
-            
+                Materialize.toast('Boş alan bırakmayın!', 2000);
         });
     });
 </script>

@@ -163,23 +163,24 @@
             var eskiP = $("#eskiParola").val();
             var yeniP = $("#yeniParolatxt").val();
             var yeniPT = $("#yeniParolaT").val();
-            console.log(eskiP);
-            console.log(yeniP);
-            console.log(yeniPT);
             if (eskiP != null && yeniP != null && yeniPT != null) {
                 if (yeniP == yeniPT) {
                     $.post("/Profil/ParolaGuncelle", { eskiParola: eskiP, yeniParola: yeniP }, function (sonuc) {
-                        if (sonuc == "+")
+                        if (sonuc == "+") {
+                            Materialize.toast('Parolanız başarıyla değişti.', 2000);
                             window.location = "/Profil/Index";
+                        }
+                        else if (sonuc == "-")
+                            Materialize.toast('Veritabanı hatası!', 2000);
                         else
-                            alert("Veritabanı bağlantı hatası");
+                            Materialize.toast('Eski parolanızı yanlış girdiniz!', 2000);
                     });
                 }
                 else
-                    alert("Parolalar uyuşmuyor");
+                    Materialize.toast('Parolalar uyuşmuyor!', 2000);
             }
             else
-                alert("Boş alan bırakmayın!");
-        }); 
+                Materialize.toast('Boş alan bırakmayın!', 2000);
+        });
     });
 </script>

@@ -141,7 +141,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2014 kodusor.com
+                © 2016 kodusor.com
             </div>
         </div>
     </footer>
@@ -167,15 +167,16 @@
                         if (sonuc == "+") {
                             $("#modalKayıt").modal('close');
                             $("#modalGiris").modal('open');
+                            Materialize.toast('Kayıt başarılı.', 3000)
                         }
                         else if (sonuc == "-")
-                            alert("Mail adresi zaten kayıtlı");
+                            Materialize.toast('Mail adresi zaten kayıtlı!', 3000)
                         else
-                            alert("Veritabanı bağlantı hatası");
+                            Materialize.toast('Veritabanı bağlantı hatası!', 3000)
                     });
                 }
                 else {
-                    alert("Parolalar uyuşmuyor");
+                    Materialize.toast('Parolalar uyuşmuyor!', 3000)
                 }
             });
             //KAYIT OL BİTİŞ
@@ -185,10 +186,13 @@
                 var parola = $("#girisparola").val();
                 console.log(mail);
                 console.log(parola);
-                $.post("../Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
+                $.post("/Home/GirisKontrol", { mail: mail, parola: parola }, function (sonuc) {
                     if (sonuc == "+") {
-                        window.location = "/Profil/Index";
+                        Materialize.toast('Giriş başarılı.', 2000)
+                        window.location = "../../Profil/Index";
                     }
+                    else
+                        Materialize.toast('Giriş başarısız!', 3000)
                 });
             });
             //GİRİŞ YAP BİTİŞ
@@ -196,7 +200,8 @@
             $("#cikisyap").click(function () {
                 $.post("/Profil/Cikis", "", function (sonuc) {
                     if (sonuc == "+") {
-                        window.location = "/Home/Index";
+                        Materialize.toast('Çıkış başarılı.', 2000)
+                        window.location = "/";
                     }
                 });
             });

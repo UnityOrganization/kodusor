@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using kodusorClient.kodusorServis;
 using kodusorClient.ViewModel;
@@ -21,11 +19,27 @@ namespace kodusorClient.Controllers
             return View(sorular);
         }
         
+        public ActionResult Soru(int id)
+        {
+            kullaniciModeli = new KullaniciModel();
+            servis = new KodusorServisClient();
+
+            kullaniciModeli.Soru = servis.SoruGetir(id);
+            if (Session["kullaniciID"] != null)
+            {
+                int kulID = Convert.ToInt32(Session["kullaniciID"]);
+                kullaniciModeli.Kullanici = servis.KullaniciBilgileriniGetir(kulID);
+                kullaniciModeli.FavoriSorular = servis.FavoriSorular(kulID).ToList();
+                kullaniciModeli.FavoriCevaplar = servis.FavoriCevaplar(kulID).ToList();
+            }
+            return View(kullaniciModeli);
+        }
+
         public JsonResult SoruAra(string aranacakSoru)
         {
             servis = new KodusorServisClient();
             var sorular = servis.SoruAra(aranacakSoru);
-            
+            servis.Close();
             return Json(sorular);
         }
 
@@ -53,22 +67,6 @@ namespace kodusorClient.Controllers
             }
         }
         
-        public ActionResult Soru(int id)
-        {
-            kullaniciModeli = new KullaniciModel();
-            servis = new KodusorServisClient();
-            
-            kullaniciModeli.Soru = servis.SoruGetir(id);
-            if (Session["kullaniciID"] != null)
-            {
-                int kulID = Convert.ToInt32(Session["kullaniciID"]);
-                kullaniciModeli.Kullanici = servis.KullaniciBilgileriniGetir(kulID);
-                kullaniciModeli.FavoriSorular = servis.FavoriSorular(kulID).ToList();
-                kullaniciModeli.FavoriCevaplar = servis.FavoriCevaplar(kulID).ToList();
-            }
-            return View(kullaniciModeli);
-        }
-
         public JsonResult SoruyuFavEkle(int soruID)
         {
             servis = new KodusorServisClient();
@@ -78,13 +76,10 @@ namespace kodusorClient.Controllers
                 KullaniciID = kulID,
                 SoruID = soruID
             };
-            if (servis.SoruyuFavoriyeEkle(favoriSoru))
-                return Json("soru Favoriye eklendi");
-            else
-                return Json("hata");
+            return Json(servis.SoruyuFavoriyeEkle(favoriSoru));
         }
 
-        public JsonResult CevabıFavEkle(int cevapID)
+        public JsonResult CevabiFavEkle(int cevapID)
         {
             servis = new KodusorServisClient();
             int kulID = Convert.ToInt32(Session["kullaniciID"]);
@@ -93,10 +88,7 @@ namespace kodusorClient.Controllers
                 KullaniciID = kulID,
                 CevapID = cevapID
             };
-            if (servis.CevabiFavoriyeEkle(favoriCevap))
-                return Json("cevap favoriye eklendi");
-            else
-                return Json("hata");
+            return Json(servis.CevabiFavoriyeEkle(favoriCevap));
         }
 
         public JsonResult CevapVer(Cevaplar cevap)
@@ -105,10 +97,7 @@ namespace kodusorClient.Controllers
             int kulID = Convert.ToInt32(Session["kullaniciID"]);
             cevap.KullaniciID = kulID;
             cevap.Tarih = DateTime.Now;
-            if (servis.CevapEkle(cevap))
-                return Json("Cevabınız kayıt edildi");
-            else
-                return Json("hata");
+            return Json(servis.CevapEkle(cevap));
         }
 
         public JsonResult YorumYap(Yorum yorum)
@@ -117,55 +106,37 @@ namespace kodusorClient.Controllers
             int kulID = Convert.ToInt32(Session["kullaniciID"]);
             yorum.KullaniciID = kulID;
             yorum.Tarih = DateTime.Now;
-            if (servis.YorumEkle(yorum))
-                return Json("yorumunuz kaydedildi");
-            else
-                return Json("hata");
+            return Json(servis.YorumEkle(yorum));
         }
 
         public JsonResult SoruBegen(int soruID)
         {
             servis = new KodusorServisClient();
-            if (servis.SoruBegen(soruID))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.SoruBegen(soruID));
         }
 
         public JsonResult SoruBegenme(int soruID)
         {
             servis = new KodusorServisClient();
-            if (servis.SoruBegenme(soruID))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.SoruBegenme(soruID));
         }
 
         public JsonResult CevapBegen(int cevapID)
         {
             servis = new KodusorServisClient();
-            if (servis.CevapBegen(cevapID))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.CevapBegen(cevapID));
         }
 
         public JsonResult CevapBegenme(int cevapID)
         {
             servis = new KodusorServisClient();
-            if (servis.CevapBegenme(cevapID))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.CevapBegenme(cevapID));
         }
 
         public JsonResult CevapOnayla(int soruID, int cevapID)
         {
             servis = new KodusorServisClient();
-            if (servis.CevabıOnayla(soruID, cevapID))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.CevabıOnayla(soruID, cevapID));
         }
     }
 }

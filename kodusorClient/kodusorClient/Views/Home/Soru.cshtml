@@ -7,10 +7,11 @@
 <div class="card-panel blue-grey darken-2">
     <div class="row">
         <div class="col s1 valign">
-            <a><i class="material-icons white-text" onclick="SoruBegen(@Model.Soru.SoruID)">thumb_up</i></a><br />
+            <a href="#"><i class="material-icons white-text" onclick="SoruBegen(@Model.Soru.SoruID)">thumb_up</i></a><br />
             <span class="white-text">@Model.Soru.BegeniSayisi</span>
-            <br /><a><i class="material-icons white-text" style="margin-top:5px;" onclick="SoruBegenme(@Model.Soru.SoruID)">thumb_down</i></a><br />
-            @if (Session["kullaniciID"] != null)
+            <br /><a href="#">
+                <i class="material-icons white-text" style="margin-top:5px;" onclick="SoruBegenme(@Model.Soru.SoruID)">thumb_down</i></ahref=""><br />
+                @if (Session["kullaniciID"] != null)
             {
                 bool durum = false;
                 foreach (var item in Model.FavoriSorular)
@@ -23,13 +24,13 @@
                 }
                 if (durum)
                 {
-                    <a><i class="material-icons small yellow-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                        <a href="#"><i class="material-icons small yellow-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                    }
+                    else
+                    {
+                        <a href="#"><i class="material-icons small white-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
+                    }
                 }
-                else
-                {
-                    <a><i class="material-icons small white-text" onclick="SoruIDGetir(@Model.Soru.SoruID)">star</i></a>
-                }
-            }
 
         </div>
         <div class="col s11">
@@ -58,9 +59,9 @@
             <div class="card-panel blue-grey darken-2" style="margin-top: 0px; margin-bottom:0px;">
                 <div class="row">
                     <div class="col s1 valign">
-                        <a><i class="material-icons white-text" onclick="CevapBegen(@item.CevapID)">thumb_up</i></a><br />
+                        <a href="#"><i class="material-icons white-text" onclick="CevapBegen(@item.CevapID)">thumb_up</i></a><br />
                         <span class="white-text">@item.BegeniSayisi</span>
-                        <br /><a><i class="material-icons white-text" style="margin-top:5px;" onclick="CevapBegenme(@item.CevapID)">thumb_down</i></a><br />
+                        <br /><a href="#"><i class="material-icons white-text" style="margin-top:5px;" onclick="CevapBegenme(@item.CevapID)">thumb_down</i></a><br />
                         @if (Session["kullaniciID"] != null)
                         {
                             bool durum2 = false;
@@ -74,13 +75,13 @@
                             }
                             if (durum2)
                             {
-                                <a><i class="material-icons small yellow-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
+                                <a href="#"><i class="material-icons small yellow-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
                             }
                             else
                             {
-                                <a><i class="material-icons small white-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
+                                <a href="#"><i class="material-icons small white-text" onclick="CevapIDGetir(@item.CevapID)">star</i></a>
                             }
-                            
+
 
                             if (Model.Soru.Kullanici.KullaniciID == Convert.ToInt32(Session["kullaniciID"]))
                             {
@@ -114,7 +115,10 @@
                             <span>@item.Cevap</span>
                             <div class="row" style="margin-bottom:0px;">
                                 <br /><br /><br />
-
+                                @if (Session["kullaniciID"] != null)
+                                {
+                                    <a class="waves-effect waves-light btn" href="#yorumModal" onclick="cevapIDGonder(@item.CevapID)">Yorum Yap</a>
+                                }
                                 <div class="white-text valign-wrapper right">
                                     <br />
                                     <span class="right-align">@item.Kullanici.Adi @item.Kullanici.Soyadi<br />@Model.Soru.Tarih</span>
@@ -139,19 +143,6 @@
                         </div>
                     </div>
                 }
-                <br />
-                <div class="row">
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">chat_bubble_outline</i>
-                                <textarea id="icon_prefix2" class="materialize-textarea yorumText"></textarea>
-                                <label for="icon_prefix2">Yorumum</label>
-                            </div>
-                        </div>
-                    </form>
-                    <a class="waves-effect waves-light btn right" style="margin-right:20px;" onclick="YorumYap(@item.CevapID)">Yorum Ekle</a>
-                </div>
             </div>
         </li>
     </ul>
@@ -159,33 +150,37 @@
 }
 
 <!-- Cevap alanı başlangıç -->
-<div class="card-panel blue-grey darken-2" style="margin-top: 0px; margin-bottom:0px;">
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <span class="white-text">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">question_answer</i>
-                        <textarea id="icon_prefix2" class="materialize-textarea cevapText"></textarea>
-                        <label for="icon_prefix2">Cevabım</label>
-                    </div>
-                </span>
-            </div>
-        </form>
-        <a class="waves-effect waves-light btn right" onclick="CevapVer(@Model.Soru.SoruID)"><i class="material-icons right">send</i>Cevabı Kaydet</a>
+@if (Session["kullaniciID"] != null)
+{
+    <div class="card-panel blue-grey darken-2" style="margin-top: 0px; margin-bottom:0px;">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <span class="white-text">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">question_answer</i>
+                            <textarea id="icon_prefix2" class="materialize-textarea cevapText"></textarea>
+                            <label for="icon_prefix2">Cevabım</label>
+                        </div>
+                    </span>
+                </div>
+            </form>
+            <a class="waves-effect waves-light btn right" onclick="CevapVer(@Model.Soru.SoruID)"><i class="material-icons right">send</i>Cevabı Kaydet</a>
+        </div>
     </div>
-</div>
+}
 <!-- Cevap alanı bitiş -->
-<!-- Yarum yap modal başlangıç -->
-<div id="yorumYap" class="modal">
+<!-- Yorum yap modal başlangıç -->
+
+
+<div id="yorumModal" class="modal">
     <div class="modal-content">
-        <h4>Yorum Yaz</h4>
         <div class="row">
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">chat_bubble_outline</i>
-                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                        <textarea id="icon_prefix2" class="materialize-textarea yorum"></textarea>
                         <label for="icon_prefix2">Yorumum</label>
                     </div>
                 </div>
@@ -193,24 +188,25 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yorumu Kaydet</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="YorumYap()">Yorumu Kaydet</a>
     </div>
 </div>
-<!-- Yarum yap modal bitiş-->
-
+<!-- Yorum yap modal bitiş -->
 
 <script>
-
-
     function SoruIDGetir(soruID) {
         var data = {
             soruID: soruID
         };
-        console.log(data);
-
         $(function () {
             $.post("/Home/SoruyuFavEkle", data, function (sonuc) {
-                alert(sonuc);
+                if (sonuc)
+                {
+                    Materialize.toast('Soru Favori!', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Soru Favorilere Eklenirken Hata!', 3000);
             });
         });
     }
@@ -219,11 +215,15 @@
         var data = {
             cevapID: cevapID
         };
-        console.log(data);
-
         $(function () {
-            $.post("/Home/CevabıFavEkle", data, function (sonuc) {
-                alert(sonuc);
+            $.post("/Home/CevabiFavEkle", data, function (sonuc) {
+                if (sonuc)
+                {
+                    Materialize.toast('Cevap Favori!', 3000);
+                    location.reload(true);
+                }
+                else
+                    Materialize.toast('Cevap Favorilere Eklenirken Hata!', 3000);
             });
         });
     }
@@ -234,26 +234,35 @@
                 SoruID: soruID,
                 Cevap: $(".cevapText").val()
             };
-
-            console.log(data);
-
             $.post("/Home/CevapVer", { cevap: data }, function (sonuc) {
-                alert(sonuc);
+                if (sonuc)
+                {
+                    Materialize.toast('Cevabınız kaydedildi.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Cevabunuz kaydedilirkeb hata!', 3000);
             });
         });
     }
 
-    function YorumYap(cevapID) {
+    var aktifCevapID;
+    function cevapIDGonder(id) {
+        aktifCevapID = id;
+    }
+    function YorumYap() {
         $(function () {
             var data = {
-                CevapID: cevapID,
-                Yorum1: $(".yorumText").val()
+                CevapID: aktifCevapID,
+                Yorum1: $(".yorum").val()
             };
-
-            console.log(data);
-
             $.post("/Home/YorumYap", { yorum: data }, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Yorumunuz kaydedildi.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Yorumunuz kaydedilirken hata!', 3000);
             })
         });
     }
@@ -263,10 +272,13 @@
             var data = {
                 soruID: soruID
             };
-            console.log(soruID);
-
             $.post("/Home/SoruBegen", data, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Soru beğenildi.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Soru beğenirken hata!', 3000);
             })
         });
     }
@@ -276,10 +288,13 @@
             var data = {
                 soruID: soruID
             };
-            console.log(data);
-
             $.post("/Home/SoruBegenme", data, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Soru beğenmeme işlemi başarılı.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Soru beğenmemede hata!', 3000);
             })
         });
     }
@@ -289,10 +304,13 @@
             var data = {
                 cevapID: cevapID
             };
-            console.log(data);
-
             $.post("/Home/CevapBegen", data, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Cevap beğenildi.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Cevap beğenilirken hata!', 3000);
             })
         });
     }
@@ -302,21 +320,26 @@
             var data = {
                 cevapID: cevapID
             };
-            console.log(data);
-
             $.post("/Home/CevapBegenme", data, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Cevap beğenmeme işlemi başarılı.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Cevap beğenmeme işleminde hata!', 3000);
             })
         });
     }
 
     function CevapOnayla(soruID, cevapID) {
         $(function () {
-            console.log(cevapID);
-            console.log(soruID);
-
             $.post("/Home/CevapOnayla", { soruID: soruID, cevapID: cevapID }, function (sonuc) {
-                alert(sonuc);
+                if (sonuc) {
+                    Materialize.toast('Cevap onaylandı.', 3000);
+                    window.location.reload(true);
+                }
+                else
+                    Materialize.toast('Cevap onaylanırken hata!', 3000);
             })
         });
     }

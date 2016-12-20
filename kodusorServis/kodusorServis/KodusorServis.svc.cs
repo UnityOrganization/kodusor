@@ -491,6 +491,7 @@ namespace kodusorServis
                 List<SoruListesi> arananSorular = new List<SoruListesi>();
                 var sorular = (from s in db.Sorular
                                where s.Baslik.Contains(baslik)
+                               orderby s.Tarih descending
                                select s).ToList();
                 foreach (var item in sorular)
                 {

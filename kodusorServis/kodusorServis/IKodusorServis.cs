@@ -78,8 +78,7 @@ namespace kodusorServis
         List<SoruListesi> SoruAra(string baslik);
     }
 
-
-    //Kontrol edildi
+    
     [DataContract]
     public class SoruListesi
     {
@@ -165,8 +164,7 @@ namespace kodusorServis
             set { cevapSayisi = value; }
         }
     }
-
-    //Kontrol edildi
+    
     [DataContract]
     public class kullaniciListesi
     {
@@ -250,8 +248,7 @@ namespace kodusorServis
             set { hakkimda = value; }
         }
     }
-
-    //Kontrol edildi
+    
     [DataContract]
     public class EtiketListesi
     {
@@ -272,8 +269,7 @@ namespace kodusorServis
             set { etiketAdi = value; }
         }
     }
-
-    //Kontrol edildi
+    
     [DataContract]
     public class CevapListesi
     {
@@ -350,8 +346,7 @@ namespace kodusorServis
         }
 
     }
-
-    //Kontrol edildi
+    
     [DataContract]
     public class YorumListesi
     {

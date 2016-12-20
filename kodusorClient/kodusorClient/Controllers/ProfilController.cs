@@ -44,10 +44,7 @@ namespace kodusorClient.Controllers
         {
             servis = new KodusorServisClient();
             int kulID = Convert.ToInt32(Session["kullaniciID"]);
-            if (servis.SoruEkle(kulID, soru, etiketler.ToArray()))
-                return Json("+");
-            else
-                return Json("-");
+            return Json(servis.SoruEkle(kulID, soru, etiketler.ToArray()));
         }
         
         public JsonResult ParolaGuncelle(string eskiParola, string yeniParola)
@@ -63,7 +60,7 @@ namespace kodusorClient.Controllers
                     return Json("-");
             }
             else
-                return Json("-");
+                return Json("Parolanızı yanlış girdiniz!");
         }
 
         public JsonResult Cikis()
