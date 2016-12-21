@@ -1,7 +1,7 @@
 ﻿@model kodusorClient.ViewModel.KullaniciModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
@@ -85,7 +85,7 @@
             @foreach (var item in Model.CevapListesi)
             {
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">question_answer</i>@item.Sorular.Baslik soru baslik</div>
+                    <div class="collapsible-header"><i class="material-icons">question_answer</i>@item.Sorular.Baslik</div>
                     <div class="collapsible-body"><p>@item.Cevap</p></div>
                 </li>
             }
@@ -111,7 +111,7 @@
             @foreach (var item in Model.FavoriCevaplar)
             {
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">stars</i>@item.Sorular.Baslik Soru Baslik</div>
+                    <div class="collapsible-header"><i class="material-icons">stars</i>@item.Sorular.Baslik</div>
                     <div class="collapsible-body"><p>@item.Cevap</p></div>
                 </li>
             }
